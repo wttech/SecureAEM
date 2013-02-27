@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Panel"
+    title="General">
+    <items jcr:primaryType="cq:WidgetCollection">
+        <enabled
+            jcr:primaryType="cq:Widget"
+            fieldLabel="Enabled"
+            inputValue="true"
+            name="./testComponent/enabled"
+            xtype="checkbox"/>
+        <enabledClear
+            jcr:primaryType="cq:Widget"
+            inputValue="x"
+            name="./testComponent/enabled@Delete"
+            xtype="hidden"/>
+        <title
+            jcr:primaryType="cq:Widget"
+            allowBlank="false"
+            fieldLabel="Test name"
+            name="./jcr:title"
+            xtype="textfield"/>
+        <description
+            jcr:primaryType="cq:Widget"
+            allowBlank="false"
+            fieldLabel="Test description"
+            name="./jcr:description"
+            xtype="textarea"/>
+        <severity
+            jcr:primaryType="cq:Widget"
+            fieldLabel="Test severity"
+            name="./severity"
+            type="select"
+            xtype="selection">
+            <options jcr:primaryType="cq:WidgetCollection">
+                <o1
+                    jcr:primaryType="nt:unstructured"
+                    text="Info"
+                    value="INFO"/>
+                <o2
+                    jcr:primaryType="nt:unstructured"
+                    text="Minor"
+                    value="MINOR"/>
+                <o3
+                    jcr:primaryType="nt:unstructured"
+                    text="Major"
+                    value="MAJOR"/>
+                <o4
+                    jcr:primaryType="nt:unstructured"
+                    text="Critical"
+                    value="CRITICAL"/>
+                <o5
+                    jcr:primaryType="nt:unstructured"
+                    text="Blocker"
+                    value="BLOCKER"/>
+            </options>
+        </severity>
+        <url
+            jcr:primaryType="cq:Widget"
+            fieldLabel="URL for the 'More info' link"
+            name="./url"
+            xtype="textfield"/>
+        <urlDesc
+            jcr:primaryType="cq:Widget"
+            fieldLabel="Description of the above URL"
+            name="./urlDesc"
+            xtype="textfield"/>
+    </items>
+</jcr:root>

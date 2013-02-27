@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        jcr:description="Redundant selectors and suffixes should be restricted on the dispatcher, as they can be used         for DoS attack or preparing fake URL address."
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Redundant selectors and suffixes"
+        sling:resourceType="cognifide/securecq/renderers/testRenderer"
+        severity="MINOR"
+        url="http://dev.day.com/docs/en/cq/current/deploying/security_checklist.html#Preventing%20Denial%20of%20Service%20%28DoS%29%20Attacks"
+        urlDesc="Official CQ Security Checklist">
+        <testComponent
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="cognifide/securecq/components/extensions"
+            enabled="true"
+            extensions="[.thisIsAdditionalSelector.html,.this.is.additional.selector.html,.html/thisIsAdditionalSuffix]"/>
+    </jcr:content>
+</jcr:root>

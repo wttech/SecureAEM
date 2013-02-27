@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:vlt="http://www.day.com/jcr/vault/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="vlt:PackageDefinition"
+    sling:resourceType="cq/packaging/components/pack/definition"
+    cqVersion="5.5"
+    name="secure-cq"
+    providerLink=""
+    providerName="Tomasz Rękawek"
+    providerUrl="http://www.linkedin.com/in/tomaszrekawek"
+    testedWith="CQ 5.4, CQ 5.5, CQ 5.6"
+    requiresRoot="{Boolean}true">
+    <thumbnail/>
+    <thumbnail.png/>
+</jcr:root>

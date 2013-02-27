@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        jcr:description="CQ WCM Debug Filter should be disabled on production"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="CQ WCM Debug Filter"
+        sling:resourceType="cognifide/securecq/renderers/testRenderer"
+        severity="MAJOR"
+        url="http://dev.day.com/docs/en/cq/current/deploying/configuring_cq.html#CQ%20WCM%20Debug%20Filter"
+        urlDesc="Official Configuring CQ document">
+        <testComponent
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="cognifide/securecq/components/wcmDebug"
+            enabled="true"/>
+    </jcr:content>
+</jcr:root>

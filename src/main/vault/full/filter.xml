@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+	<filter root="/apps/cognifide/securecq"/>
+	<filter root="/apps/cognifide/install">
+		<include pattern="/apps/cognifide/install/secure-cq.*"/>
+	</filter>
+	<filter root="/etc/securecq">
+		<exclude pattern="/etc/securecq/jcr:content/globalConfig"/>
+	</filter>
+</workspaceFilter>
