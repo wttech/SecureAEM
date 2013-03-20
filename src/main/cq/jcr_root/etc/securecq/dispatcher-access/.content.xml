@@ -12,7 +12,7 @@
         <testComponent
             jcr:primaryType="nt:unstructured"
             sling:resourceType="cognifide/securecq/components/pageContent"
-            content="[sling:resourceType,sling:resourceType,sling:resourceType,createdBy,sling:resourceType,success,Durbo,createdBy,createdBy,createdBy,createdBy,Query Builder,createdBy]"
+            content="[sling:resourceType,sling:resourceType,sling:resourceType,createdBy,sling:resourceType,:true,Durbo,createdBy,createdBy,createdBy,createdBy,Query Builder,createdBy]"
             enabled="true"
             paths="[/.json,/.1.json,/.2.json,/apps.json,/bin.1.json,/bin/querybuilder.json,/bin/receive,/bin/workflow,/libs.json,/tmp.json,/var.json,/libs/cq/search/content/querydebug.html,/home/groups/e/everyone.json]"/>
     </jcr:content>
