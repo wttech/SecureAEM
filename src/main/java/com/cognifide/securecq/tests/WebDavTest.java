@@ -34,7 +34,6 @@ public class WebDavTest extends AbstractTest implements PublishTest {
 	}
 
 	private static class HttpPropFind extends HttpEntityEnclosingRequestBase {
-
 		public HttpPropFind(URI uri) {
 			this.setURI(uri);
 		}
@@ -43,7 +42,5 @@ public class WebDavTest extends AbstractTest implements PublishTest {
 		public String getMethod() {
 			return "PROPFIND";
 		}
-
 	}
-
 }

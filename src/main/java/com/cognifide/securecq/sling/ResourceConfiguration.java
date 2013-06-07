@@ -5,18 +5,20 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ValueMap;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.cognifide.securecq.Configuration;
 
 public class ResourceConfiguration implements Configuration {
-	private static final String GLOBAL_CONFIG_PATH = "/etc/securecq/jcr:content/globalConfig";
-
+	private static final Logger LOG = LoggerFactory.getLogger(DefaultConfigurationProvider.class);
 	private final ValueMap globalConfig;
 
 	private final SlingHttpServletRequest request;
 
 	public ResourceConfiguration(SlingHttpServletRequest request) {
-		Resource globalConfigRes = request.getResourceResolver().getResource(GLOBAL_CONFIG_PATH);
+		LOG.info(System.getProperty("javax.net.ssl.trustStore"));
+		Resource globalConfigRes = findGlobalConfig(request);
 		if (globalConfigRes == null) {
 			globalConfig = null;
 		} else {
@@ -59,5 +61,20 @@ public class ResourceConfiguration implements Configuration {
 
 	private <T> T getLocalConfig(String name, T defaultValue) {
 		return request.getResource().adaptTo(ValueMap.class).get(name, defaultValue);
+	}
+
+	private Resource findGlobalConfig(SlingHttpServletRequest request) {
+		Resource resource = request.getResource();
+		while (resource != null) {
+			if (resource.isResourceType("cq:Page")) {
+				Resource content = resource.getChild("jcr:content");
+				String resourceType = content.adaptTo(ValueMap.class).get("sling:resourceType", String.class);
+				if ("cognifide/securecq/renderers/mainRenderer".equals(resourceType)) {
+					return content.getChild("globalConfig");
+				}
+			}
+			resource = resource.getParent();
+		}
+		return null;
 	}
 }

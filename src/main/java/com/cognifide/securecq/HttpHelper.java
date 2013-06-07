@@ -26,6 +26,14 @@ public class HttpHelper {
 		this.client = new DefaultHttpClient();
 	}
 
+	/**
+	 * Check if given URL exists
+	 * 
+	 * @param url
+	 * @return
+	 * @throws ClientProtocolException
+	 * @throws IOException
+	 */
 	public boolean pathExists(String url) throws ClientProtocolException, IOException {
 		HttpParams params = new BasicHttpParams();
 		params.setParameter(ClientPNames.ALLOW_CIRCULAR_REDIRECTS, true);
@@ -38,6 +46,15 @@ public class HttpHelper {
 		return code == HttpURLConnection.HTTP_OK || code == HttpURLConnection.HTTP_UNAUTHORIZED;
 	}
 
+	/**
+	 * Check if page with URL exists and it's body contains given string.
+	 * 
+	 * @param url
+	 * @param stringToFind
+	 * @return
+	 * @throws ClientProtocolException
+	 * @throws IOException
+	 */
 	public boolean pageContainsString(String url, String stringToFind) throws ClientProtocolException,
 			IOException {
 		HttpParams params = new BasicHttpParams();

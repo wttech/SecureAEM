@@ -48,6 +48,16 @@ public abstract class AbstractTest {
 		}
 	}
 
+	/**
+	 * Perform test.
+	 * 
+	 * @param url URL of the instance to test.
+	 * @param instanceName Name of the instance (eg. author, publish or dispatcher).
+	 * @return true if the test succeeded
+	 * @throws Exception If you throw an exception, test result will be set to "Exception". You may throw
+	 * special {@link InvalidConfigurationException} with message if the test configuration isn't set
+	 * correctly.
+	 */
 	protected abstract boolean doTest(String url, String instanceName) throws Exception;
 
 	private TestResult doTest() throws Exception {
@@ -78,11 +88,23 @@ public abstract class AbstractTest {
 		}
 	}
 
+	/**
+	 * Add information message, it'll be shown to the user.
+	 * 
+	 * @param message Message can contain standard {@code String.format()} placeholders
+	 * @param params Values to fill the placeholders.
+	 */
 	protected void addInfoMessage(String message, Object... params) {
 		String formatted = String.format(message, params);
 		infoMessages.add(formatted);
 	}
 
+	/**
+	 * Add error message, it'll be shown to the user.
+	 * 
+	 * @param message Message can contain standard {@code String.format()} placeholders
+	 * @param params Values to fill the placeholders.
+	 */
 	protected void addErrorMessage(String message, Object... params) {
 		String formatted = String.format(message, params);
 		errorMessages.add(formatted);

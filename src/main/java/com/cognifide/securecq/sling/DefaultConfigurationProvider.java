@@ -25,6 +25,11 @@ import com.day.cq.replication.Agent;
 import com.day.cq.replication.AgentConfig;
 import com.day.cq.replication.AgentManager;
 
+/**
+ * This component tries to find the author, publish and dispatcher URLs automatically, during the SecureCQ
+ * deployment.
+ * 
+ */
 @Component(immediate = true, enabled = true, metatype = false)
 public class DefaultConfigurationProvider {
 	private static final Logger LOG = LoggerFactory.getLogger(DefaultConfigurationProvider.class);
