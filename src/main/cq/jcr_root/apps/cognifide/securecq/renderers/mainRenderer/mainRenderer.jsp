@@ -39,15 +39,15 @@
     </script>
     </div>
     <%
-        for (Iterator<Page> iter = currentPage.listChildren(); iter.hasNext();) {
-            Page child = iter.next();
-            String id = child.getName();
-            String title = child.getTitle();
-            
-            ValueMap content = child.getProperties();
-            String testComponentPath = child.getPath() + "/jcr:content/testComponent";
-            IncludeOptions.getOptions(request, true).forceSameContext(Boolean.TRUE);
-            %>
+    	for (Iterator<Page> iter = currentPage.listChildren(); iter.hasNext();) {
+                Page child = iter.next();
+                String id = child.getTitle();
+                String title = child.getTitle();
+                
+                ValueMap content = child.getProperties();
+                String testComponentPath = child.getPath() + "/jcr:content/testComponent";
+                IncludeOptions.getOptions(request, true).forceSameContext(Boolean.TRUE);
+    %>
               <sling:include path="<%= testComponentPath %>" />
             <%
         }
