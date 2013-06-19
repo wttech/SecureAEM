@@ -4,6 +4,12 @@ import com.cognifide.securecq.AbstractTest;
 import com.cognifide.securecq.Configuration;
 import com.cognifide.securecq.markers.DispatcherTest;
 
+/**
+ * Check if there is a page under given path and if this page contains given string.
+ * 
+ * @author trekawek
+ *
+ */
 public class PageContentTest extends AbstractTest implements DispatcherTest {
 
 	public PageContentTest(Configuration config) {

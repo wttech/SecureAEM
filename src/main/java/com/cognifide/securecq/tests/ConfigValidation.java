@@ -6,6 +6,12 @@ import com.cognifide.securecq.markers.AuthorTest;
 import com.cognifide.securecq.markers.DispatcherTest;
 import com.cognifide.securecq.markers.PublishTest;
 
+/**
+ * This class checks if the SecureCQ configuration looks sane.
+ * 
+ * @author trekawek
+ *
+ */
 public class ConfigValidation extends AbstractTest implements AuthorTest, DispatcherTest, PublishTest {
 
 	public ConfigValidation(Configuration config) {

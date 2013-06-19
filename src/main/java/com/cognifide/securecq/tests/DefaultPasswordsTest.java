@@ -19,6 +19,12 @@ import com.cognifide.securecq.Configuration;
 import com.cognifide.securecq.markers.AuthorTest;
 import com.cognifide.securecq.markers.PublishTest;
 
+/**
+ * Check if user with given login and password exists on given instance.
+ * 
+ * @author trekawek
+ *
+ */
 public class DefaultPasswordsTest extends AbstractTest implements AuthorTest, PublishTest {
 
 	public DefaultPasswordsTest(Configuration config) {

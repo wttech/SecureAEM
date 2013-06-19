@@ -4,6 +4,12 @@ import com.cognifide.securecq.AbstractTest;
 import com.cognifide.securecq.Configuration;
 import com.cognifide.securecq.markers.DispatcherTest;
 
+/**
+ * Check if the WCM debug filter is enabled.
+ * 
+ * @author trekawek
+ *
+ */
 public class WcmDebugTest extends AbstractTest implements DispatcherTest {
 
 	public WcmDebugTest(Configuration config) {

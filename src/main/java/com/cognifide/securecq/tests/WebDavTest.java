@@ -12,6 +12,12 @@ import com.cognifide.securecq.AbstractTest;
 import com.cognifide.securecq.Configuration;
 import com.cognifide.securecq.markers.PublishTest;
 
+/**
+ * Check if given instance supports WebDAV.
+ * 
+ * @author trekawek
+ *
+ */
 public class WebDavTest extends AbstractTest implements PublishTest {
 
 	public WebDavTest(Configuration config) {

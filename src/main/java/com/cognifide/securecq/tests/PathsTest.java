@@ -4,6 +4,12 @@ import com.cognifide.securecq.AbstractTest;
 import com.cognifide.securecq.Configuration;
 import com.cognifide.securecq.markers.DispatcherTest;
 
+/**
+ * Check if there is a page under given path.
+ * 
+ * @author trekawek
+ *
+ */
 public class PathsTest extends AbstractTest implements DispatcherTest {
 
 	public PathsTest(Configuration config) {
