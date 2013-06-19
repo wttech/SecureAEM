@@ -16,7 +16,7 @@ You may also be interested in the blog post on [Secure CQ](http://www.cognifide.
 
 ## Requirements
 
-* CQ 5.4, 5.5 or 5.6
+* CQ 5.4, 5.5 or 5.6[.1]
 
 ## Installation
 

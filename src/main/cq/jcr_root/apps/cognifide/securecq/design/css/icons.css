@@ -36,10 +36,10 @@ h2.no-margin {
 
 .securecq-info {
 	background: url('../icons/small-ok.png');
-	background-position: 8px 1px !important;
+	background-position: 8px -1px !important;
 }
 
 .securecq-error {
 	background: url('../icons/small-fail.png');
-	background-position: 8px 1px !important;
+	background-position: 8px -1px !important;
 }
