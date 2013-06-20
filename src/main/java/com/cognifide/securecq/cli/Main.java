@@ -43,18 +43,20 @@ public class Main {
 			printf("java -jar secure-cq.jar [-a AUTHOR_URL] [-p PUBLISH_URL] [-d DISPATCHER_URL] ");
 			System.exit(1);
 		}
+		boolean result = true;
 		for (TestLoader testLoader : TESTS) {
-			doTest(testLoader, cmdLine);
+			result = result && doTest(testLoader, cmdLine);
 		}
+		System.exit(result ? 0 : -1);
 	}
 
-	private void doTest(TestLoader testLoader, CommandLine cmdLine) throws Exception {
+	private boolean doTest(TestLoader testLoader, CommandLine cmdLine) throws Exception {
 		XmlConfigurationReader xmlConfigReader = new XmlConfigurationReader(testLoader.getComponentName());
 		Configuration config = new CliConfiguration(xmlConfigReader, cmdLine);
 		AbstractTest test = testLoader.getTest(config);
 		test.test();
 		if (test.getResult() == TestResult.DISABLED) {
-			return;
+			return true;
 		}
 
 		printf("### %s ###", xmlConfigReader.getMetadataValue("jcr:title"));
@@ -74,6 +76,7 @@ public class Main {
 			}
 		}
 		printf("");
+		return test.getResult() == TestResult.OK;
 	}
 
 	private static void printf(String format, Object... args) {
