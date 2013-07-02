@@ -45,7 +45,7 @@ public class Main {
 		}
 		boolean result = true;
 		for (TestLoader testLoader : TESTS) {
-			result = result && doTest(testLoader, cmdLine);
+			result = doTest(testLoader, cmdLine) && result;
 		}
 		System.exit(result ? 0 : -1);
 	}
