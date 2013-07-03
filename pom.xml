@@ -32,6 +32,7 @@
 		<instance.username>admin</instance.username>
 		<instance.password>admin</instance.password>
 		<assembly.name>secure-cq</assembly.name>
+		<releaseProfiles>cli</releaseProfiles>
 	</properties>
 	<scm>
 		<connection>scm:git:https://github.com/Cognifide/SecureCQ.git</connection>
