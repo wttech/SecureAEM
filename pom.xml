@@ -3,15 +3,26 @@
 	xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>7</version>
+	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.cognifide.securecq</groupId>
 	<artifactId>secure-cq</artifactId>
 	<version>1.0.1-SNAPSHOT</version>
-	<packaging>bundle</packaging>
+	<packaging>${packaging.type}</packaging>
 	<name>Secure CQ</name>
-	<description>
-		This application provides detailed security report for your CQ installation. After installation it's available in the 'Tools' page.
-	</description>
+	<description>This application provides detailed security report for your CQ installation. After installation it's available in the 'Tools' page.</description>
+	<url>https://github.com/Cognifide/SecureCQ</url>
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
 	<inceptionYear>2013</inceptionYear>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -22,6 +33,11 @@
 		<instance.password>admin</instance.password>
 		<assembly.name>secure-cq</assembly.name>
 	</properties>
+	<scm>
+		<connection>scm:git:https://github.com/Cognifide/SecureCQ.git</connection>
+		<developerConnection>scm:git:https://github.com/Cognifide/SecureCQ.git</developerConnection>
+		<url>https://github.com/Cognifide/SecureCQ.git</url>
+	</scm>
 	<organization>
 		<name>Cognifide</name>
 		<url>http://www.cognifide.com</url>
@@ -89,7 +105,7 @@
 				<version>2.3</version>
 				<configuration>
 					<finalName>${assembly.name}-${project.version}</finalName>
-					<appendAssemblyId>true</appendAssemblyId>
+					<appendAssemblyId>false</appendAssemblyId>
 					<descriptors>
 						<descriptor>src/main/assembly/${assembly.descriptor}.xml</descriptor>
 					</descriptors>
@@ -113,12 +129,38 @@
 				<artifactId>maven-crx-plugin</artifactId>
 				<version>1.0.3</version>
 				<configuration>
-					<packageFileName>${project.build.directory}/${assembly.name}-${project.version}-${assembly.descriptor}.zip</packageFileName>
-					<packageName>${assembly.name}-${assembly.descriptor}</packageName>
+					<!-- packageFileName>${project.build.directory}/${assembly.name}-${project.version}-${assembly.descriptor}.zip</packageFileName-->
+					<!-- packageName>${assembly.name}-${assembly.descriptor}</packageName-->
 					<url>${instance.url}</url>
 					<user>${instance.username}</user>
 					<password>${instance.password}</password>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.2.1</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9.1</version>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 		<pluginManagement>
@@ -239,6 +281,7 @@
 			</activation>
 			<properties>
 				<assembly.descriptor>cq</assembly.descriptor>
+				<packaging.type>bundle</packaging.type>
 			</properties>
 			<dependencies>
 				<dependency>
@@ -253,6 +296,7 @@
 			<id>cli</id>
 			<properties>
 				<assembly.descriptor>cli</assembly.descriptor>
+				<packaging.type>jar</packaging.type>
 			</properties>
 			<dependencies>
 				<dependency>

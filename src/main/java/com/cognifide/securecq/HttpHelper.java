@@ -30,7 +30,7 @@ public class HttpHelper {
 	 * Check if given URL exists
 	 * 
 	 * @param url
-	 * @return
+	 * @return true if given url exists
 	 * @throws ClientProtocolException
 	 * @throws IOException
 	 */
@@ -51,7 +51,7 @@ public class HttpHelper {
 	 * 
 	 * @param url
 	 * @param stringToFind
-	 * @return
+	 * @return true if given url exists and page contains given string
 	 * @throws ClientProtocolException
 	 * @throws IOException
 	 */

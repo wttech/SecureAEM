@@ -55,7 +55,7 @@ public abstract class AbstractTest {
 	 * @param instanceName Name of the instance (eg. author, publish or dispatcher).
 	 * @return true if the test succeeded
 	 * @throws Exception If you throw an exception, test result will be set to "Exception". You may throw
-	 * special {@link InvalidConfigurationException} with message if the test configuration isn't set
+	 * special {@link AbstractTest.InvalidConfigurationException} with message if the test configuration isn't set
 	 * correctly.
 	 */
 	protected abstract boolean doTest(String url, String instanceName) throws Exception;
