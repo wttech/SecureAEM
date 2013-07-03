@@ -8,7 +8,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.cognifide.securecq</groupId>
 	<artifactId>secure-cq</artifactId>
-	<version>1.0.1</version>
+	<version>1.1.0-SNAPSHOT</version>
 	<packaging>${packaging.type}</packaging>
 	<name>Secure CQ</name>
 	<description>This application provides detailed security report for your CQ installation. After installation it's available in the 'Tools' page.</description>
