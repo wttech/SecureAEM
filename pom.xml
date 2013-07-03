@@ -32,7 +32,6 @@
 		<instance.username>admin</instance.username>
 		<instance.password>admin</instance.password>
 		<assembly.name>secure-cq</assembly.name>
-		<releaseProfiles>cli</releaseProfiles>
 	</properties>
 	<scm>
 		<connection>scm:git:https://github.com/Cognifide/SecureCQ.git</connection>
@@ -143,8 +142,8 @@
 				<artifactId>maven-crx-plugin</artifactId>
 				<version>1.0.3</version>
 				<configuration>
-					<!-- packageFileName>${project.build.directory}/${assembly.name}-${project.version}-${assembly.descriptor}.zip</packageFileName-->
-					<!-- packageName>${assembly.name}-${assembly.descriptor}</packageName-->
+					<!-- packageFileName>${project.build.directory}/${assembly.name}-${project.version}-${assembly.descriptor}.zip</packageFileName -->
+					<!-- packageName>${assembly.name}-${assembly.descriptor}</packageName -->
 					<url>${instance.url}</url>
 					<user>${instance.username}</user>
 					<password>${instance.password}</password>
@@ -308,6 +307,12 @@
 		</profile>
 		<profile>
 			<id>cli</id>
+			<activation>
+				<property>
+					<name>performRelease</name>
+					<value>true</value>
+				</property>
+			</activation>
 			<properties>
 				<assembly.descriptor>cli</assembly.descriptor>
 				<packaging.type>jar</packaging.type>
@@ -324,6 +329,33 @@
 					<version>1.7.2</version>
 				</dependency>
 			</dependencies>
+		</profile>
+		<profile>
+			<id>release-sign-artifacts</id>
+			<activation>
+				<property>
+					<name>performRelease</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.1</version>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 	</profiles>
 </project>
