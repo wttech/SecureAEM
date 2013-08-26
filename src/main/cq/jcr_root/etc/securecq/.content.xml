@@ -8,6 +8,7 @@
     </jcr:content>
     <config-validation/>
     <default-passwords/>
+    <crxde-logs/>
     <dispatcher-access/>
     <shindig-proxy/>
     <etc-tools/>

@@ -10,6 +10,7 @@ import com.cognifide.securecq.AbstractTest;
 import com.cognifide.securecq.Configuration;
 import com.cognifide.securecq.TestResult;
 import com.cognifide.securecq.tests.ConfigValidation;
+import com.cognifide.securecq.tests.CrxdeLogsTest;
 import com.cognifide.securecq.tests.DefaultPasswordsTest;
 import com.cognifide.securecq.tests.ExtensionsTest;
 import com.cognifide.securecq.tests.PageContentTest;
@@ -21,6 +22,7 @@ public class Main {
 	private static final TestLoader[] TESTS = new TestLoader[] {
 			new TestLoader(ConfigValidation.class, "config-validation"),
 			new TestLoader(DefaultPasswordsTest.class, "default-passwords"),
+			new TestLoader(CrxdeLogsTest.class, "crxde-logs"),
 			new TestLoader(PageContentTest.class, "dispatcher-access"),
 			new TestLoader(PageContentTest.class, "shindig-proxy"),
 			new TestLoader(PageContentTest.class, "etc-tools"),
