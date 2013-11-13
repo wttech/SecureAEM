@@ -42,6 +42,7 @@ public class CrxdeLogsTest extends AbstractTest implements DispatcherTest, Publi
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	private boolean logsAvailable(String url) throws URISyntaxException, ClientProtocolException,
 			IOException, AuthenticationException {
 		UsernamePasswordCredentials creds = new UsernamePasswordCredentials("anonymous", "");
