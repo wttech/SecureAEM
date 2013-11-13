@@ -14,6 +14,7 @@ import com.cognifide.securecq.tests.CrxdeLogsTest;
 import com.cognifide.securecq.tests.DefaultPasswordsTest;
 import com.cognifide.securecq.tests.ExtensionsTest;
 import com.cognifide.securecq.tests.PageContentTest;
+import com.cognifide.securecq.tests.PathsTest;
 import com.cognifide.securecq.tests.WcmDebugTest;
 import com.cognifide.securecq.tests.WebDavTest;
 
@@ -29,6 +30,7 @@ public class Main {
 			new TestLoader(ExtensionsTest.class, "content-grabbing"),
 			new TestLoader(ExtensionsTest.class, "feed-selector"),
 			new TestLoader(WcmDebugTest.class, "wcm-debug"), new TestLoader(WebDavTest.class, "webdav"),
+			new TestLoader(PathsTest.class, "felix-console"),
 			new TestLoader(PageContentTest.class, "geometrixx"),
 			new TestLoader(ExtensionsTest.class, "redundant-selectors"),
 

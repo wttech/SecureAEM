@@ -16,6 +16,7 @@
     <feed-selector/>
     <wcm-debug/>
     <webdav/>
+    <felix-console/>
     <geometrixx/>
     <redundant-selectors/>
 </jcr:root>
