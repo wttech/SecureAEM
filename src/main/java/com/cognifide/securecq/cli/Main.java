@@ -15,6 +15,7 @@ import com.cognifide.securecq.tests.DefaultPasswordsTest;
 import com.cognifide.securecq.tests.ExtensionsTest;
 import com.cognifide.securecq.tests.PageContentTest;
 import com.cognifide.securecq.tests.PathsTest;
+import com.cognifide.securecq.tests.PublishPathsTest;
 import com.cognifide.securecq.tests.WcmDebugTest;
 import com.cognifide.securecq.tests.WebDavTest;
 
@@ -26,6 +27,7 @@ public class Main {
 			new TestLoader(CrxdeLogsTest.class, "crxde-logs"),
 			new TestLoader(PageContentTest.class, "dispatcher-access"),
 			new TestLoader(PageContentTest.class, "shindig-proxy"),
+			new TestLoader(PublishPathsTest.class, "third-party"),
 			new TestLoader(PageContentTest.class, "etc-tools"),
 			new TestLoader(ExtensionsTest.class, "content-grabbing"),
 			new TestLoader(ExtensionsTest.class, "feed-selector"),
@@ -33,7 +35,6 @@ public class Main {
 			new TestLoader(PathsTest.class, "felix-console"),
 			new TestLoader(PageContentTest.class, "geometrixx"),
 			new TestLoader(ExtensionsTest.class, "redundant-selectors"),
-
 	};
 
 	public static void main(String[] args) throws Exception {

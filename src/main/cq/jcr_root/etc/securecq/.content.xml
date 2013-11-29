@@ -11,6 +11,7 @@
     <crxde-logs/>
     <dispatcher-access/>
     <shindig-proxy/>
+    <third-party/>
     <etc-tools/>
     <content-grabbing/>
     <feed-selector/>
