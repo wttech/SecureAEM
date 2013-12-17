@@ -12,6 +12,7 @@
     <dispatcher-access/>
     <shindig-proxy/>
     <third-party/>
+    <groovy-console/>
     <etc-tools/>
     <content-grabbing/>
     <feed-selector/>

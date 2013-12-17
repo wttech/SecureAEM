@@ -13,6 +13,7 @@ import com.cognifide.securecq.tests.ConfigValidation;
 import com.cognifide.securecq.tests.CrxdeLogsTest;
 import com.cognifide.securecq.tests.DefaultPasswordsTest;
 import com.cognifide.securecq.tests.ExtensionsTest;
+import com.cognifide.securecq.tests.GroovyConsoleTest;
 import com.cognifide.securecq.tests.PageContentTest;
 import com.cognifide.securecq.tests.PathsTest;
 import com.cognifide.securecq.tests.PublishPathsTest;
@@ -28,10 +29,12 @@ public class Main {
 			new TestLoader(PageContentTest.class, "dispatcher-access"),
 			new TestLoader(PageContentTest.class, "shindig-proxy"),
 			new TestLoader(PublishPathsTest.class, "third-party"),
+			new TestLoader(GroovyConsoleTest.class, "groovy-console"),
 			new TestLoader(PageContentTest.class, "etc-tools"),
 			new TestLoader(ExtensionsTest.class, "content-grabbing"),
 			new TestLoader(ExtensionsTest.class, "feed-selector"),
-			new TestLoader(WcmDebugTest.class, "wcm-debug"), new TestLoader(WebDavTest.class, "webdav"),
+			new TestLoader(WcmDebugTest.class, "wcm-debug"),
+			new TestLoader(WebDavTest.class, "webdav"),
 			new TestLoader(PathsTest.class, "felix-console"),
 			new TestLoader(PageContentTest.class, "geometrixx"),
 			new TestLoader(ExtensionsTest.class, "redundant-selectors"),
