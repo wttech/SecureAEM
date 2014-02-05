@@ -65,13 +65,10 @@ public class HttpHelper {
 		HttpResponse response = client.execute(request);
 		String responseString = EntityUtils.toString(response.getEntity());
 		int code = response.getStatusLine().getStatusCode();
-		if (code == HttpURLConnection.HTTP_OK) {
-			if (StringUtils.isBlank(stringToFind)) {
-				return true;
-			}
-			return responseString.indexOf(stringToFind) != -1;
+		if (code == HttpURLConnection.HTTP_OK && StringUtils.isBlank(stringToFind)) {
+			return true;
 		} else {
-			return false;
+			return responseString.indexOf(stringToFind) != -1;
 		}
 	}
 
