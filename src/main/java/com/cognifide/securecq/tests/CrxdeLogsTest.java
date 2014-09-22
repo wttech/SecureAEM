@@ -15,6 +15,7 @@ import org.apache.http.util.EntityUtils;
 
 import com.cognifide.securecq.AbstractTest;
 import com.cognifide.securecq.Configuration;
+import com.cognifide.securecq.markers.AuthorTest;
 import com.cognifide.securecq.markers.DispatcherTest;
 import com.cognifide.securecq.markers.PublishTest;
 
@@ -24,7 +25,7 @@ import com.cognifide.securecq.markers.PublishTest;
  * @author trekawek
  * 
  */
-public class CrxdeLogsTest extends AbstractTest implements DispatcherTest, PublishTest {
+public class CrxdeLogsTest extends AbstractTest implements DispatcherTest, AuthorTest, PublishTest {
 
 	public CrxdeLogsTest(Configuration config) {
 		super(config);
