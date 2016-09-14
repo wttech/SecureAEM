@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        jcr:description="CRXDE logs servlet should be disabled on author and publish."
+        jcr:primaryType="cq:PageContent"
+        jcr:title="CRXDE logs servlet on author and publish"
+        sling:resourceType="cognifide/secureaem/renderers/testRenderer"
+        severity="CRITICAL"
+        url="http://crxdelight.com/2013/08/02/restricting-anonymous-access-server-logs/"
+        urlDesc="Blog post at CRX Delight">
+        <testComponent
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="cognifide/secureaem/components/crxdeLogs"
+            enabled="true"/>
+    </jcr:content>
+</jcr:root>

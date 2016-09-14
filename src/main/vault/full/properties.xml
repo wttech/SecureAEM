@@ -7,7 +7,7 @@
 <entry key="name">${project.artifactId}</entry>
 <entry key="version">${project.version}</entry>
 <entry key="buildCount">1</entry>
-<entry key="description">Secure CQ provides detailed security report for your CQ installation. After installation it's available in the 'Tools' page.</entry>
+<entry key="description">Secure AEM provides detailed security report for your AEM installation. After installation it's available in the 'Tools' page.</entry>
 <entry key="createdBy">${project.organization.name}</entry>
 <entry key="packageFormatVersion">2</entry>
 <entry key="requiresRoot">true</entry>

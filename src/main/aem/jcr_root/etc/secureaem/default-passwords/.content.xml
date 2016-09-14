@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        jcr:description="Out-of-the-box CQ installation comes with several privileged user accounts. Passwords to these         accounts should be changed."
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Default passwords"
+        sling:resourceType="cognifide/secureaem/renderers/testRenderer"
+        severity="BLOCKER"
+        url="http://crxdelight.com/2012/06/30/default-cq5-users-passwords/"
+        urlDesc="Blog post at CRX Delight">
+        <testComponent
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="cognifide/secureaem/components/defaultPasswords"
+            enabled="true"
+            users="[admin:admin,author:author,replication-receiver:replication-receiver,jdoe@geometrixx.info:jdoe,aparker@geometrixx.info:aparker]"/>
+    </jcr:content>
+</jcr:root>

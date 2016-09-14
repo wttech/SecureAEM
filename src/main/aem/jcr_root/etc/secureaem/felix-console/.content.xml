@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        jcr:description="Apache Felix console shouldn't be available for clients"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Apache Felix console"
+        sling:resourceType="cognifide/secureaem/renderers/testRenderer"
+        severity="MAJOR">
+        <testComponent
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="cognifide/secureaem/components/paths"
+            enabled="true"
+            paths="[/system/console]"/>
+    </jcr:content>
+</jcr:root>

@@ -1,0 +1,45 @@
+h2.no-margin {
+	margin-top: 0;
+}
+
+.disabled {
+	opacity: 0.3;
+}
+
+.secureaem-test-icon {
+	width: 48px;
+	height: 48px;
+	margin-left: -56px;
+	position: absolute;
+}
+
+.icon-loading {
+	background: url('../icons/spinner.gif');
+}
+
+.icon-ok {
+	background: url('../icons/ok.png');
+}
+
+.icon-fail {
+	background: url('../icons/fail.png');
+}
+
+.icon-exception {
+	background: url('../icons/exception.png');
+}
+
+.icon-disabled {
+	background:
+		url('/libs/cq/ui/widgets/themes/default/icons/48x48/off-slider.png');
+}
+
+.secureaem-info {
+	background: url('../icons/small-ok.png');
+	background-position: 8px -1px !important;
+}
+
+.secureaem-error {
+	background: url('../icons/small-fail.png');
+	background-position: 8px -1px !important;
+}

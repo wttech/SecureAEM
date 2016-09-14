@@ -28,7 +28,7 @@
 		<instance.url>http://localhost:4502</instance.url>
 		<instance.username>admin</instance.username>
 		<instance.password>admin</instance.password>
-		<assembly.name>secure-cq</assembly.name>
+		<assembly.name>secure-aem</assembly.name>
 	</properties>
 	<scm>
 		<connection>scm:git:https://github.com/Cognifide/SecureCQ.git</connection>
@@ -122,7 +122,7 @@
 					</descriptors>
 					<archive>
 						<manifest>
-							<mainClass>com.cognifide.securecq.cli.Main</mainClass>
+							<mainClass>com.cognifide.secureaem.cli.Main</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
@@ -286,12 +286,12 @@
 	</dependencies>
 	<profiles>
 		<profile>
-			<id>cq</id>
+			<id>aem</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<assembly.descriptor>cq</assembly.descriptor>
+				<assembly.descriptor>aem</assembly.descriptor>
 				<packaging.type>bundle</packaging.type>
 			</properties>
 			<dependencies>
