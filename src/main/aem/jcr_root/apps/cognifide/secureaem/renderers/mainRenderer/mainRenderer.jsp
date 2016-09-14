@@ -3,7 +3,7 @@
             import="java.util.Iterator"
             import="com.day.cq.wcm.api.components.IncludeOptions" %><%
 %><%@include file="/libs/foundation/global.jsp"%><%
-    String pageTitle = properties.get("jcr:title", "Secure CQ");
+    String pageTitle = properties.get("jcr:title", "Secure AEM");
 %><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
 <html>
 <head>
