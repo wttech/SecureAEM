@@ -27,6 +27,7 @@
                     "afteredit":"REFRESH_PAGE"
                 },
                 "inlineEditing":CQ.wcm.EditBase.INLINE_MODE_NEVER,
+                "disableTargeting":true,
                 "actions":[
                     {
                         "xtype":"tbtext",
