@@ -6,12 +6,12 @@
 		<version>7</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.cognifide.securecq</groupId>
-	<artifactId>secure-cq</artifactId>
+	<groupId>com.cognifide.secureaem</groupId>
+	<artifactId>secure-aem</artifactId>
 	<version>1.2.0-SNAPSHOT</version>
 	<packaging>${packaging.type}</packaging>
-	<name>Secure CQ</name>
-	<description>This application provides detailed security report for your CQ installation. After installation it's available in the 'Tools' page.</description>
+	<name>Secure AEM</name>
+	<description>This application provides detailed security report for your AEM installation. After installation it's available in the 'Tools' page.</description>
 	<url>https://github.com/Cognifide/SecureCQ</url>
 	<licenses>
 		<license>
