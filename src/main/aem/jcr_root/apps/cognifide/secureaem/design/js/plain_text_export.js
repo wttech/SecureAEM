@@ -17,7 +17,7 @@
             return resultFormatted;
         }
 
-        function prepareDataOfSingleResult(singleParsedResult) {
+        function prepareSingleResultData(singleParsedResult) {
             var resultFormatted = '';
             if (singleParsedResult.error) {
                 resultFormatted = 'Error: ' + singleParsedResult.error.toString() + '\n'
@@ -58,7 +58,7 @@
                 dataToExport = dataToExport + 'Test name: ' + singleParsedResult.testName + '\n'
                                + 'Description: ' + singleParsedResult.description + '\n'
                                + singleParsedResult.severity + '\n'
-                               + prepareDataOfSingleResult(singleParsedResult)
+                               + prepareSingleResultData(singleParsedResult)
             });
             return dataToExport;
         }
