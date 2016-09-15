@@ -9,8 +9,8 @@
 	<includeBaseDirectory>false</includeBaseDirectory>
 	<fileSets>
 		<fileSet>
-			<directory>src/main/cq</directory>
-			<outputDirectory>/cq</outputDirectory>
+			<directory>src/main/aem</directory>
+			<outputDirectory>/aem</outputDirectory>
 		</fileSet>
 	</fileSets>
 	<dependencySets>

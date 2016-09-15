@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        jcr:description="Groovy Console shouldn't be available publicly"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Groovy Console on publish"
+        sling:resourceType="cognifide/secureaem/renderers/testRenderer"
+        severity="CRITICAL">
+        <testComponent
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="cognifide/secureaem/components/groovyConsole"
+            enabled="true"/>
+    </jcr:content>
+</jcr:root>

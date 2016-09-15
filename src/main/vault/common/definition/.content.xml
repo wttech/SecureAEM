@@ -3,7 +3,7 @@
     jcr:primaryType="vlt:PackageDefinition"
     sling:resourceType="cq/packaging/components/pack/definition"
     cqVersion="5.5"
-    name="secure-cq"
+    name="secure-aem"
     providerLink=""
     providerName="Tomasz Rękawek"
     providerUrl="http://www.linkedin.com/in/tomaszrekawek"

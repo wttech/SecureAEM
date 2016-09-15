@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        jcr:description="Third party AEM addons (like Groovy console) shouldn't be available"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="3rd party tools on publish"
+        sling:resourceType="cognifide/secureaem/renderers/testRenderer"
+        severity="MAJOR">
+        <testComponent
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="cognifide/secureaem/components/publishPaths"
+            enabled="true"
+            paths="[/etc/groovyconsole.html,/etc/cqsm.html,/etc/secureaem.html]"/>
+    </jcr:content>
+</jcr:root>

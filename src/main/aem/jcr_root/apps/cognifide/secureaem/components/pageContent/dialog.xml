@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    jcr:primaryType="cq:Dialog"
+    height="400"
+    xtype="dialog">
+    <items jcr:primaryType="cq:WidgetCollection">
+        <tabPanel
+            jcr:primaryType="cq:TabPanel"
+            xtype="tabpanel">
+            <items jcr:primaryType="cq:WidgetCollection">
+                <general
+                    jcr:primaryType="cq:Widget"
+                    path="/apps/cognifide/secureaem/renderers/testRenderer/tab_general.infinity.json"
+                    xtype="cqinclude"/>
+                <configuration
+                    jcr:primaryType="cq:Widget"
+                    anchor="100%"
+                    title="Test configuration"
+                    xtype="panel">
+                    <items jcr:primaryType="cq:WidgetCollection">
+                        <paths
+                            jcr:primaryType="cq:Widget"
+                            fieldDescription="Press + to add more items"
+                            fieldLabel="Paths"
+                            name="./testComponent/paths"
+                            width="1000"
+                            xtype="multifield"/>
+                        <content
+                            jcr:primaryType="cq:Widget"
+                            fieldDescription="Press + to add more items"
+                            fieldLabel="Content excerpts"
+                            name="./testComponent/content"
+                            width="1000"
+                            xtype="multifield"/>
+                    </items>
+                </configuration>
+            </items>
+        </tabPanel>
+    </items>
+</jcr:root>

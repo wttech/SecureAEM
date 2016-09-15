@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        jcr:description="/etc directory contains a lot of tools. They all should be restricted on dispatcher."
+        jcr:primaryType="cq:PageContent"
+        jcr:title="/etc tools"
+        sling:resourceType="cognifide/secureaem/renderers/testRenderer"
+        severity="CRITICAL">
+        <testComponent
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="cognifide/secureaem/components/pageContent"
+            content="[CRXDE,Blueprint,Client Context,Adobe Digital,Custom Documentation,Email templates,BulkEditor,Offline Importer,Feed Importer,Site Importer,Upgrade Wizard,External Link Checker,jcr:createdBy,CQ5 WCM Mobile,CQ WCM Mobile,CQ WCM Mobile,CQ WCM,CQ5 RolloutConfig,CQ5 RolloutConfig,CQ5 RolloutConfig,CQ5 RolloutConfig,CQ5 RolloutConfig,CQ5 RolloutConfig,CQ5 RolloutConfig,Page Activity Report,Component Report,Disk Usage,Request Log Analyzer,User Generated,User Report,Workflow Instance,Workflow Report,Scaffolding,Self-Service,sling:resourceType,Purge Versions]"
+            enabled="true"
+            paths="[/crx/de/index.jsp,/etc/blueprints/geometrixx.html,/etc/clientcontext/default/content.html,/etc/cloudservices.html,/etc/docs.html,/etc/emails/default/templates.html,/etc/importers/bulkeditor.html,/etc/importers/offline.html,/etc/importers/polling.html,/etc/importers/site.html,/etc/importers/upgrade.html,/etc/linkchecker.html,/etc/map/http.json,/etc/mobile/useragent-test.html,/etc/mobile/groups/feature.html,/etc/mobile/groups/smart.html,/etc/mobile/groups/touch.html,/etc/msm/rolloutconfigs/activate.html,/etc/msm/rolloutconfigs/deactivate.html,/etc/msm/rolloutconfigs/default.html,/etc/msm/rolloutconfigs/geometrixx-outdoors-mobile.html,/etc/msm/rolloutconfigs/geometrixx-outdoors-teaser.html,/etc/msm/rolloutconfigs/mobile.html,/etc/msm/rolloutconfigs/pushonmodify.html,/etc/reports/auditreport.html,/etc/reports/compreport.html,/etc/reports/diskusage.html,/etc/reports/healthcheck.html,/etc/reports/ugcreport.html,/etc/reports/userreport.html,/etc/reports/wfinstances.html,/etc/reports/workflowreport.html,/etc/scaffolding.html,/etc/security/accountmgr.html,/etc/tags.json,/etc/versioning/purge.html]"
+            hidePassed="true"/>
+    </jcr:content>
+</jcr:root>

@@ -6,12 +6,12 @@
 		<version>7</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.cognifide.securecq</groupId>
-	<artifactId>secure-cq</artifactId>
+	<groupId>com.cognifide.secureaem</groupId>
+	<artifactId>secure-aem</artifactId>
 	<version>1.2.0-SNAPSHOT</version>
 	<packaging>${packaging.type}</packaging>
-	<name>Secure CQ</name>
-	<description>This application provides detailed security report for your CQ installation. After installation it's available in the 'Tools' page.</description>
+	<name>Secure AEM</name>
+	<description>This application provides detailed security report for your AEM installation. After installation it's available in the 'Tools' page.</description>
 	<url>https://github.com/Cognifide/SecureCQ</url>
 	<licenses>
 		<license>
@@ -28,7 +28,7 @@
 		<instance.url>http://localhost:4502</instance.url>
 		<instance.username>admin</instance.username>
 		<instance.password>admin</instance.password>
-		<assembly.name>secure-cq</assembly.name>
+		<assembly.name>secure-aem</assembly.name>
 	</properties>
 	<scm>
 		<connection>scm:git:https://github.com/Cognifide/SecureCQ.git</connection>
@@ -122,7 +122,7 @@
 					</descriptors>
 					<archive>
 						<manifest>
-							<mainClass>com.cognifide.securecq.cli.Main</mainClass>
+							<mainClass>com.cognifide.secureaem.cli.Main</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
@@ -286,12 +286,12 @@
 	</dependencies>
 	<profiles>
 		<profile>
-			<id>cq</id>
+			<id>aem</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<assembly.descriptor>cq</assembly.descriptor>
+				<assembly.descriptor>aem</assembly.descriptor>
 				<packaging.type>bundle</packaging.type>
 			</properties>
 			<dependencies>
