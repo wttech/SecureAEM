@@ -15,6 +15,7 @@ public class TestResultSerializer {
 		testResult.put("testResult", abstractTest.getResult().name().toLowerCase());
 		testResult.put("errorMessages", abstractTest.getErrorMessages());
 		testResult.put("infoMessages", abstractTest.getInfoMessages());
+		testResult.put("environments", abstractTest.getEnvironments());
 	}
 
 	@Override

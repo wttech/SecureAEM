@@ -5,5 +5,8 @@ package com.cognifide.secureaem.markers;
  * 
  */
 public interface PublishTest {
+
+	String ENVIRONMENT_NAME = "publish";
+
 	boolean doTest(String url, String instanceName) throws Exception;
 }
