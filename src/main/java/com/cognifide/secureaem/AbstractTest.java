@@ -79,13 +79,13 @@ public abstract class AbstractTest {
 
 		if (this instanceof PublishTest && StringUtils.isNotBlank(config.getPublish())) {
 			environments.add(PublishTest.ENVIRONMENT_NAME);
-			success = doTest(config.getPublish(), AuthorTest.ENVIRONMENT_NAME) && success;
+			success = doTest(config.getPublish(), PublishTest.ENVIRONMENT_NAME) && success;
 			testDone = true;
 		}
 
 		if (this instanceof DispatcherTest && StringUtils.isNotBlank(config.getDispatcherUrl())) {
 			environments.add(DispatcherTest.ENVIRONMENT_NAME);
-			success = doTest(config.getDispatcherUrl(), AuthorTest.ENVIRONMENT_NAME) && success;
+			success = doTest(config.getDispatcherUrl(), DispatcherTest.ENVIRONMENT_NAME) && success;
 			testDone = true;
 		}
 
