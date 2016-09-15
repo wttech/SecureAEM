@@ -73,19 +73,19 @@ public abstract class AbstractTest {
 
 		if (this instanceof AuthorTest && StringUtils.isNotBlank(config.getAuthor())) {
 			environments.add(AuthorTest.ENVIRONMENT_NAME);
-			success = doTest(config.getAuthor(), "author");
+			success = doTest(config.getAuthor(), AuthorTest.ENVIRONMENT_NAME);
 			testDone = true;
 		}
 
 		if (this instanceof PublishTest && StringUtils.isNotBlank(config.getPublish())) {
 			environments.add(PublishTest.ENVIRONMENT_NAME);
-			success = doTest(config.getPublish(), "publish") && success;
+			success = doTest(config.getPublish(), AuthorTest.ENVIRONMENT_NAME) && success;
 			testDone = true;
 		}
 
 		if (this instanceof DispatcherTest && StringUtils.isNotBlank(config.getDispatcherUrl())) {
 			environments.add(DispatcherTest.ENVIRONMENT_NAME);
-			success = doTest(config.getDispatcherUrl(), "dispatcher") && success;
+			success = doTest(config.getDispatcherUrl(), AuthorTest.ENVIRONMENT_NAME) && success;
 			testDone = true;
 		}
 
