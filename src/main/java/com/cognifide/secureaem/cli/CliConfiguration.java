@@ -6,7 +6,7 @@ import java.net.URISyntaxException;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.apache.commons.cli.CommandLine;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.xml.sax.SAXException;
 
 import com.cognifide.secureaem.Configuration;
