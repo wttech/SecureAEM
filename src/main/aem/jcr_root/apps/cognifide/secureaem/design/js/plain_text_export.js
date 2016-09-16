@@ -2,14 +2,14 @@
     $(document).ready(function () {
 
         function extractTestsResults($singleResult, selector) {
-            var failedTests = [];
+            var testsResults = [];
             $singleResult.find(selector).each(function () {
-                failedTests.push($(this).text());
+                testsResults.push($(this).text());
             });
-            return failedTests;
+            return testsResults;
         }
 
-        function formatArrayResult(prefix, arrayResult) {
+        function formatResultList(prefix, arrayResult) {
             var resultFormatted = '';
             if (arrayResult.length !== 0) {
                 resultFormatted = prefix + '\n' + arrayResult.join('\n') + '\n';
@@ -21,12 +21,12 @@
             var resultFormatted = '';
             if (singleParsedResult.error) {
                 resultFormatted = 'Error: ' + singleParsedResult.error.toString() + '\n'
-                                  + 'Exception: ' + '\n' + singleParsedResult.failedTests.join('\n')
+                                  + 'Exception: ' + '\n' + singleParsedResult.failedTests.join('\n')+ '\n';
             } else {
                 resultFormatted = 'Passed: ' + singleParsedResult.passed + '\n'
-                                  + formatArrayResult('Failed Tests: ',
+                                  + formatResultList('Failed Tests: ',
                                                       singleParsedResult.failedTests)
-                                  + formatArrayResult('Succeeded Tests: ',
+                                  + formatResultList('Succeeded Tests: ',
                                                       singleParsedResult.succeededTests)
             }
             return resultFormatted + '========================================================\n\n';
