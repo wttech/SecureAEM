@@ -23,10 +23,6 @@ public class Main {
 	private static final String DEFAULT_TEST_SUITE_PATH = "/test_suite.properties";
 
 	public static void main(String[] args) throws Exception {
-		new Main(args);
-	}
-
-	private Main(String[] args) throws Exception {
 		CommandLine cmdLine = createOptions(args);
 		if (!cmdLine.hasOption('a') && !cmdLine.hasOption('p') && !cmdLine.hasOption('d')) {
 			printf("Usage: ");
@@ -41,7 +37,7 @@ public class Main {
 		System.exit(result ? 0 : -1);
 	}
 
-	private List<TestLoader> createTestLoaders(CommandLine cmdLine) throws IOException, ClassNotFoundException {
+	private static List<TestLoader> createTestLoaders(CommandLine cmdLine) throws IOException, ClassNotFoundException {
 		BufferedReader reader;
 		if(cmdLine.hasOption("suite")){
 			reader = new BufferedReader(new FileReader(cmdLine.getOptionValue("suite")));
@@ -63,7 +59,7 @@ public class Main {
 		return testLoaders;
 	}
 
-	private boolean doTest(TestLoader testLoader, CommandLine cmdLine) throws Exception {
+	private static boolean doTest(TestLoader testLoader, CommandLine cmdLine) throws Exception {
 		XmlConfigurationReader xmlConfigReader = new XmlConfigurationReader(testLoader.getComponentName());
 		Configuration config = new CliConfiguration(xmlConfigReader, cmdLine);
 		AbstractTest test = testLoader.getTest(config);
@@ -96,7 +92,7 @@ public class Main {
 		System.out.println(String.format(format, args));
 	}
 
-	private CommandLine createOptions(String args[]) throws ParseException {
+	private static CommandLine createOptions(String args[]) throws ParseException {
 		Options options = new Options();
 		options.addOption("a", true, "author URL");
 		options.addOption("p", true, "publish URL");
