@@ -6,39 +6,21 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.PosixParser;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.cognifide.secureaem.AbstractTest;
 import com.cognifide.secureaem.Configuration;
 import com.cognifide.secureaem.TestResult;
-import com.cognifide.secureaem.tests.ConfigValidation;
-import com.cognifide.secureaem.tests.CrxdeLogsTest;
-import com.cognifide.secureaem.tests.DefaultPasswordsTest;
-import com.cognifide.secureaem.tests.ExtensionsTest;
-import com.cognifide.secureaem.tests.GroovyConsoleTest;
-import com.cognifide.secureaem.tests.PageContentTest;
-import com.cognifide.secureaem.tests.PathsTest;
-import com.cognifide.secureaem.tests.PublishPathsTest;
-import com.cognifide.secureaem.tests.WcmDebugTest;
-import com.cognifide.secureaem.tests.WebDavTest;
 
 public class Main {
 
-	private static final TestLoader[] TESTS = new TestLoader[] {
-			new TestLoader(ConfigValidation.class, "config-validation"),
-			new TestLoader(DefaultPasswordsTest.class, "default-passwords"),
-			new TestLoader(CrxdeLogsTest.class, "crxde-logs"),
-			new TestLoader(PageContentTest.class, "dispatcher-access"),
-			new TestLoader(PageContentTest.class, "shindig-proxy"),
-			new TestLoader(PublishPathsTest.class, "third-party"),
-			new TestLoader(GroovyConsoleTest.class, "groovy-console"),
-			new TestLoader(PageContentTest.class, "etc-tools"),
-			new TestLoader(ExtensionsTest.class, "content-grabbing"),
-			new TestLoader(ExtensionsTest.class, "feed-selector"),
-			new TestLoader(WcmDebugTest.class, "wcm-debug"),
-			new TestLoader(WebDavTest.class, "webdav"),
-			new TestLoader(PathsTest.class, "felix-console"),
-			new TestLoader(PageContentTest.class, "geometrixx"),
-			new TestLoader(ExtensionsTest.class, "redundant-selectors"),
-	};
+	private static final String DEFAULT_TEST_SUITE_PATH = "/test_suite.properties";
 
 	public static void main(String[] args) throws Exception {
 		new Main(args);
@@ -51,11 +33,34 @@ public class Main {
 			printf("java -jar secure-aem.jar [-a AUTHOR_URL] [-p PUBLISH_URL] [-d DISPATCHER_URL] ");
 			System.exit(1);
 		}
+		List<TestLoader> testLoaders =  createTestLoaders(cmdLine);
 		boolean result = true;
-		for (TestLoader testLoader : TESTS) {
+		for (TestLoader testLoader : testLoaders) {
 			result = doTest(testLoader, cmdLine) && result;
 		}
 		System.exit(result ? 0 : -1);
+	}
+
+	private List<TestLoader> createTestLoaders(CommandLine cmdLine) throws IOException, ClassNotFoundException {
+		BufferedReader reader;
+		if(cmdLine.hasOption("suite")){
+			reader = new BufferedReader(new FileReader(cmdLine.getOptionValue("suite")));
+		}
+		else {
+			InputStream is = Main.class.getClass().getResourceAsStream(DEFAULT_TEST_SUITE_PATH);
+			reader = new BufferedReader(new InputStreamReader(is));
+		}
+
+		List<TestLoader> testLoaders = new ArrayList<>();
+		String line;
+		while ((line = reader.readLine()) != null) {
+			String[] parameters = line.split(", ");
+			if(parameters.length == 2) {
+				Class clazz = Class.forName(parameters[0]);
+				testLoaders.add(new TestLoader(clazz, parameters[1]));
+			}
+		}
+		return testLoaders;
 	}
 
 	private boolean doTest(TestLoader testLoader, CommandLine cmdLine) throws Exception {
@@ -96,6 +101,7 @@ public class Main {
 		options.addOption("a", true, "author URL");
 		options.addOption("p", true, "publish URL");
 		options.addOption("d", true, "dispatcher URL");
+		options.addOption("suite", true, "test suite");
 
 		CommandLineParser parser = new PosixParser();
 		return parser.parse(options, args);
