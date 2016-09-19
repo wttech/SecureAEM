@@ -5,5 +5,8 @@ package com.cognifide.secureaem.markers;
  * 
  */
 public interface DispatcherTest {
+
+	String ENVIRONMENT_NAME = "dispatcher";
+
 	boolean doTest(String url, String instanceName) throws Exception;
 }

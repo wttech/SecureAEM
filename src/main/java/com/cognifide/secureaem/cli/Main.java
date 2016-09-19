@@ -5,6 +5,7 @@ import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.PosixParser;
+import org.apache.commons.lang.StringUtils;
 
 import com.cognifide.secureaem.AbstractTest;
 import com.cognifide.secureaem.Configuration;
@@ -68,6 +69,7 @@ public class Main {
 		}
 
 		printf("### %s ###", xmlConfigReader.getMetadataValue("jcr:title"));
+		printf("Environments: %s", StringUtils.join(test.getEnvironments(), " / "));
 		printf("Result: %s", test.getResult());
 		if (!test.getErrorMessages().isEmpty()) {
 			printf("");

@@ -5,6 +5,9 @@ package com.cognifide.secureaem.markers;
  * 
  */
 public interface AuthorTest {
+
+	String ENVIRONMENT_NAME = "author";
+
 	boolean doTest(String url, String instanceName) throws Exception;
 
 }
