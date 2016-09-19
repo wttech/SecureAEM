@@ -5,16 +5,16 @@ package com.cognifide.secureaem;
  */
 public class UserHelper {
 
-    public static String[] splitUser(String user) {
-        int colon = user.indexOf(':');
-        String[] result = new String[2];
-        if (colon == -1) {
-            result[0] = user;
-            result[1] = null;
-        } else {
-            result[0] = user.substring(0, colon);
-            result[1] = user.substring(colon + 1);
-        }
-        return result;
-    }
+	public static String[] splitUser(String user) {
+		int colon = user.indexOf(':');
+		String[] result = new String[2];
+		if (colon == -1) {
+			result[0] = user;
+			result[1] = null;
+		} else {
+			result[0] = user.substring(0, colon);
+			result[1] = user.substring(colon + 1);
+		}
+		return result;
+	}
 }
