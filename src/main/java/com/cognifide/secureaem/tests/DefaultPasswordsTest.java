@@ -7,7 +7,6 @@ import java.net.URISyntaxException;
 import org.apache.http.HttpResponse;
 import org.apache.http.auth.AuthenticationException;
 import org.apache.http.auth.UsernamePasswordCredentials;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.auth.BasicScheme;
@@ -16,6 +15,7 @@ import org.apache.http.util.EntityUtils;
 
 import com.cognifide.secureaem.AbstractTest;
 import com.cognifide.secureaem.Configuration;
+import com.cognifide.secureaem.UserHelper;
 import com.cognifide.secureaem.markers.AuthorTest;
 import com.cognifide.secureaem.markers.PublishTest;
 
@@ -36,7 +36,7 @@ public class DefaultPasswordsTest extends AbstractTest implements AuthorTest, Pu
 		boolean ok = true;
 		String[] users = config.getStringList("users");
 		for (String user : users) {
-			String[] split = splitUser(user);
+			String[] split = UserHelper.splitUser(user);
 			if (split[1] != null && remoteUserExists(split, url)) {
 				addErrorMessage("User %s exists on %s", user, instanceName);
 				ok = false;
@@ -47,26 +47,12 @@ public class DefaultPasswordsTest extends AbstractTest implements AuthorTest, Pu
 		return ok;
 	}
 
-	private String[] splitUser(String user) {
-		int colon = user.indexOf(':');
-		String[] result = new String[2];
-		if (colon == -1) {
-			result[0] = user;
-			result[1] = null;
-		} else {
-			result[0] = user.substring(0, colon);
-			result[1] = user.substring(colon + 1);
-		}
-		return result;
-	}
-
-	@SuppressWarnings("deprecation")
 	private boolean remoteUserExists(String[] user, String url) throws URISyntaxException,
-			ClientProtocolException, IOException, AuthenticationException {
+			IOException, AuthenticationException {
 		UsernamePasswordCredentials creds = new UsernamePasswordCredentials(user[0], user[1]);
 		DefaultHttpClient authorizedClient = new DefaultHttpClient();
 		HttpUriRequest request = new HttpGet(url);
-		request.addHeader(new BasicScheme().authenticate(creds, request));
+		request.addHeader(new BasicScheme().authenticate(creds, request, null));
 		HttpResponse response = authorizedClient.execute(request);
 		EntityUtils.consume(response.getEntity());
 		int code = response.getStatusLine().getStatusCode();
