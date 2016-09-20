@@ -21,4 +21,5 @@
     <felix-console/>
     <geometrixx/>
     <redundant-selectors/>
+    <error-handler/>
 </jcr:root>
