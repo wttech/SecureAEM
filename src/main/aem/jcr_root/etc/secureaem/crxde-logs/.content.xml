@@ -6,9 +6,7 @@
         jcr:primaryType="cq:PageContent"
         jcr:title="CRXDE logs servlet on author and publish"
         sling:resourceType="cognifide/secureaem/renderers/testRenderer"
-        severity="CRITICAL"
-        url="http://crxdelight.com/2013/08/02/restricting-anonymous-access-server-logs/"
-        urlDesc="Blog post at CRX Delight">
+        severity="CRITICAL">
         <testComponent
             jcr:primaryType="nt:unstructured"
             sling:resourceType="cognifide/secureaem/components/crxdeLogs"

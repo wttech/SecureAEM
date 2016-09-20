@@ -6,9 +6,7 @@
         jcr:primaryType="cq:PageContent"
         jcr:title="Shindig proxy"
         sling:resourceType="cognifide/secureaem/renderers/testRenderer"
-        severity="CRITICAL"
-        url="http://crxdelight.com/2012/01/29/cq5s-hidden-public-proxy-server/"
-        urlDesc="Blog post at CRX Delight">
+        severity="CRITICAL">
         <testComponent
             jcr:primaryType="nt:unstructured"
             sling:resourceType="cognifide/secureaem/components/pageContent"

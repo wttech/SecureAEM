@@ -6,9 +6,7 @@
         jcr:primaryType="cq:PageContent"
         jcr:title="Feed selector"
         sling:resourceType="cognifide/secureaem/renderers/testRenderer"
-        severity="MAJOR"
-        url="http://crxdelight.com/2012/07/03/5-reasons-disable-cq5s-built-in-feeds/"
-        urlDesc="Blog post at CRX Delight">
+        severity="MAJOR">
         <testComponent
             jcr:primaryType="nt:unstructured"
             sling:resourceType="cognifide/secureaem/components/extensions"

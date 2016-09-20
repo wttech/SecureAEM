@@ -7,8 +7,8 @@
         jcr:title="Default passwords"
         sling:resourceType="cognifide/secureaem/renderers/testRenderer"
         severity="BLOCKER"
-        url="http://crxdelight.com/2012/06/30/default-cq5-users-passwords/"
-        urlDesc="Blog post at CRX Delight">
+        url="https://docs.adobe.com/docs/en/aem/6-2/administer/security/security-checklist.html#Change%20Default%20Passwords%20For%20the%20AEM%20and%20OSGi%20Console%20Admin%20Accounts"
+        urlDesc="Official Aem Security Checklist">
         <testComponent
             jcr:primaryType="nt:unstructured"
             sling:resourceType="cognifide/secureaem/components/defaultPasswords"
