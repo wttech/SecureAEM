@@ -2,17 +2,18 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
-        jcr:description="Replication transport users should not be the admin user"
+        jcr:description="Check if the CRX development bundles are present"
         jcr:primaryType="cq:PageContent"
-        jcr:title="Replication transport users"
+        jcr:title="CRX development bundles"
         sling:resourceType="cognifide/secureaem/renderers/testRenderer"
         severity="CRITICAL"
-        url="https://docs.adobe.com/docs/en/aem/6-2/administer/security/security-checklist.html#Configure replication and transport users"
+        url="https://docs.adobe.com/docs/en/aem/6-2/administer/security/security-checklist.html#Check if the CRX development bundles are present"
         urlDesc="docs.adobe.com">
         <testComponent
             jcr:primaryType="nt:unstructured"
-            sling:resourceType="cognifide/secureaem/components/replicationTransportUsers"
+            sling:resourceType="cognifide/secureaem/components/crxDevelopmentBundles"
             enabled="true"
-            users="[admin:admin]"/>
+            users="[admin:admin]"
+            bundles="[Adobe CRXDE Support,Adobe Granite CRX Explorer,Adobe Granite CRXDE Lite]"/>
     </jcr:content>
 </jcr:root>
