@@ -16,11 +16,11 @@ You may also be interested in the blog post on [Secure AEM](http://www.cognifide
 
 ## Requirements
 
-* CQ 5.4, 5.5 or 5.6[.1]
+* AEM 6.1, 6.2
 
 ## Installation
 
-You'll need Maven 2.x. If your author instance is running on `localhost:4502` and credentials to it are `admin:admin` then run:
+You'll need Maven 3.x. If your author instance is running on `localhost:4502` and credentials to it are `admin:admin` then run:
 
         mvn clean package crx:install
 
@@ -44,17 +44,25 @@ JAR package will be available as `target/secure-aem-VERSION-cli.jar`.
 
 Usage is simple:
 
-    java -jar secure-aem.jar [-a AUTHOR_URL] [-p PUBLISH_URL] [-d DISPATCHER_URL]
+    java -jar secure-aem-VERSION.jar [-a AUTHOR_URL] [-p PUBLISH_URL] [-d DISPATCHER_URL]
     
 Enter at least one URL to test given instance, eg.:
 
-    java -jar secure-aem-…-cli.jar -a http://localhost:4502
+    java -jar secure-aem-VERSION.jar -a http://localhost:4502
     
 to invoke author tests on the localhost or
 
-    java -jar secure-aem-…-cli.jar -a 192.168.35.105:4502 -p 192.168.35.105:4503 -d 192.168.35.105
+    java -jar secure-aem-VERSION.jar -a 192.168.35.105:4502 -p 192.168.35.105:4503 -d 192.168.35.105
     
 to invoke author, publish and dispatcher-related tests. You may skip the starting `http://`, *SecureAEM* uses HTTP protocol by default.
+
+By default *SecureAEM* runs full test set defined in:
+
+    resources/test_suite.properties
+    
+to override it use maven -suite parameter
+
+    java -jar secure-aem-VERSION.jar -a http://localhost:4502 -suite /home/myComputer/test_suite.properties
 
 ## Writing own tests
 
