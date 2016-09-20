@@ -4,9 +4,8 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URI;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.params.ClientPNames;
@@ -22,19 +21,18 @@ public class HttpHelper {
 
 	private final DefaultHttpClient client;
 
-	public HttpHelper() {
+	HttpHelper() {
 		this.client = new DefaultHttpClient();
 	}
 
 	/**
 	 * Check if given URL exists
 	 * 
-	 * @param url
+	 * @param url request url
 	 * @return true if given url exists
-	 * @throws ClientProtocolException
-	 * @throws IOException
+	 * @throws IOException in case of a problem or the connection was aborted
 	 */
-	public boolean pathExists(String url) throws ClientProtocolException, IOException {
+	public boolean pathExists(String url) throws IOException {
 		HttpParams params = new BasicHttpParams();
 		params.setParameter(ClientPNames.ALLOW_CIRCULAR_REDIRECTS, true);
 
@@ -49,14 +47,12 @@ public class HttpHelper {
 	/**
 	 * Check if page with URL exists and it's body contains given string.
 	 * 
-	 * @param url
-	 * @param stringToFind
+	 * @param url request url
+	 * @param stringToFind expected string in response
 	 * @return true if given url exists and page contains given string
-	 * @throws ClientProtocolException
-	 * @throws IOException
+	 * @throws IOException in case of a problem or the connection was aborted
 	 */
-	public boolean pageContainsString(String url, String stringToFind) throws ClientProtocolException,
-			IOException {
+	public boolean pageContainsString(String url, String stringToFind) throws IOException {
 		HttpParams params = new BasicHttpParams();
 		params.setParameter(ClientPNames.ALLOW_CIRCULAR_REDIRECTS, true);
 
@@ -68,12 +64,11 @@ public class HttpHelper {
 		if (code == HttpURLConnection.HTTP_OK && StringUtils.isBlank(stringToFind)) {
 			return true;
 		} else {
-			return responseString.indexOf(stringToFind) != -1;
+			return responseString.contains(stringToFind);
 		}
 	}
 
-	public String getBasePath(String url, boolean removeExtension) throws ClientProtocolException,
-			IOException {
+	public String getBasePath(String url, boolean removeExtension) throws IOException {
 		HttpGet getRequest = new HttpGet(url);
 		HttpContext context = new BasicHttpContext();
 		HttpResponse response = client.execute(getRequest, context);

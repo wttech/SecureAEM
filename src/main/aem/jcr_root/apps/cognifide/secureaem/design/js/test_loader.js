@@ -29,6 +29,7 @@ $(document).ready(function() {
 
 	function onSuccess($test, data) {
 		var $messages = $test.find('ul');
+		$messages.append($('<li>').append('Environments: ').append($('<strong>').append(data.environments.join(' / '))));
 		setIcon($test, data.testResult);
 		if (!$test.data('hidePassed')) {
 			addMessages("Passed tests:", $messages, data.infoMessages, "info");

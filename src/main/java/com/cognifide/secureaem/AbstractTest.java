@@ -2,9 +2,11 @@ package com.cognifide.secureaem;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,6 +24,8 @@ public abstract class AbstractTest {
 	private List<String> infoMessages;
 
 	private List<String> errorMessages;
+
+	private Set<String> environments;
 
 	private TestResult result;
 
@@ -65,19 +69,23 @@ public abstract class AbstractTest {
 		boolean testDone = false;
 		infoMessages = new ArrayList<String>();
 		errorMessages = new ArrayList<String>();
+		environments = new HashSet<String>();
 
 		if (this instanceof AuthorTest && StringUtils.isNotBlank(config.getAuthor())) {
-			success = doTest(config.getAuthor(), "author") && success;
+			environments.add(AuthorTest.ENVIRONMENT_NAME);
+			success = doTest(config.getAuthor(), AuthorTest.ENVIRONMENT_NAME);
 			testDone = true;
 		}
 
 		if (this instanceof PublishTest && StringUtils.isNotBlank(config.getPublish())) {
-			success = doTest(config.getPublish(), "publish") && success;
+			environments.add(PublishTest.ENVIRONMENT_NAME);
+			success = doTest(config.getPublish(), PublishTest.ENVIRONMENT_NAME) && success;
 			testDone = true;
 		}
 
 		if (this instanceof DispatcherTest && StringUtils.isNotBlank(config.getDispatcherUrl())) {
-			success = doTest(config.getDispatcherUrl(), "dispatcher") && success;
+			environments.add(DispatcherTest.ENVIRONMENT_NAME);
+			success = doTest(config.getDispatcherUrl(), DispatcherTest.ENVIRONMENT_NAME) && success;
 			testDone = true;
 		}
 
@@ -116,6 +124,10 @@ public abstract class AbstractTest {
 
 	public List<String> getErrorMessages() {
 		return errorMessages;
+	}
+
+	public Set<String> getEnvironments() {
+		return environments;
 	}
 
 	public TestResult getResult() {

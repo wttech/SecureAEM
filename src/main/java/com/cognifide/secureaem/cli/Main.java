@@ -5,6 +5,7 @@ import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.PosixParser;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -69,6 +70,7 @@ public class Main {
 		}
 
 		printf("### %s ###", xmlConfigReader.getMetadataValue("jcr:title"));
+		printf("Environments: %s", StringUtils.join(test.getEnvironments(), " / "));
 		printf("Result: %s", test.getResult());
 		if (!test.getErrorMessages().isEmpty()) {
 			printf("");

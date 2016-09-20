@@ -57,7 +57,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-gpg-plugin</artifactId>
-				<version>1.4</version>
+				<version>1.6</version>
 				<executions>
 					<execution>
 						<id>sign-artifacts</id>
@@ -79,7 +79,7 @@
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-scr-plugin</artifactId>
-				<version>1.7.2</version>
+				<version>1.22.0</version>
 				<executions>
 					<execution>
 						<id>generate-scr-scrdescriptor</id>
@@ -88,18 +88,11 @@
 						</goals>
 					</execution>
 				</executions>
-				<dependencies>
-					<dependency>
-						<groupId>org.slf4j</groupId>
-						<artifactId>slf4j-simple</artifactId>
-						<version>1.6.1</version>
-					</dependency>
-				</dependencies>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
-				<version>2.3.7</version>
+				<version>3.2.0</version>
 				<extensions>true</extensions>
 				<configuration>
 					<instructions>
@@ -107,13 +100,13 @@
 						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 						<Bundle-Name>${project.name}</Bundle-Name>
 						<Bundle-Vendor>${project.organization.name}</Bundle-Vendor>
-						<Embed-Dependency>*;artifactId=httpclient|httpcore|gson|commons-codec|commons-lang|commons-cli</Embed-Dependency>
+						<Embed-Dependency>*;artifactId=httpclient|httpcore|gson|commons-lang3|commons-cli</Embed-Dependency>
 					</instructions>
 				</configuration>
 			</plugin>
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
-				<version>2.4</version>
+				<version>2.6</version>
 				<configuration>
 					<finalName>${assembly.name}-${project.version}</finalName>
 					<appendAssemblyId>false</appendAssemblyId>
@@ -150,7 +143,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
-				<version>2.2.1</version>
+				<version>3.0.1</version>
 				<executions>
 					<execution>
 						<id>attach-sources</id>
@@ -163,7 +156,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.9.1</version>
+				<version>2.10.4</version>
 				<executions>
 					<execution>
 						<id>attach-javadocs</id>
@@ -214,22 +207,16 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.jackrabbit</groupId>
-			<artifactId>jackrabbit-api</artifactId>
-			<version>2.2.4</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
 			<groupId>org.apache.felix</groupId>
 			<artifactId>org.apache.felix.scr.annotations</artifactId>
-			<version>1.6.0</version>
+			<version>1.9.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<!-- javax -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
-			<artifactId>jsp-api</artifactId>
-			<version>2.0</version>
+			<artifactId>servlet-api</artifactId>
+			<version>2.4</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -253,14 +240,9 @@
 		</dependency>
 		<!-- common java libs -->
 		<dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
-			<version>2.6</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-codec</groupId>
-			<artifactId>commons-codec</artifactId>
-			<version>1.7</version>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.4</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-cli</groupId>
@@ -281,7 +263,7 @@
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
-			<version>2.2.2</version>
+			<version>2.7</version>
 		</dependency>
 	</dependencies>
 	<profiles>
@@ -319,12 +301,7 @@
 				<dependency>
 					<groupId>org.slf4j</groupId>
 					<artifactId>slf4j-simple</artifactId>
-					<version>1.7.2</version>
-				</dependency>
-				<dependency>
-					<groupId>org.slf4j</groupId>
-					<artifactId>slf4j-api</artifactId>
-					<version>1.7.2</version>
+					<version>1.7.21</version>
 				</dependency>
 			</dependencies>
 		</profile>
@@ -341,7 +318,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-gpg-plugin</artifactId>
-						<version>1.1</version>
+						<version>1.6</version>
 						<executions>
 							<execution>
 								<id>sign-artifacts</id>
