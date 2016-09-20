@@ -6,7 +6,6 @@ import java.net.URISyntaxException;
 import org.apache.http.HttpResponse;
 import org.apache.http.auth.AuthenticationException;
 import org.apache.http.auth.UsernamePasswordCredentials;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.auth.BasicScheme;
@@ -43,13 +42,12 @@ public class CrxdeLogsTest extends AbstractTest implements DispatcherTest, Autho
 		}
 	}
 
-	@SuppressWarnings("deprecation")
-	private boolean logsAvailable(String url) throws URISyntaxException, ClientProtocolException,
-			IOException, AuthenticationException {
+	private boolean logsAvailable(String url) throws URISyntaxException, IOException,
+			AuthenticationException {
 		UsernamePasswordCredentials creds = new UsernamePasswordCredentials("anonymous", "");
 		DefaultHttpClient authorizedClient = new DefaultHttpClient();
 		HttpUriRequest request = new HttpGet(url);
-		request.addHeader(new BasicScheme().authenticate(creds, request));
+		request.addHeader(new BasicScheme().authenticate(creds, request, null));
 		HttpResponse response = authorizedClient.execute(request);
 		String body = EntityUtils.toString(response.getEntity());
 		return body.contains("*INFO*") || body.contains("*WARN*");
