@@ -1,2 +1,3 @@
 js/jquery.js
 js/test_loader.js
+js/plain_text_export.js

@@ -16,6 +16,7 @@
     <h1><%= pageTitle %></h1>
     <div>
     <br/>
+    <button type="button" id="secureaem-export">Export as txt</button>
     <script type="text/javascript">
         CQ.WCM.edit({
             "path":"<%= resource.getPath() %>/globalConfig",
