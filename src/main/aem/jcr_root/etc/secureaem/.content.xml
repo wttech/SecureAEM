@@ -22,4 +22,8 @@
     <geometrixx/>
     <redundant-selectors/>
     <error-handler/>
+    <crx-development-bundles/>
+    <replication-transport-users/>
+    <sling-development-bundle/>
+    <sling-referrer-filter/>
 </jcr:root>
