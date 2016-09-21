@@ -22,5 +22,6 @@
     <geometrixx/>
     <redundant-selectors/>
     <error-handler/>
+    <html-library-manager/>
     <wcm-filter/>
 </jcr:root>
