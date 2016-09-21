@@ -13,11 +13,11 @@ import com.cognifide.secureaem.Configuration;
 
 public class CliConfiguration implements Configuration {
 
+	public static final String DEFAULT_USER = "admin";
+
 	private final XmlConfigurationReader xmlConfigReader;
 
 	private final CommandLine cmdLine;
-
-	private static final String DEFAULT_USER = "admin";
 
 	public CliConfiguration(XmlConfigurationReader xmlConfigReader, CommandLine cmdLine)
 			throws IOException, ParserConfigurationException, SAXException, URISyntaxException {
