@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.http.auth.UsernamePasswordCredentials;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -54,13 +55,13 @@ public abstract class AbstractTest {
 
 	/**
 	 * Perform test.
-	 * 
-	 * @param url URL of the instance to test.
+	 *
+	 * @param url          URL of the instance to test.
 	 * @param instanceName Name of the instance (eg. author, publish or dispatcher).
 	 * @return true if the test succeeded
 	 * @throws Exception If you throw an exception, test result will be set to "Exception". You may throw
-	 * special {@link AbstractTest.InvalidConfigurationException} with message if the test configuration isn't set
-	 * correctly.
+	 *                   special {@link AbstractTest.InvalidConfigurationException} with message if the test
+	 *                   configuration isn't set correctly.
 	 */
 	protected abstract boolean doTest(String url, String instanceName) throws Exception;
 
@@ -98,9 +99,9 @@ public abstract class AbstractTest {
 
 	/**
 	 * Add information message, it'll be shown to the user.
-	 * 
+	 *
 	 * @param message Message can contain standard {@code String.format()} placeholders
-	 * @param params Values to fill the placeholders.
+	 * @param params  Values to fill the placeholders.
 	 */
 	protected void addInfoMessage(String message, Object... params) {
 		String formatted = String.format(message, params);
@@ -109,13 +110,30 @@ public abstract class AbstractTest {
 
 	/**
 	 * Add error message, it'll be shown to the user.
-	 * 
+	 *
 	 * @param message Message can contain standard {@code String.format()} placeholders
-	 * @param params Values to fill the placeholders.
+	 * @param params  Values to fill the placeholders.
 	 */
 	protected void addErrorMessage(String message, Object... params) {
 		String formatted = String.format(message, params);
 		errorMessages.add(formatted);
+	}
+
+	/**
+	 * Creates {@code UsernamePasswordCredentials} instance from configuration.
+	 * @param instance - instance name
+	 * @return UsernamePasswordCredentials
+	 */
+	protected UsernamePasswordCredentials getUsernamePasswordCredentials(String instance) {
+		UsernamePasswordCredentials credentials = null;
+		if (AuthorTest.ENVIRONMENT_NAME.equals(instance)) {
+			credentials = new UsernamePasswordCredentials(config.getAuthorLogin(),
+					config.getAuthorPassword());
+		} else if (PublishTest.ENVIRONMENT_NAME.equals(instance)) {
+			credentials = new UsernamePasswordCredentials(config.getPublishLogin(),
+					config.getPublishPassword());
+		}
+		return credentials;
 	}
 
 	public List<String> getInfoMessages() {

@@ -37,12 +37,7 @@ public class BundlesTest extends AbstractTest implements AuthorTest, PublishTest
 	}
 
 	@Override public boolean doTest(String url, String instanceName) throws Exception {
-		String[] users = config.getStringList("users");
-		if (ArrayUtils.isEmpty(users)) {
-			throw new IllegalArgumentException("Invalid configuration");
-		}
-		String[] userInfo = UserHelper.splitUser(users[0]);
-		UsernamePasswordCredentials credentials = new UsernamePasswordCredentials(userInfo[0], userInfo[1]);
+		UsernamePasswordCredentials credentials = getUsernamePasswordCredentials(instanceName);
 
 		String agentUrl = url + "/system/console/bundles.json";
 		HttpUriRequest request = new HttpGet(agentUrl);

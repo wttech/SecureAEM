@@ -37,9 +37,41 @@ public class ResourceConfiguration implements Configuration {
 		return StringUtils.removeEnd(getGlobalConfig("author"), "/");
 	}
 
+	@Override public String getAuthorLogin() {
+		String[] parameters = getGlobalConfig("authorCredentials").split(":");
+		if(parameters.length == 2) {
+			return parameters[0];
+		}
+		return StringUtils.EMPTY;
+	}
+
+	@Override public String getAuthorPassword() {
+		String[] parameters = getGlobalConfig("authorCredentials").split(":");
+		if(parameters.length == 2) {
+			return parameters[1];
+		}
+		return StringUtils.EMPTY;
+	}
+
 	@Override
 	public String getPublish() {
 		return StringUtils.removeEnd(getGlobalConfig("publish"), "/");
+	}
+
+	@Override public String getPublishLogin() {
+		String[] parameters = getGlobalConfig("publishCredentials").split(":");
+		if(parameters.length == 2) {
+			return parameters[0];
+		}
+		return StringUtils.EMPTY;
+	}
+
+	@Override public String getPublishPassword() {
+		String[] parameters = getGlobalConfig("publishCredentials").split(":");
+		if(parameters.length == 2) {
+			return parameters[1];
+		}
+		return StringUtils.EMPTY;
 	}
 
 	@Override

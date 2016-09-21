@@ -100,6 +100,8 @@ public class Main {
 		options.addOption("p", true, "publish URL");
 		options.addOption("d", true, "dispatcher URL");
 		options.addOption("suite", true, "test suite");
+		options.addOption("aCredentials", true, "author credentials");
+		options.addOption("pCredentials", true, "publish credentials");
 
 		CommandLineParser parser = new PosixParser();
 		return parser.parse(options, args);
