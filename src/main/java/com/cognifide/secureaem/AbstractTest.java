@@ -6,7 +6,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.http.auth.UsernamePasswordCredentials;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -116,6 +118,20 @@ public abstract class AbstractTest {
 	protected void addErrorMessage(String message, Object... params) {
 		String formatted = String.format(message, params);
 		errorMessages.add(formatted);
+	}
+
+	/**
+	 * Creates {@code UsernamePasswordCredentials} instance from component configuration.
+	 * @return UsernamePasswordCredentials
+	 * @throws IllegalArgumentException if credentials are not configured properly.
+	 */
+	protected UsernamePasswordCredentials getUserNamePasswordCredentials() {
+		String[] users = config.getStringList("users");
+		if (ArrayUtils.isEmpty(users)) {
+			throw new IllegalArgumentException("Invalid configuration");
+		}
+		String[] userInfo = UserHelper.splitUser(users[0]);
+		return new  UsernamePasswordCredentials(userInfo[0], userInfo[1]);
 	}
 
 	public List<String> getInfoMessages() {
