@@ -6,10 +6,10 @@ import com.cognifide.secureaem.UserHelper;
 import com.cognifide.secureaem.markers.AuthorTest;
 import com.cognifide.secureaem.markers.PublishTest;
 
-public class HtmlLibraryManagerTest extends AbstractTest
+public class SlingJspScriptHandlerTest extends AbstractTest
 		implements AuthorTest, PublishTest, OsgiConfigurationTest {
 
-	public HtmlLibraryManagerTest(Configuration config) {
+	public SlingJspScriptHandlerTest(Configuration config) {
 		super(config);
 	}
 
@@ -20,14 +20,11 @@ public class HtmlLibraryManagerTest extends AbstractTest
 		String configurationEndpoint = url
 				+ "/system/console/configMgr/com.adobe.granite.ui.clientlibs.impl.HtmlLibraryManagerImpl.json";
 		String body = getJsonBodyOfOsgiConfiguration(configurationEndpoint, user, instanceName);
-		checkBooleanValue(getBooleanValueFromJson("htmllibmanager.minify", body), true, "Minify",
-				instanceName);
-		checkBooleanValue(getBooleanValueFromJson("htmllibmanager.gzip", body), true, "Gzip", instanceName);
-		checkBooleanValue(getBooleanValueFromJson("htmllibmanager.debug", body), false, "Debug",
-				instanceName);
-		checkBooleanValue(getBooleanValueFromJson("htmllibmanager.timing", body), false, "Timing",
+		checkBooleanValue(getBooleanValueFromJson("jasper.classdebuginfo", body), false,
+				"Generate Debug Info", instanceName);
+		checkBooleanValue(getBooleanValueFromJson("jasper.mappedfile", body), false, "Mapped Content",
 				instanceName);
 		return getErrorMessages().isEmpty();
 	}
-}
 
+}
