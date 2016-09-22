@@ -6,9 +6,9 @@ import com.cognifide.secureaem.UserHelper;
 import com.cognifide.secureaem.markers.AuthorTest;
 import com.cognifide.secureaem.markers.PublishTest;
 
-public class HtmlLibraryManagerTest extends AbstractTest implements AuthorTest, PublishTest, OsgiConfigurationTest {
+public class SlingJspScriptHandler extends AbstractTest implements AuthorTest, PublishTest, OsgiConfigurationTest {
 
-	public HtmlLibraryManagerTest(Configuration config) {
+	public SlingJspScriptHandler(Configuration config) {
 		super(config);
 	}
 
@@ -17,11 +17,10 @@ public class HtmlLibraryManagerTest extends AbstractTest implements AuthorTest, 
 		String[] user = AuthorTest.ENVIRONMENT_NAME.equals(instanceName) ? UserHelper.splitUser(config.getStringValue("authorUser", "admin:admin")) : UserHelper.splitUser(config.getStringValue("publishUser", "admin:admin"));
 		String configurationEndpoint = url + "/system/console/configMgr/com.adobe.granite.ui.clientlibs.impl.HtmlLibraryManagerImpl.json";
 		String body = getJsonBodyOfOsgiConfiguration(configurationEndpoint, user, instanceName);
-		checkBooleanValue(getBooleanValueFromJson("htmllibmanager.minify", body), true, "Minify", instanceName);
-		checkBooleanValue(getBooleanValueFromJson("htmllibmanager.gzip", body), true, "Gzip", instanceName);
-		checkBooleanValue(getBooleanValueFromJson("htmllibmanager.debug", body), false, "Debug", instanceName);
-		checkBooleanValue(getBooleanValueFromJson("htmllibmanager.timing", body), false, "Timing", instanceName);
+		checkBooleanValue(getBooleanValueFromJson("jasper.classdebuginfo", body), false, "Generate Debug Info", instanceName);
+		checkBooleanValue(getBooleanValueFromJson("jasper.mappedfile", body), false, "Mapped Content", instanceName);
 		return getErrorMessages().isEmpty();
 	}
-}
 
+
+}

@@ -54,7 +54,7 @@ public abstract class AbstractTest {
 
 	/**
 	 * Perform test.
-	 * 
+	 *
 	 * @param url URL of the instance to test.
 	 * @param instanceName Name of the instance (eg. author, publish or dispatcher).
 	 * @return true if the test succeeded
@@ -98,7 +98,7 @@ public abstract class AbstractTest {
 
 	/**
 	 * Add information message, it'll be shown to the user.
-	 * 
+	 *
 	 * @param message Message can contain standard {@code String.format()} placeholders
 	 * @param params Values to fill the placeholders.
 	 */
@@ -109,13 +109,29 @@ public abstract class AbstractTest {
 
 	/**
 	 * Add error message, it'll be shown to the user.
-	 * 
+	 *
 	 * @param message Message can contain standard {@code String.format()} placeholders
 	 * @param params Values to fill the placeholders.
 	 */
 	protected void addErrorMessage(String message, Object... params) {
 		String formatted = String.format(message, params);
 		errorMessages.add(formatted);
+	}
+
+	/**
+	 * Check boolean property. If different than expected error message will be added to error list, if same as expected info message will be added to info list
+	 *
+	 * @param actualValue Actual value of boolean property
+	 * @param expectedValue Expected value of boolean property
+	 * @param propertyName Property name used in info/error messages
+	 * @param instanceName Instance name used in info/error messages
+	 */
+	protected void checkBooleanValue(boolean actualValue, boolean expectedValue, String propertyName, String instanceName) {
+		if (actualValue == expectedValue) {
+			addInfoMessage("On %s instance %s property is %b", instanceName, propertyName, actualValue);
+		} else {
+			addErrorMessage("On %s instance %s property is %b, but it should be %b", instanceName, propertyName, actualValue, expectedValue);
+		}
 	}
 
 	public List<String> getInfoMessages() {

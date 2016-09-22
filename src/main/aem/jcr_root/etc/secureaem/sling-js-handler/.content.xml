@@ -4,14 +4,14 @@
     <jcr:content
         jcr:description="Some OSGI settings are set by default to allow easier debugging of the application. These need to be changed on your publish and author productive instances to avoid internal information leaking to the public."
         jcr:primaryType="cq:PageContent"
-        jcr:title="Html Library Manager"
+        jcr:title="Sling Java Script Handler"
         sling:resourceType="cognifide/secureaem/renderers/testRenderer"
         severity="MAJOR"
         url="https://docs.adobe.com/docs/en/aem/6-2/administer/security/security-checklist.html#OSGI%20Settings"
         urlDesc="Official AEM Security Checklist">
         <testComponent
             jcr:primaryType="nt:unstructured"
-            sling:resourceType="cognifide/secureaem/components/htmlLibraryManager"
+            sling:resourceType="cognifide/secureaem/components/slingJsHandler"
             enabled="true"
             authorUser="admin:admin"
             publishUser="admin:admin"/>

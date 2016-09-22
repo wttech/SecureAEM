@@ -22,6 +22,8 @@
     <geometrixx/>
     <redundant-selectors/>
     <error-handler/>
-    <html-library-manager/>
     <wcm-filter/>
+    <html-library-manager/>
+    <sling-js-handler/>
+    <sling-jsp-script-handler/>
 </jcr:root>
