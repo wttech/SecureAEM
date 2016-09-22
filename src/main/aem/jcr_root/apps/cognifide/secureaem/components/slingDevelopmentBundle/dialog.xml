@@ -18,12 +18,6 @@
                     title="Test configuration"
                     xtype="panel">
                     <items jcr:primaryType="cq:WidgetCollection">
-                        <title
-                            jcr:primaryType="cq:Widget"
-                            allowBlank="false"
-                            fieldLabel="Credentials"
-                            name="./testComponent/users"
-                            xtype="textfield"/>
                         <items
                             jcr:primaryType="cq:Widget"
                             fieldDescription="Press + to add more items"

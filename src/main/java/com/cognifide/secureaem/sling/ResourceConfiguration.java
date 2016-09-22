@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.cognifide.secureaem.Configuration;
+import com.cognifide.secureaem.cli.CliConfiguration;
 
 public class ResourceConfiguration implements Configuration {
 	private static final Logger LOG = LoggerFactory.getLogger(DefaultConfigurationProvider.class);
@@ -37,9 +38,25 @@ public class ResourceConfiguration implements Configuration {
 		return StringUtils.removeEnd(getGlobalConfig("author"), "/");
 	}
 
+	@Override public String getAuthorLogin() {
+		return getCredentialsParameter("authorCredentials", 0);
+	}
+
+	@Override public String getAuthorPassword() {
+		return getCredentialsParameter("authorCredentials", 1);
+	}
+
 	@Override
 	public String getPublish() {
 		return StringUtils.removeEnd(getGlobalConfig("publish"), "/");
+	}
+
+	@Override public String getPublishLogin() {
+		return getCredentialsParameter("publishCredentials", 0);
+	}
+
+	@Override public String getPublishPassword() {
+		return getCredentialsParameter("publishCredentials", 1);
 	}
 
 	@Override
@@ -50,6 +67,14 @@ public class ResourceConfiguration implements Configuration {
 	@Override
 	public String[] getStringList(String name) {
 		return getLocalConfig(name, ArrayUtils.EMPTY_STRING_ARRAY);
+	}
+
+	private String getCredentialsParameter(String credentialName, int parameterIndex) {
+		String[] parameters = getGlobalConfig(credentialName).split(":");
+		if(parameters.length == 2) {
+			return parameters[parameterIndex];
+		}
+		return CliConfiguration.DEFAULT_USER;
 	}
 
 	private String getGlobalConfig(String name) {

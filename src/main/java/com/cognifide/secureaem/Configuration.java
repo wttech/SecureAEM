@@ -9,7 +9,15 @@ public interface Configuration {
 
 	String getAuthor();
 
+	String getAuthorLogin();
+
+	String getAuthorPassword();
+
 	String getPublish();
+
+	String getPublishLogin();
+
+	String getPublishPassword();
 
 	String getStringValue(String name, String defaultValue);
 

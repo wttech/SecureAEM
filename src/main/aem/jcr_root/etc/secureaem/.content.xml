@@ -26,4 +26,8 @@
     <html-library-manager/>
     <sling-js-handler/>
     <sling-jsp-script-handler/>
+    <crx-development-bundles/>
+    <replication-transport-users/>
+    <sling-development-bundle/>
+    <sling-referrer-filter/>
 </jcr:root>

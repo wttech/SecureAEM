@@ -25,12 +25,27 @@
                             fieldLabel="Author URL"
                             name="./author"
                             xtype="textfield"/>
+                        <authorCredentials
+                            jcr:primaryType="cq:Widget"
+                            allowBlank="false"
+                            fieldLabel="Author Credentials"
+                            name="./authorCredentials"
+                            defaultValue="admin:admin"
+                            xtype="textfield"/>
                         <publish
                             jcr:primaryType="cq:Widget"
                             allowBlank="true"
                             fieldLabel="Publish URL"
                             name="./publish"
                             xtype="textfield"/>
+                        <publishCredentials
+                            jcr:primaryType="cq:Widget"
+                            allowBlank="false"
+                            fieldLabel="Publish Credentials"
+                            name="./publishCredentials"
+                            defaultValue="admin:admin"
+                            xtype="textfield"/>
+
                     </items>
                 </configuration>
             </items>
