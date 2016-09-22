@@ -13,6 +13,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,7 +61,7 @@ public class Main {
 			reader = new BufferedReader(new FileReader(cmdLine.getOptionValue("suite")));
 		} else {
 			InputStream is = Main.class.getClass().getResourceAsStream(DEFAULT_TEST_SUITE_PATH);
-			reader = new BufferedReader(new InputStreamReader(is));
+			reader = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
 		}
 		return reader;
 	}
