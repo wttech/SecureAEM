@@ -12,7 +12,6 @@
         <testComponent
             jcr:primaryType="nt:unstructured"
             sling:resourceType="cognifide/secureaem/components/slingReferrerFilter"
-            enabled="true"
-            users="[admin:admin]"/>
+            enabled="true"/>
     </jcr:content>
 </jcr:root>

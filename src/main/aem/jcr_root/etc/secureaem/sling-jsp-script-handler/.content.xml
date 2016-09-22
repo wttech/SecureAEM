@@ -11,9 +11,7 @@
         urlDesc="Official AEM Security Checklist">
         <testComponent
             jcr:primaryType="nt:unstructured"
-            sling:resourceType="cognifide/secureaem/components/slingJsHandler"
-            enabled="true"
-            authorUser="admin:admin"
-            publishUser="admin:admin"/>
+            sling:resourceType="cognifide/secureaem/components/slingJspScriptHandler"
+            enabled="true"/>
     </jcr:content>
 </jcr:root>

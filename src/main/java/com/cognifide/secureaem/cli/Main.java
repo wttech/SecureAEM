@@ -8,8 +8,8 @@ import org.apache.commons.cli.PosixParser;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -58,7 +58,9 @@ public class Main {
 	private static BufferedReader getBufferedReader(CommandLine cmdLine) throws FileNotFoundException {
 		BufferedReader reader;
 		if (cmdLine.hasOption("suite")) {
-			reader = new BufferedReader(new FileReader(cmdLine.getOptionValue("suite")));
+			reader = new BufferedReader(
+					new InputStreamReader(new FileInputStream(cmdLine.getOptionValue("suite")),
+							StandardCharsets.UTF_8));
 		} else {
 			InputStream is = Main.class.getClass().getResourceAsStream(DEFAULT_TEST_SUITE_PATH);
 			reader = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
