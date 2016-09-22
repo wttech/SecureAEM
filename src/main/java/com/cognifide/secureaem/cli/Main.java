@@ -7,11 +7,7 @@ import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.PosixParser;
 import org.apache.commons.lang3.StringUtils;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,25 +35,29 @@ public class Main {
 	}
 
 	private static List<TestLoader> createTestLoaders(CommandLine cmdLine) throws IOException, ClassNotFoundException {
-		BufferedReader reader;
-		if(cmdLine.hasOption("suite")){
-			reader = new BufferedReader(new FileReader(cmdLine.getOptionValue("suite")));
+		try (BufferedReader reader = getBufferedReader(cmdLine)) {
+			List<TestLoader> testLoaders = new ArrayList<>();
+			String line;
+			while ((line = reader.readLine()) != null) {
+				String[] parameters = line.split(", ");
+				if (parameters.length == 2) {
+					Class clazz = Class.forName(parameters[0]);
+					testLoaders.add(new TestLoader(clazz, parameters[1]));
+				}
+			}
+			return testLoaders;
 		}
-		else {
+	}
+
+	private static BufferedReader getBufferedReader(CommandLine cmdLine) throws FileNotFoundException {
+		BufferedReader reader;
+		if (cmdLine.hasOption("suite")) {
+			reader = new BufferedReader(new FileReader(cmdLine.getOptionValue("suite")));
+		} else {
 			InputStream is = Main.class.getClass().getResourceAsStream(DEFAULT_TEST_SUITE_PATH);
 			reader = new BufferedReader(new InputStreamReader(is));
 		}
-
-		List<TestLoader> testLoaders = new ArrayList<>();
-		String line;
-		while ((line = reader.readLine()) != null) {
-			String[] parameters = line.split(", ");
-			if(parameters.length == 2) {
-				Class clazz = Class.forName(parameters[0]);
-				testLoaders.add(new TestLoader(clazz, parameters[1]));
-			}
-		}
-		return testLoaders;
+		return reader;
 	}
 
 	private static boolean doTest(TestLoader testLoader, CommandLine cmdLine) throws Exception {
