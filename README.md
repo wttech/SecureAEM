@@ -44,15 +44,15 @@ JAR package will be available as `target/secure-aem-VERSION-cli.jar`.
 
 Usage is simple:
 
-    java -jar secure-aem-VERSION.jar [-a AUTHOR_URL] [-p PUBLISH_URL] [-d DISPATCHER_URL]
+    java -jar secure-aem-VERSION.jar [-a AUTHOR_URL] [-aCredentials AUTHOR_LOGIN:AUTHOR_PASSWORD] [-p PUBLISH_URL] [-pCredentials PUBLISH_LOGIN:PUBLISH_PASSWORD] [-d DISPATCHER_URL]
     
 Enter at least one URL to test given instance, eg.:
 
-    java -jar secure-aem-VERSION.jar -a http://localhost:4502
+    java -jar secure-aem-VERSION.jar -a http://localhost:4502 -aCredentials admin:admin
     
 to invoke author tests on the localhost or
 
-    java -jar secure-aem-VERSION.jar -a 192.168.35.105:4502 -p 192.168.35.105:4503 -d 192.168.35.105
+    java -jar secure-aem-VERSION.jar -a 192.168.35.105:4502 -aCredentials admin:admin -p 192.168.35.105:4503  -pCredentials admin:admin-d 192.168.35.105
     
 to invoke author, publish and dispatcher-related tests. You may skip the starting `http://`, *SecureAEM* uses HTTP protocol by default.
 
@@ -62,7 +62,7 @@ By default *SecureAEM* runs full test set defined in:
     
 to override it use maven -suite parameter
 
-    java -jar secure-aem-VERSION.jar -a http://localhost:4502 -suite /home/myComputer/test_suite.properties
+    java -jar secure-aem-VERSION.jar -a http://localhost:4502 -aCredentials admin:admin -suite /home/myComputer/test_suite.properties
 
 ## Writing own tests
 

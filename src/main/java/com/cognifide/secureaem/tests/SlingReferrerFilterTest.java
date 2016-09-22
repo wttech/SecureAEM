@@ -37,7 +37,7 @@ public class SlingReferrerFilterTest extends AbstractTest implements AuthorTest,
 	}
 
 	@Override public boolean doTest(String url, String instanceName) throws Exception {
-		UsernamePasswordCredentials credentials = getUserNamePasswordCredentials();
+		UsernamePasswordCredentials credentials = getUsernamePasswordCredentials(instanceName);
 		String testedUrl =
 				url + "/system/console/configMgr/org.apache.sling.security.impl.ReferrerFilter.json";
 		HttpUriRequest request = new HttpGet(testedUrl);

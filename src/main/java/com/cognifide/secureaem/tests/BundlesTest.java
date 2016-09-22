@@ -35,7 +35,7 @@ public class BundlesTest extends AbstractTest implements AuthorTest, PublishTest
 	}
 
 	@Override public boolean doTest(String url, String instanceName) throws Exception {
-		UsernamePasswordCredentials credentials = getUserNamePasswordCredentials();
+		UsernamePasswordCredentials credentials = getUsernamePasswordCredentials(instanceName);
 
 		String agentUrl = url + "/system/console/bundles.json";
 		HttpUriRequest request = new HttpGet(agentUrl);

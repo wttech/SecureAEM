@@ -56,13 +56,13 @@ public abstract class AbstractTest {
 
 	/**
 	 * Perform test.
-	 * 
-	 * @param url URL of the instance to test.
+	 *
+	 * @param url          URL of the instance to test.
 	 * @param instanceName Name of the instance (eg. author, publish or dispatcher).
 	 * @return true if the test succeeded
 	 * @throws Exception If you throw an exception, test result will be set to "Exception". You may throw
-	 * special {@link AbstractTest.InvalidConfigurationException} with message if the test configuration isn't set
-	 * correctly.
+	 *                   special {@link AbstractTest.InvalidConfigurationException} with message if the test
+	 *                   configuration isn't set correctly.
 	 */
 	protected abstract boolean doTest(String url, String instanceName) throws Exception;
 
@@ -100,9 +100,9 @@ public abstract class AbstractTest {
 
 	/**
 	 * Add information message, it'll be shown to the user.
-	 * 
+	 *
 	 * @param message Message can contain standard {@code String.format()} placeholders
-	 * @param params Values to fill the placeholders.
+	 * @param params  Values to fill the placeholders.
 	 */
 	protected void addInfoMessage(String message, Object... params) {
 		String formatted = String.format(message, params);
@@ -111,9 +111,9 @@ public abstract class AbstractTest {
 
 	/**
 	 * Add error message, it'll be shown to the user.
-	 * 
+	 *
 	 * @param message Message can contain standard {@code String.format()} placeholders
-	 * @param params Values to fill the placeholders.
+	 * @param params  Values to fill the placeholders.
 	 */
 	protected void addErrorMessage(String message, Object... params) {
 		String formatted = String.format(message, params);
@@ -121,17 +121,20 @@ public abstract class AbstractTest {
 	}
 
 	/**
-	 * Creates {@code UsernamePasswordCredentials} instance from component configuration.
+	 * Creates {@code UsernamePasswordCredentials} instance from configuration.
+	 * @param instance - instance name
 	 * @return UsernamePasswordCredentials
-	 * @throws IllegalArgumentException if credentials are not configured properly.
 	 */
-	protected UsernamePasswordCredentials getUserNamePasswordCredentials() {
-		String[] users = config.getStringList("users");
-		if (ArrayUtils.isEmpty(users)) {
-			throw new IllegalArgumentException("Invalid configuration");
+	protected UsernamePasswordCredentials getUsernamePasswordCredentials(String instance) {
+		UsernamePasswordCredentials credentials = null;
+		if (AuthorTest.ENVIRONMENT_NAME.equals(instance)) {
+			credentials = new UsernamePasswordCredentials(config.getAuthorLogin(),
+					config.getAuthorPassword());
+		} else if (PublishTest.ENVIRONMENT_NAME.equals(instance)) {
+			credentials = new UsernamePasswordCredentials(config.getPublishLogin(),
+					config.getPublishPassword());
 		}
-		String[] userInfo = UserHelper.splitUser(users[0]);
-		return new  UsernamePasswordCredentials(userInfo[0], userInfo[1]);
+		return credentials;
 	}
 
 	public List<String> getInfoMessages() {
