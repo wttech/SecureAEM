@@ -4,11 +4,9 @@ import com.google.gson.Gson;
 
 import com.cognifide.secureaem.AbstractTest;
 import com.cognifide.secureaem.Configuration;
-import com.cognifide.secureaem.UserHelper;
 import com.cognifide.secureaem.markers.AuthorTest;
 import com.cognifide.secureaem.markers.PublishTest;
 
-import org.apache.commons.lang3.ArrayUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.auth.AuthenticationException;
 import org.apache.http.auth.UsernamePasswordCredentials;
@@ -37,7 +35,7 @@ public class BundlesTest extends AbstractTest implements AuthorTest, PublishTest
 	}
 
 	@Override public boolean doTest(String url, String instanceName) throws Exception {
-		UsernamePasswordCredentials credentials = getUsernamePasswordCredentials(instanceName);
+		UsernamePasswordCredentials credentials = getUserNamePasswordCredentials();
 
 		String agentUrl = url + "/system/console/bundles.json";
 		HttpUriRequest request = new HttpGet(agentUrl);

@@ -35,7 +35,7 @@ public class ReplicationTransportUsersTest extends AbstractTest implements Autho
 	}
 
 	@Override public boolean doTest(String url, String instanceName) throws Exception {
-		UsernamePasswordCredentials credentials = getUsernamePasswordCredentials(instanceName);
+		UsernamePasswordCredentials credentials = getUserNamePasswordCredentials();
 
 		boolean result = testReplicationUser(credentials, instanceName, url);
 		return testReversReplicationUser(credentials, instanceName, url) && result;
