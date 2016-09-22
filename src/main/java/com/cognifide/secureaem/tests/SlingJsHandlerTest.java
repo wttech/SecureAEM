@@ -14,12 +14,9 @@ public class SlingJsHandlerTest extends AbstractTest
 	}
 
 	@Override public boolean doTest(String url, String instanceName) throws Exception {
-		String[] user = AuthorTest.ENVIRONMENT_NAME.equals(instanceName) ?
-				UserHelper.splitUser(config.getStringValue("authorUser", "admin:admin")) :
-				UserHelper.splitUser(config.getStringValue("publishUser", "admin:admin"));
 		String configurationEndpoint = url
 				+ "/system/console/configMgr/org.apache.sling.scripting.java.impl.JavaScriptEngineFactory.json";
-		String jsonBody = getJsonBodyOfOsgiConfiguration(configurationEndpoint, user, instanceName);
+		String jsonBody = getJsonBodyOfOsgiConfiguration(configurationEndpoint, getUsernamePasswordCredentials(instanceName), instanceName);
 		checkBooleanValue(getBooleanValueFromJson("java.classdebuginfo", jsonBody), false,
 				"Generate Debug Info", instanceName);
 		return getErrorMessages().isEmpty();

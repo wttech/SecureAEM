@@ -14,12 +14,9 @@ public class HtmlLibraryManagerTest extends AbstractTest
 	}
 
 	@Override public boolean doTest(String url, String instanceName) throws Exception {
-		String[] user = AuthorTest.ENVIRONMENT_NAME.equals(instanceName) ?
-				UserHelper.splitUser(config.getStringValue("authorUser", "admin:admin")) :
-				UserHelper.splitUser(config.getStringValue("publishUser", "admin:admin"));
 		String configurationEndpoint = url
 				+ "/system/console/configMgr/com.adobe.granite.ui.clientlibs.impl.HtmlLibraryManagerImpl.json";
-		String body = getJsonBodyOfOsgiConfiguration(configurationEndpoint, user, instanceName);
+		String body = getJsonBodyOfOsgiConfiguration(configurationEndpoint, getUsernamePasswordCredentials(instanceName), instanceName);
 		checkBooleanValue(getBooleanValueFromJson("htmllibmanager.minify", body), true, "Minify",
 				instanceName);
 		checkBooleanValue(getBooleanValueFromJson("htmllibmanager.gzip", body), true, "Gzip", instanceName);

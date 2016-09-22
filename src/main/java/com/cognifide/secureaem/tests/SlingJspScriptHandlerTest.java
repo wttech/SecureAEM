@@ -19,7 +19,7 @@ public class SlingJspScriptHandlerTest extends AbstractTest
 				UserHelper.splitUser(config.getStringValue("publishUser", "admin:admin"));
 		String configurationEndpoint = url
 				+ "/system/console/configMgr/com.adobe.granite.ui.clientlibs.impl.HtmlLibraryManagerImpl.json";
-		String body = getJsonBodyOfOsgiConfiguration(configurationEndpoint, user, instanceName);
+		String body = getJsonBodyOfOsgiConfiguration(configurationEndpoint, getUsernamePasswordCredentials(instanceName), instanceName);
 		checkBooleanValue(getBooleanValueFromJson("jasper.classdebuginfo", body), false,
 				"Generate Debug Info", instanceName);
 		checkBooleanValue(getBooleanValueFromJson("jasper.mappedfile", body), false, "Mapped Content",
