@@ -75,12 +75,12 @@ public class HttpHelper {
 		EntityUtils.consume(response.getEntity());
 		HttpUriRequest request = (HttpUriRequest) context.getAttribute(ExecutionContext.HTTP_REQUEST);
 
-		URI uri = request.getURI();
-		String baseUrl = context.getAttribute(ExecutionContext.HTTP_TARGET_HOST).toString() + uri.getPath();
-		if (removeExtension && uri.getPath().contains(".")) {
+		String  uriPath = request.getURI().getPath();
+		String baseUrl = context.getAttribute(ExecutionContext.HTTP_TARGET_HOST).toString() + uriPath;
+		if (removeExtension && uriPath.contains(".")) {
 			baseUrl = StringUtils.substringBeforeLast(baseUrl, ".");
 		}
-		if (!"/".equals(uri.getPath())) {
+		if (!"/".equals(uriPath)) {
 			baseUrl = StringUtils.removeEnd(baseUrl, "/");
 		}
 		return baseUrl;

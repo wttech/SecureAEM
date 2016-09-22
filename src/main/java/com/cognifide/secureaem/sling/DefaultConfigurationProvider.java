@@ -51,18 +51,10 @@ public class DefaultConfigurationProvider {
 		ResourceResolver resolver = resolverFactory.getAdministrativeResourceResolver(null);
 		try {
 			String currentHost = getCurrentHost();
-			String publishHost = getTransportUri(new AgentConfigFilter() {
-				@Override
-				public boolean matches(AgentConfig agentConfig) {
-					return "durbo".equals(agentConfig.getSerializationType());
-				}
-			});
-			String dispatcher = getTransportUri(new AgentConfigFilter() {
-				@Override
-				public boolean matches(AgentConfig agentConfig) {
-					return "flush".equals(agentConfig.getSerializationType());
-				}
-			});
+			String publishHost = getTransportUri(
+					agentConfig -> "durbo".equals(agentConfig.getSerializationType()));
+			String dispatcher = getTransportUri(
+					agentConfig -> "flush".equals(agentConfig.getSerializationType()));
 			LOG.info("Discovered author instance URL: " + currentHost);
 			LOG.info("Discovered publish instance URL: " + publishHost);
 			LOG.info("Discovered dispatcher URL: " + dispatcher);
@@ -137,7 +129,7 @@ public class DefaultConfigurationProvider {
 		}
 	}
 
-	private static interface AgentConfigFilter {
+	private interface AgentConfigFilter {
 		boolean matches(AgentConfig agentConfig);
 	}
 }

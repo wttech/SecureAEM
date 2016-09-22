@@ -25,6 +25,8 @@ public class Main {
 
 	private static final String DEFAULT_TEST_SUITE_PATH = "/test_suite.properties";
 
+	private static final String CMD_SUITE_OPTION = "suite";
+
 	public static void main(String[] args) throws Exception {
 		CommandLine cmdLine = createOptions(args);
 		if (!cmdLine.hasOption('a') && !cmdLine.hasOption('p') && !cmdLine.hasOption('d')) {
@@ -32,7 +34,7 @@ public class Main {
 			printf("java -jar secure-aem.jar [-a AUTHOR_URL] [-p PUBLISH_URL] [-d DISPATCHER_URL] ");
 			System.exit(1);
 		}
-		List<TestLoader> testLoaders =  createTestLoaders(cmdLine);
+		List<TestLoader> testLoaders = createTestLoaders(cmdLine);
 		boolean result = true;
 		for (TestLoader testLoader : testLoaders) {
 			result = doTest(testLoader, cmdLine) && result;
@@ -40,7 +42,8 @@ public class Main {
 		System.exit(result ? 0 : -1);
 	}
 
-	private static List<TestLoader> createTestLoaders(CommandLine cmdLine) throws IOException, ClassNotFoundException {
+	private static List<TestLoader> createTestLoaders(CommandLine cmdLine)
+			throws IOException, ClassNotFoundException {
 		try (BufferedReader reader = getBufferedReader(cmdLine)) {
 			List<TestLoader> testLoaders = new ArrayList<>();
 			String line;
@@ -57,9 +60,9 @@ public class Main {
 
 	private static BufferedReader getBufferedReader(CommandLine cmdLine) throws FileNotFoundException {
 		BufferedReader reader;
-		if (cmdLine.hasOption("suite")) {
+		if (cmdLine.hasOption(CMD_SUITE_OPTION)) {
 			reader = new BufferedReader(
-					new InputStreamReader(new FileInputStream(cmdLine.getOptionValue("suite")),
+					new InputStreamReader(new FileInputStream(cmdLine.getOptionValue(CMD_SUITE_OPTION)),
 							StandardCharsets.UTF_8));
 		} else {
 			InputStream is = Main.class.getClass().getResourceAsStream(DEFAULT_TEST_SUITE_PATH);
@@ -87,7 +90,8 @@ public class Main {
 				printf(" * %s", message);
 			}
 		}
-		if (!test.getInfoMessages().isEmpty() && !"true".equals(config.getStringValue("hidePassed", "false"))) {
+		if (!test.getInfoMessages().isEmpty() && !"true"
+				.equals(config.getStringValue("hidePassed", "false"))) {
 			printf("");
 			printf("Passed tests:");
 			for (String message : test.getInfoMessages()) {
@@ -102,12 +106,12 @@ public class Main {
 		System.out.println(String.format(format, args));
 	}
 
-	private static CommandLine createOptions(String args[]) throws ParseException {
+	private static CommandLine createOptions(String[] args) throws ParseException {
 		Options options = new Options();
 		options.addOption("a", true, "author URL");
 		options.addOption("p", true, "publish URL");
 		options.addOption("d", true, "dispatcher URL");
-		options.addOption("suite", true, "test suite");
+		options.addOption(CMD_SUITE_OPTION, true, "test suite");
 		options.addOption("aCredentials", true, "author credentials");
 		options.addOption("pCredentials", true, "publish credentials");
 

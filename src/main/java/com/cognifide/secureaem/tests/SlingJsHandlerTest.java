@@ -2,7 +2,6 @@ package com.cognifide.secureaem.tests;
 
 import com.cognifide.secureaem.AbstractTest;
 import com.cognifide.secureaem.Configuration;
-import com.cognifide.secureaem.UserHelper;
 import com.cognifide.secureaem.markers.AuthorTest;
 import com.cognifide.secureaem.markers.PublishTest;
 
