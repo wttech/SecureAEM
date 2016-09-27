@@ -37,7 +37,7 @@ public abstract class AbstractTest {
 
 	public void test() throws IOException {
 		result = null;
-
+		appendEnvironmentInfo();
 		if ("true".equals(config.getStringValue("enabled", "false"))) {
 			try {
 				result = doTest();
@@ -50,6 +50,19 @@ public abstract class AbstractTest {
 			}
 		} else {
 			result = TestResult.DISABLED;
+		}
+	}
+
+	private void appendEnvironmentInfo() {
+		environments = new HashSet<>();
+		if (this instanceof AuthorTest) {
+			environments.add(AuthorTest.ENVIRONMENT_NAME);
+		}
+		if (this instanceof PublishTest) {
+			environments.add(PublishTest.ENVIRONMENT_NAME);
+		}
+		if (this instanceof DispatcherTest) {
+			environments.add(DispatcherTest.ENVIRONMENT_NAME);
 		}
 	}
 
@@ -68,24 +81,20 @@ public abstract class AbstractTest {
 	private TestResult doTest() throws Exception {
 		boolean success = true;
 		boolean testDone = false;
-		infoMessages = new ArrayList<String>();
-		errorMessages = new ArrayList<String>();
-		environments = new HashSet<String>();
+		infoMessages = new ArrayList<>();
+		errorMessages = new ArrayList<>();
 
 		if (this instanceof AuthorTest && StringUtils.isNotBlank(config.getAuthor())) {
-			environments.add(AuthorTest.ENVIRONMENT_NAME);
 			success = doTest(config.getAuthor(), AuthorTest.ENVIRONMENT_NAME);
 			testDone = true;
 		}
 
 		if (this instanceof PublishTest && StringUtils.isNotBlank(config.getPublish())) {
-			environments.add(PublishTest.ENVIRONMENT_NAME);
 			success = doTest(config.getPublish(), PublishTest.ENVIRONMENT_NAME) && success;
 			testDone = true;
 		}
 
 		if (this instanceof DispatcherTest && StringUtils.isNotBlank(config.getDispatcherUrl())) {
-			environments.add(DispatcherTest.ENVIRONMENT_NAME);
 			success = doTest(config.getDispatcherUrl(), DispatcherTest.ENVIRONMENT_NAME) && success;
 			testDone = true;
 		}
