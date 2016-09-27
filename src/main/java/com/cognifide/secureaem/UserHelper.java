@@ -3,7 +3,11 @@ package com.cognifide.secureaem;
 /**
  * Created by Mariusz Kubiś on 19.09.16
  */
-public class UserHelper {
+public final class UserHelper {
+
+	private UserHelper() {
+		// To prevent initialization
+	}
 
 	public static String[] splitUser(String user) {
 		int colon = user.indexOf(':');

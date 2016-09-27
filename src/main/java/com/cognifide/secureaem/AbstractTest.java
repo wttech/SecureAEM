@@ -6,7 +6,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.auth.UsernamePasswordCredentials;
 import org.slf4j.Logger;
@@ -135,6 +134,22 @@ public abstract class AbstractTest {
 					config.getPublishPassword());
 		}
 		return credentials;
+	}
+
+	/**
+	 * Check boolean property. If different than expected error message will be added to error list, if same as expected info message will be added to info list
+	 *
+	 * @param actualValue Actual value of boolean property
+	 * @param expectedValue Expected value of boolean property
+	 * @param propertyName Property name used in info/error messages
+	 * @param instanceName Instance name used in info/error messages
+	 */
+	protected void checkBooleanValue(boolean actualValue, boolean expectedValue, String propertyName, String instanceName) {
+		if (actualValue == expectedValue) {
+			addInfoMessage("On %s instance %s property is %b", instanceName, propertyName, actualValue);
+		} else {
+			addErrorMessage("On %s instance %s property is %b, but it should be %b", instanceName, propertyName, actualValue, expectedValue);
+		}
 	}
 
 	public List<String> getInfoMessages() {

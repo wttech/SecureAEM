@@ -2,16 +2,16 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
-        jcr:description="Protect against Cross-Site Request Forgery"
+        jcr:description="AEM WCM Filter should be disabled on publish"
         jcr:primaryType="cq:PageContent"
-        jcr:title="Sling Referrer Filter"
+        jcr:title="AEM WCM Filter"
         sling:resourceType="cognifide/secureaem/renderers/testRenderer"
-        severity="CRITICAL"
-        url="https://docs.adobe.com/docs/en/aem/6-2/administer/security/security-checklist.html#Protect against Cross-Site Request Forgery"
-        urlDesc="docs.adobe.com">
+        severity="MAJOR"
+        url="https://docs.adobe.com/docs/en/aem/6-2/deploy/configuring/osgi-configuration-settings.html#Day%20CQ%20WCM%20Debug%20Filter"
+        urlDesc="Official Configuring AEM document">
         <testComponent
             jcr:primaryType="nt:unstructured"
-            sling:resourceType="cognifide/secureaem/components/slingReferrerFilter"
+            sling:resourceType="cognifide/secureaem/components/wcmFilter"
             enabled="true"/>
     </jcr:content>
 </jcr:root>

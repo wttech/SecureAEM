@@ -12,7 +12,7 @@ import com.cognifide.secureaem.Configuration;
 import com.cognifide.secureaem.cli.CliConfiguration;
 
 public class ResourceConfiguration implements Configuration {
-	private static final Logger LOG = LoggerFactory.getLogger(DefaultConfigurationProvider.class);
+	private static final Logger LOG = LoggerFactory.getLogger(ResourceConfiguration.class);
 	private final ValueMap globalConfig;
 
 	private final SlingHttpServletRequest request;
