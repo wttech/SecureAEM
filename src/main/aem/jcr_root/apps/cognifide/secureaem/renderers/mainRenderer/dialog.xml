@@ -40,12 +40,11 @@
                             xtype="textfield"/>
                         <publishCredentials
                             jcr:primaryType="cq:Widget"
-                            allowBlank="false"
+                            allowBlank="true"
                             fieldLabel="Publish Credentials"
                             name="./publishCredentials"
                             defaultValue="admin:admin"
                             xtype="textfield"/>
-
                     </items>
                 </configuration>
             </items>

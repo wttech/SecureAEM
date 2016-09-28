@@ -36,7 +36,7 @@ public class DefaultConfigurationProvider {
 
 	private static final Pattern P_ARGUMENT = Pattern.compile("-p (\\d+)");
 
-	private static final Pattern JAR_FILENAME = Pattern.compile("-(\\d+)\\.jar");
+	private static final Pattern JAR_FILENAME = Pattern.compile("-.(\\d+)\\.jar");
 
 	private static final String CONFIG_NODE = "/etc/secureaem/jcr:content/globalConfig";
 
