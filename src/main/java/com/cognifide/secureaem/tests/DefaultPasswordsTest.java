@@ -28,8 +28,8 @@ import com.cognifide.secureaem.markers.PublishTest;
  */
 public class DefaultPasswordsTest extends AbstractTest implements AuthorTest, PublishTest {
 
+  private static final String LOGIN_PATH = "/libs/granite/core/content/login.html/j_security_check";
   private static final String USERNAME_FORM_PARAM_NAME = "j_username";
-  private static final String ALTERNATIVE_LOGIN_PATH = "/libs/granite/core/content/login.html/j_security_check";
   private static final String PASSWORD_FORM_PARAM_NAME = "j_password";
   private static final String IS_VALIDATE_FORM_PARAM_NAME = "j_validate";
 
@@ -39,12 +39,12 @@ public class DefaultPasswordsTest extends AbstractTest implements AuthorTest, Pu
 
   @Override
   public boolean doTest(String url, String instanceName) throws Exception {
-    String alternativeUrl = url + ALTERNATIVE_LOGIN_PATH;
+    String loginUrl = url + LOGIN_PATH;
     boolean ok = true;
     String[] users = config.getStringList("users");
     for (String user : users) {
       String[] split = UserHelper.splitUser(user);
-      if (split[1] != null && remoteUserExists(split, alternativeUrl)) {
+      if (split[1] != null && remoteUserExists(split, loginUrl)) {
         addErrorMessage("User %s exists on %s", user, instanceName);
         ok = false;
       } else {
@@ -59,7 +59,7 @@ public class DefaultPasswordsTest extends AbstractTest implements AuthorTest, Pu
     DefaultHttpClient authorizedClient = new DefaultHttpClient();
 
     HttpPost httpPost = new HttpPost(url);
-    List<NameValuePair> params = getRequestParamsList(user);
+    List<NameValuePair> params = getPostParamsList(user);
     httpPost.setEntity(new UrlEncodedFormEntity(params));
 
     HttpResponse response = authorizedClient.execute(httpPost);
@@ -68,7 +68,7 @@ public class DefaultPasswordsTest extends AbstractTest implements AuthorTest, Pu
     return code != HttpURLConnection.HTTP_FORBIDDEN;
   }
 
-  private List<NameValuePair> getRequestParamsList(String[] user) {
+  private List<NameValuePair> getPostParamsList(String[] user) {
     List<NameValuePair> params = new ArrayList<>();
 
     params.add(new BasicNameValuePair(USERNAME_FORM_PARAM_NAME, user[0]));
