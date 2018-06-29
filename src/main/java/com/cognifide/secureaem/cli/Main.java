@@ -59,14 +59,14 @@ public class Main {
 			List<TestLoader> testLoaders = new ArrayList<>();
 			String line;
 			while ((line = reader.readLine()) != null) {
-				String[] parameters = line.split(", ");
+				String[] parameters = line.split(",");
 				if (parameters.length >= 2) {
-					Class clazz = Class.forName(parameters[0]);
+					Class clazz = Class.forName(parameters[0].trim());
 					Severity severity = Severity.MAJOR;
 					if (parameters.length == 3) {
-						severity = Severity.of(parameters[2]);
+						severity = Severity.of(parameters[2].trim());
 					}
-					testLoaders.add(new TestLoader(clazz, parameters[1], severity));
+					testLoaders.add(new TestLoader(clazz, parameters[1].trim(), severity));
 				}
 			}
 			return testLoaders;

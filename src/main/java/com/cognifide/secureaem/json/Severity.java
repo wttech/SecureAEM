@@ -16,6 +16,6 @@ public enum Severity {
 	public static Severity of(String value) {
 		return Arrays.stream(Severity.values())
 			.filter(severity -> StringUtils.equals(severity.value, value))
-			.findFirst().orElse(null);
+			.findFirst().orElse(INFO);
 	}
 }
