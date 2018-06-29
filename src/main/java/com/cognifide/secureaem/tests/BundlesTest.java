@@ -1,11 +1,10 @@
 package com.cognifide.secureaem.tests;
 
-import com.google.gson.Gson;
-
-import com.cognifide.secureaem.AbstractTest;
-import com.cognifide.secureaem.Configuration;
-import com.cognifide.secureaem.markers.AuthorTest;
-import com.cognifide.secureaem.markers.PublishTest;
+import java.net.HttpURLConnection;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.auth.AuthenticationException;
@@ -16,10 +15,11 @@ import org.apache.http.impl.auth.BasicScheme;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import com.cognifide.secureaem.AbstractTest;
+import com.cognifide.secureaem.Configuration;
+import com.cognifide.secureaem.markers.AuthorTest;
+import com.cognifide.secureaem.markers.PublishTest;
+import com.google.gson.Gson;
 
 /**
  * Check if the bundle is present
@@ -44,9 +44,9 @@ public class BundlesTest extends AbstractTest implements AuthorTest, PublishTest
 		DefaultHttpClient client = new DefaultHttpClient();
 		HttpResponse response = client.execute(request);
 		String body = EntityUtils.toString(response.getEntity());
-		if (response.getStatusLine().getStatusCode() == 401) {
+		if (response.getStatusLine().getStatusCode() == HttpURLConnection.HTTP_UNAUTHORIZED) {
 			throw new AuthenticationException("Cannot authenticate user " + credentials.getUserName());
-		} else if (response.getStatusLine().getStatusCode() == 200) {
+		} else if (response.getStatusLine().getStatusCode() == HttpURLConnection.HTTP_OK) {
 			@SuppressWarnings("unchecked") Map<String, List<Map<String, String>>> map = GSON
 					.fromJson(body, Map.class);
 			String[] bundlesConfig = config.getStringList("bundles");
@@ -63,4 +63,5 @@ public class BundlesTest extends AbstractTest implements AuthorTest, PublishTest
 		}
 		return true;
 	}
+	
 }
