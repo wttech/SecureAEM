@@ -7,7 +7,7 @@
         jcr:title="Resources and servlets"
         sling:resourceType="cognifide/secureaem/renderers/testRenderer"
         severity="BLOCKER"
-        url="http://dev.day.com/docs/en/cq/current/deploying/security_checklist.html#Restrict%20Access%20via%20the%20Dispatcher"
+        url="https://helpx.adobe.com/experience-manager/dispatcher/using/security-checklist.html#RestrictAccess"
         urlDesc="Official AEM Security Checklist">
         <testComponent
             jcr:primaryType="nt:unstructured"

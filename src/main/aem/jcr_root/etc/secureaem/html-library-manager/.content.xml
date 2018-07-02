@@ -7,7 +7,7 @@
         jcr:title="Html Library Manager"
         sling:resourceType="cognifide/secureaem/renderers/testRenderer"
         severity="MAJOR"
-        url="https://docs.adobe.com/docs/en/aem/6-2/administer/security/security-checklist.html#OSGI%20Settings"
+        url="https://helpx.adobe.com/experience-manager/6-4/sites/administering/using/security-checklist.html#OSGISettings"
         urlDesc="Official AEM Security Checklist">
         <testComponent
             jcr:primaryType="nt:unstructured"

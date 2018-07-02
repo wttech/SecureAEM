@@ -7,7 +7,7 @@
         jcr:title="WebDAV on publish"
         sling:resourceType="cognifide/secureaem/renderers/testRenderer"
         severity="MAJOR"
-        url="http://dev.day.com/docs/en/cq/current/deploying/security_checklist.html#Disable%20WebDAV"
+        url="https://helpx.adobe.com/experience-manager/6-4/sites/administering/using/security-checklist.html#DisableWebDAV"
         urlDesc="Official AEM Security Checklist">
         <testComponent
             jcr:primaryType="nt:unstructured"

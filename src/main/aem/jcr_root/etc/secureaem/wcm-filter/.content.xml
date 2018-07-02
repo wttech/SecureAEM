@@ -7,7 +7,7 @@
         jcr:title="AEM WCM Filter"
         sling:resourceType="cognifide/secureaem/renderers/testRenderer"
         severity="MAJOR"
-        url="https://docs.adobe.com/docs/en/aem/6-2/deploy/configuring/osgi-configuration-settings.html#Day%20CQ%20WCM%20Debug%20Filter"
+        url="https://helpx.adobe.com/experience-manager/6-4/sites/administering/using/security-checklist.html#OSGISettings"
         urlDesc="Official Configuring AEM document">
         <testComponent
             jcr:primaryType="nt:unstructured"

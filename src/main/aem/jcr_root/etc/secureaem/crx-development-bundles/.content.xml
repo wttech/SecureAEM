@@ -7,7 +7,7 @@
         jcr:title="CRX development bundles"
         sling:resourceType="cognifide/secureaem/renderers/testRenderer"
         severity="CRITICAL"
-        url="https://docs.adobe.com/docs/en/aem/6-2/administer/security/security-checklist.html#Check if the CRX development bundles are present"
+        url="https://helpx.adobe.com/experience-manager/6-4/sites/administering/using/security-checklist.html#CheckiftheCRXdevelopmentbundlesarepresent"
         urlDesc="docs.adobe.com">
         <testComponent
             jcr:primaryType="nt:unstructured"
