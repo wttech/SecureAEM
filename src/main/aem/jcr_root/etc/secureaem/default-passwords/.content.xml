@@ -7,7 +7,7 @@
         jcr:title="Default passwords"
         sling:resourceType="cognifide/secureaem/renderers/testRenderer"
         severity="BLOCKER"
-        url="https://docs.adobe.com/docs/en/aem/6-2/administer/security/security-checklist.html#Change%20Default%20Passwords%20For%20the%20AEM%20and%20OSGi%20Console%20Admin%20Accounts"
+        url="https://helpx.adobe.com/experience-manager/6-4/sites/administering/using/security-checklist.html#ChangeDefaultPasswordsFortheAEMandOSGiConsoleAdminAccounts"
         urlDesc="Official Aem Security Checklist">
         <testComponent
             jcr:primaryType="nt:unstructured"

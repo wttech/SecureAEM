@@ -7,7 +7,7 @@
         jcr:title="Error handlers"
         sling:resourceType="cognifide/secureaem/renderers/testRenderer"
         severity="BLOCKER"
-        url="https://docs.adobe.com/docs/en/aem/6-2/administer/security/security-checklist.html#Implement%20Custom%20Error%20Handler"
+        url="https://helpx.adobe.com/experience-manager/6-4/sites/administering/using/security-checklist.html#ImplementCustomErrorHandler"
         urlDesc="Official AEM Security Checklist">
         <testComponent
             jcr:primaryType="nt:unstructured"

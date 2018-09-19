@@ -7,7 +7,7 @@
         jcr:title="Sling development bundle"
         sling:resourceType="cognifide/secureaem/renderers/testRenderer"
         severity="CRITICAL"
-        url="https://docs.adobe.com/docs/en/aem/6-2/administer/security/security-checklist.html#Check if the Sling development bundle is present"
+        url="https://helpx.adobe.com/experience-manager/6-4/sites/administering/using/security-checklist.html#CheckiftheSlingdevelopmentbundleispresent"
         urlDesc="docs.adobe.com">
         <testComponent
             jcr:primaryType="nt:unstructured"

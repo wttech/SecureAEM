@@ -7,7 +7,7 @@
         jcr:title="Redundant selectors and suffixes"
         sling:resourceType="cognifide/secureaem/renderers/testRenderer"
         severity="MINOR"
-        url="http://dev.day.com/docs/en/cq/current/deploying/security_checklist.html#Preventing%20Denial%20of%20Service%20%28DoS%29%20Attacks"
+        url="https://helpx.adobe.com/experience-manager/dispatcher/using/security-checklist.html#PreventDenialofServiceDoSAttacks"
         urlDesc="Official AEM Security Checklist">
         <testComponent
             jcr:primaryType="nt:unstructured"

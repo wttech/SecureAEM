@@ -7,7 +7,7 @@
         jcr:title="Sling Referrer Filter"
         sling:resourceType="cognifide/secureaem/renderers/testRenderer"
         severity="CRITICAL"
-        url="https://docs.adobe.com/docs/en/aem/6-2/administer/security/security-checklist.html#Protect against Cross-Site Request Forgery"
+        url="https://helpx.adobe.com/experience-manager/6-4/sites/administering/using/security-checklist.html#ProtectagainstCrossSiteRequestForgery"
         urlDesc="docs.adobe.com">
         <testComponent
             jcr:primaryType="nt:unstructured"
