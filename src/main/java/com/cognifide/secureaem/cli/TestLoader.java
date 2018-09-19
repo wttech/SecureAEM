@@ -4,6 +4,7 @@ import java.lang.reflect.Constructor;
 
 import com.cognifide.secureaem.AbstractTest;
 import com.cognifide.secureaem.Configuration;
+import com.cognifide.secureaem.json.Severity;
 
 public class TestLoader {
 
@@ -11,9 +12,12 @@ public class TestLoader {
 
 	private final String componentName;
 
-	public TestLoader(Class<? extends AbstractTest> clazz, String componentName) {
+	private Severity severity;
+
+	public TestLoader(Class<? extends AbstractTest> clazz, String componentName, Severity severity) {
 		this.clazz = clazz;
 		this.componentName = componentName;
+		this.severity = severity;
 	}
 
 	public AbstractTest getTest(Configuration config) throws Exception {
@@ -23,6 +27,10 @@ public class TestLoader {
 
 	String getComponentName() {
 		return componentName;
+	}
+	
+	Severity getSeverity() {
+		return severity;
 	}
 
 }

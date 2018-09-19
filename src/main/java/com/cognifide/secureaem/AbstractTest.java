@@ -42,10 +42,13 @@ public abstract class AbstractTest {
 			try {
 				result = doTest();
 			} catch (Exception e) {
-				LOG.error("Error during test", e);
+				if (!TestRunParameters.SILENT_MODE) {
+					LOG.error("Error during test", e);
+				}
 				if (!(e instanceof InvalidConfigurationException)) {
 					addErrorMessage("Exception occured: " + e.toString());
 				}
+				
 				result = TestResult.EXCEPTION;
 			}
 		} else {
