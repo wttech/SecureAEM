@@ -264,7 +264,19 @@
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 			<version>2.7</version>
+		</dependency><!-- https://mvnrepository.com/artifact/org.apache.sling/org.apache.sling.servlets.post -->
+		<dependency>
+			<groupId>org.apache.sling</groupId>
+			<artifactId>org.apache.sling.servlets.post</artifactId>
+			<version>2.3.24</version>
+			<scope>provided</scope>
+		</dependency><!-- https://mvnrepository.com/artifact/com.adobe.granite/com.adobe.granite.crypto -->
+		<dependency>
+			<groupId>com.adobe.granite</groupId>
+			<artifactId>com.adobe.granite.crypto</artifactId>
+			<version>0.0.24</version>
 		</dependency>
+
 	</dependencies>
 	<profiles>
 		<profile>

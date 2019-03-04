@@ -32,6 +32,13 @@
                             name="./authorCredentials"
                             defaultValue="admin:admin"
                             xtype="textfield"/>
+                        <authorPassword
+                            jcr:primaryType="cq:Widget"
+                            allowBlank="false"
+                            fieldLabel="Author password"
+                            name="./authorPassword"
+                            defaultValue="admin"
+                            xtype="password"/>
                         <publish
                             jcr:primaryType="cq:Widget"
                             allowBlank="true"
@@ -45,6 +52,13 @@
                             name="./publishCredentials"
                             defaultValue="admin:admin"
                             xtype="textfield"/>
+                        <publishPassword
+                            jcr:primaryType="cq:Widget"
+                            allowBlank="false"
+                            fieldLabel="Publish password"
+                            name="./publishPassword"
+                            defaultValue="admin"
+                            xtype="password"/>
                     </items>
                 </configuration>
             </items>
