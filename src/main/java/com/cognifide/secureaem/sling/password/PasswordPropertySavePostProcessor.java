@@ -40,20 +40,27 @@ public class PasswordPropertySavePostProcessor implements SlingPostProcessor {
 			policy = ReferencePolicy.DYNAMIC)
 	private Collection<PasswordFiledEncryptFilter> encryptionFilters = ConcurrentHashMap.newKeySet();
 
-
 	@Reference
 	private CryptoSupport cryptoSupport;
 
 	@Override
 	public void process(SlingHttpServletRequest slingHttpServletRequest, List<Modification> list) {
-		List<String> stringStream = list.stream()
+		List<String> propertiesToEncrypt = list.stream()
 				.filter(this::isSupported)
 				.map(Modification::getSource)
 				.collect(Collectors.toList());
 
-		for (String propertyPath : stringStream) {
+		ResourceResolver resourceResolver = slingHttpServletRequest.getResourceResolver();
+		Session session = resourceResolver.adaptTo(Session.class);
+
+		if (session == null) {
+			LOGGER.error("Failed to create session.");
+			return;
+		}
+
+		for (String propertyPath : propertiesToEncrypt) {
 			try {
-				this.encryptProperty(slingHttpServletRequest.getResourceResolver(), propertyPath);
+				this.encryptProperty(session, propertyPath);
 			} catch (CryptoException | RepositoryException e) {
 				LOGGER.error("Failed to encrypt property {}", propertyPath, e);
 			}
@@ -70,14 +77,15 @@ public class PasswordPropertySavePostProcessor implements SlingPostProcessor {
 	}
 
 
-	private void encryptProperty(ResourceResolver resourceResolver, String propertyPath) throws CryptoException, RepositoryException {
-		Session session = resourceResolver.adaptTo(Session.class);
+	private void encryptProperty(Session session, String propertyPath) throws CryptoException, RepositoryException {
 		Property propertyToBeProtected = session.getProperty(propertyPath);
 		if (propertyToBeProtected != null) {
-			String propertyValue = propertyToBeProtected.getString();
+			String propertyValue = StringUtils.defaultString(propertyToBeProtected.getString());
 			if (!cryptoSupport.isProtected(propertyValue)) {
+				LOGGER.info("Encrypting property: '{}'", propertyPath);
 				String encryptedPropertyValue = cryptoSupport.protect(propertyValue);
 				propertyToBeProtected.setValue(encryptedPropertyValue);
+				LOGGER.info("Property '{}' encrypted", propertyPath);
 			}
 		}
 
