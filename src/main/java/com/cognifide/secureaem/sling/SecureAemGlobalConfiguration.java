@@ -3,6 +3,7 @@ package com.cognifide.secureaem.sling;
 import com.adobe.granite.crypto.CryptoException;
 import com.adobe.granite.crypto.CryptoSupport;
 import com.cognifide.secureaem.GlobalConfiguration;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.felix.scr.annotations.Activate;
 import org.apache.felix.scr.annotations.Component;
 import org.apache.felix.scr.annotations.ConfigurationPolicy;
@@ -95,7 +96,7 @@ public class SecureAemGlobalConfiguration implements GlobalConfiguration {
 
 	@Override
 	public String getAuthorPassword() {
-		return authorPassowrd;
+		return getPassword(authorPassowrd);
 	}
 
 	@Override
@@ -110,7 +111,19 @@ public class SecureAemGlobalConfiguration implements GlobalConfiguration {
 
 	@Override
 	public String getPublishPassword() {
-		return publishPassword;
+		return getPassword(publishPassword);
 	}
 
+
+	private String getPassword(String passwordToDecrypt) {
+		String password = StringUtils.defaultString(passwordToDecrypt);
+		if (cryptoSupport.isProtected(password)) {
+			try {
+				password = cryptoSupport.unprotect(password);
+			} catch (CryptoException e) {
+				LOGGER.error("Failed to decrypt password", e);
+			}
+		}
+		return password;
+	}
 }
