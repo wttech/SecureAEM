@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+          xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:primaryType="nt:unstructured">
+    <tools jcr:primaryType="nt:unstructured">
+        <security
+            jcr:primaryType="nt:unstructured"
+            jcr:title="Security"
+            id="cq-tools-security">
+            <secureAem jcr:primaryType="nt:unstructured"
+                jcr:title="Secure AEM"
+                jcr:description="Check security of your infrastructure"
+                href="/etc/secureaem.html"
+                icon="globeCheck"
+                id="secureaem"/>
+        </security>
+    </tools>
+</jcr:root>
