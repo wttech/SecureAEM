@@ -16,7 +16,7 @@ You may also be interested in the blog post on [Secure AEM](http://www.cognifide
 
 ## Requirements
 
-* AEM 6.1, 6.2, 6.3
+* AEM 6.1, 6.2, 6.3, 6.5 SP1
 
 ## Installation
 
