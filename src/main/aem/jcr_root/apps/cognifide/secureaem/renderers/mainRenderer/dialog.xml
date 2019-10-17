@@ -25,26 +25,40 @@
                             fieldLabel="Author URL"
                             name="./author"
                             xtype="textfield"/>
-                        <authorCredentials
+                        <authorLogin
                             jcr:primaryType="cq:Widget"
                             allowBlank="false"
-                            fieldLabel="Author Credentials"
-                            name="./authorCredentials"
-                            defaultValue="admin:admin"
+                            fieldLabel="Author Login"
+                            name="./authorLogin"
+                            defaultValue="admin"
                             xtype="textfield"/>
+                        <authorPassword
+                            jcr:primaryType="cq:Widget"
+                            allowBlank="false"
+                            fieldLabel="Author password"
+                            name="./authorPassword"
+                            defaultValue="admin"
+                            xtype="password"/>
                         <publish
                             jcr:primaryType="cq:Widget"
                             allowBlank="true"
                             fieldLabel="Publish URL"
                             name="./publish"
                             xtype="textfield"/>
-                        <publishCredentials
+                        <publishLogin
                             jcr:primaryType="cq:Widget"
                             allowBlank="true"
-                            fieldLabel="Publish Credentials"
-                            name="./publishCredentials"
-                            defaultValue="admin:admin"
+                            fieldLabel="Publish Login"
+                            name="./publishLogin"
+                            defaultValue="admin"
                             xtype="textfield"/>
+                        <publishPassword
+                            jcr:primaryType="cq:Widget"
+                            allowBlank="false"
+                            fieldLabel="Publish password"
+                            name="./publishPassword"
+                            defaultValue="admin"
+                            xtype="password"/>
                     </items>
                 </configuration>
             </items>

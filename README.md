@@ -31,7 +31,22 @@ Otherwise you may enter address and credentials explicitly:
 ## Configuration
 
 After installation, go to the AEM *Tools* page and choose *Secure AEM* from the list on the left. The application tries to find author, publish and dispatcher URLs automatically, but you may want to confirm that they have been recognized correctly. In order to do that click *Edit* on the Settings bar and optionally correct addresses. That's it. Wait for a moment until the tests are done and check the results.
+####Osgi configuration
+Application also allows Osgi configuration. To enable this option configuration for `SecureAemGlobalConfiguration` Osgi service needs to be provided (this will automatically take precedence over global config available on Secure Aem page configuration). Here is an example configuration file:
+File name: `com.cognifide.secureaem.sling.SecureAemGlobalConfiguration.xml`
+```<?xml version="1.0" encoding="UTF-8"?>
+   <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+             jcr:primaryType="sling:OsgiConfig"
+             dispatcher.url="https://www.tested-site.com"
+             author.url="http://localhost:4502"
+             author.login="admin"
+             author.password="{String}{5f4d2406e9fd5f452871b373cc2810905fb53e133684f48ff96859b15f7a4615}"
+             publish.url="http://localhost:4503"
+             publish.login="admin"
+             publish.password="{String}{5f4d2406e9fd5f452871b373cc2810905fb53e133684f48ff96859b15f7a4615}"/>
+```
 
+`author.password` and `publish.password` properties can be provided as a plain text or as encrypted values created via `/system/console/crypto` console (which is a recommended way).
 ## CLI version
 
 Sometimes you may want to check remote AEM instance. *Secure AEM* may be compiled in the standalone mode and used from the CLI, without any additional dependencies. In order to build application this way, enter:
