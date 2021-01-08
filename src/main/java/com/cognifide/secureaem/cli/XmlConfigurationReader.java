@@ -1,5 +1,6 @@
 package com.cognifide.secureaem.cli;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
@@ -15,7 +16,7 @@ import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
 public class XmlConfigurationReader {
-	private static final String PATH = "/aem/jcr_root/etc/secureaem/%s/.content.xml";
+	private static final String PATH = "/Users/terrencekoch/thinkering/SecureAEM-fork/src/main/aem/jcr_root/etc/secureaem/%s/.content.xml";
 
 	private final NamedNodeMap config;
 
@@ -26,7 +27,7 @@ public class XmlConfigurationReader {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		factory.setIgnoringElementContentWhitespace(true);
 		String filename = String.format(PATH, componentName);
-		InputStream is = this.getClass().getResourceAsStream(filename);
+		InputStream is = new FileInputStream(filename);
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		Document document = builder.parse(is);
 
