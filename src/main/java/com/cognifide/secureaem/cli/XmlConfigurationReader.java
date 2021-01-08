@@ -16,6 +16,7 @@ import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
 public class XmlConfigurationReader {
+	// TODO: path
 	private static final String PATH = "/Users/terrencekoch/thinkering/SecureAEM-fork/src/main/aem/jcr_root/etc/secureaem/%s/.content.xml";
 
 	private final NamedNodeMap config;
@@ -31,6 +32,7 @@ public class XmlConfigurationReader {
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		Document document = builder.parse(is);
 
+		// TODO: This setup can be simplified
 		config = document.getElementsByTagName("testComponent").item(0).getAttributes();
 		metadata = document.getElementsByTagName("jcr:content").item(0).getAttributes();
 	}
