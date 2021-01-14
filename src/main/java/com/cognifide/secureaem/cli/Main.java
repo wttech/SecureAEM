@@ -48,14 +48,13 @@ public class Main {
 		System.exit(result ? 0 : 1337);
 	}
 
-	private static List<TestLoader> createTestLoaders()
-			throws ClassNotFoundException {
+	private static List<TestLoader> createTestLoaders() throws ClassNotFoundException, UnsupportedEncodingException {
 		List<TestLoader> testLoaders = new ArrayList<>();
 
-		BufferedReader reader = new BufferedReader(
-				new InputStreamReader(Main.class.getClassLoader().getResourceAsStream(TEST_JSON_PATH))
-		);
-		JsonArray testsJson = JsonParser.parseReader(reader).getAsJsonArray();
+		InputStream configStream = Main.class.getResourceAsStream(TEST_JSON_PATH);
+		BufferedReader configReader = new BufferedReader(new InputStreamReader(configStream, "UTF-8"));
+		JsonArray testsJson = (JsonArray) new JsonParser().parse(configReader);
+
 		for(int i = 0; i < testsJson.size(); i++) {
 			JsonObject jsonObject = (testsJson.get(i)).getAsJsonObject();
 

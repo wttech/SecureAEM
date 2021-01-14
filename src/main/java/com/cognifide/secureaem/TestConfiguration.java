@@ -27,8 +27,9 @@ public class TestConfiguration {
 
     public TestConfiguration(String testName) {
         try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(Main.class.getClassLoader().getResourceAsStream(PATH)));
-            JsonArray testsJson = JsonParser.parseReader(reader).getAsJsonArray();
+            InputStream configStream = Main.class.getResourceAsStream(PATH);
+            BufferedReader configReader = new BufferedReader(new InputStreamReader(configStream, "UTF-8"));
+            JsonArray testsJson = (JsonArray) new JsonParser().parse(configReader);
 
             for(int i = 0; i < testsJson.size(); i++) {
                 if(testsJson.get(i).getAsJsonObject().get("name").getAsString().equals(testName)){
