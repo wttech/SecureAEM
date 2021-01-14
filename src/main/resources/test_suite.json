@@ -4,7 +4,7 @@
     "name": "config-validation",
     "severity": "INFO",
     "enabled": true,
-    "description": "You should enter valid dispatcher, author and publish URL in the configuration dialog."
+    "description": "You should enter valid dispatcher, author and publish URL in the CLI."
   },
   {
     "class": "com.cognifide.secureaem.tests.ExtensionsTest",
@@ -15,5 +15,15 @@
     "url": "https://helpx.adobe.com/experience-manager/dispatcher/using/security-checklist.html#RestrictAccess",
     "urlDesc": "Official Aem Security Checklist",
     "extensions": [".infinity.json",".tidy.json",".sysview.xml",".docview.json",".docview.xml",".2.json",".query.json",".xml"]
+  },
+  {
+    "class": "com.cognifide.secureaem.tests.DefaultPasswordsTest",
+    "name": "default-passwords",
+    "severity": "BLOCKER",
+    "enabled": true,
+    "description": "Access to several selectors and extensions should be restricted, as malicious user can use them to perform DoS attack or to gather internal site information.",
+    "url": "https://helpx.adobe.com/experience-manager/6-4/sites/administering/using/security-checklist.html#ChangeDefaultPasswordsFortheAEMandOSGiConsoleAdminAccounts",
+    "urlDesc": "Official Aem Security Checklist",
+    "users": ["admin:admin","author:author","replication-receiver:replication-receiver","jdoe@geometrixx.info:jdoe","aparker@geometrixx.info:aparker"]
   }
 ]

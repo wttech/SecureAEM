@@ -7,6 +7,7 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.cognifide.secureaem.TestConfiguration;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.auth.AuthenticationException;
@@ -34,15 +35,15 @@ public class DefaultPasswordsTest extends AbstractTest implements AuthorTest, Pu
 	private static final String PASSWORD_FORM_PARAM_NAME = "j_password";
 	private static final String IS_VALIDATE_FORM_PARAM_NAME = "j_validate";
 
-	public DefaultPasswordsTest(Configuration config) {
-		super(config);
+	public DefaultPasswordsTest(Configuration config, TestConfiguration testConfiguration) {
+		super(config, testConfiguration);
 	}
 
 	@Override
 	public boolean doTest(String url, String instanceName) throws Exception {
 		String loginUrl = url + LOGIN_PATH;
 		boolean ok = true;
-		String[] users = config.getStringList("users");
+		String[] users = testConfiguration.getUsers();
 		for (String user : users) {
 			String[] split = UserHelper.splitUser(user);
 			if (split[1] != null && remoteUserExists(split, loginUrl)) {

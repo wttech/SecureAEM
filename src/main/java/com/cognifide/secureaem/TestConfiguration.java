@@ -25,6 +25,8 @@ public class TestConfiguration {
 
     private String[] extensions;
 
+    private String[] users;
+
     public TestConfiguration(String testName) {
         try {
             InputStream configStream = Main.class.getResourceAsStream(PATH);
@@ -57,6 +59,14 @@ public class TestConfiguration {
                             extensions[j] = jsonExtensions.get(j).getAsString();
                         }
                         this.extensions = extensions;
+                    }
+                    if(jsonObject.get("users") != null) {
+                        JsonArray jsonUsers = jsonObject.get("users").getAsJsonArray();
+                        String[] users = new String[jsonUsers.size()];
+                        for (int j = 0; j < jsonUsers.size(); j++) {
+                            users[j] = jsonUsers.get(j).getAsString();
+                        }
+                        this.users = users;
                     }
                 }
             }
@@ -121,5 +131,13 @@ public class TestConfiguration {
 
     public void setExtensions(String[] extensions) {
         this.extensions = extensions;
+    }
+
+    public String[] getUsers() {
+        return users;
+    }
+
+    public void setUsers(String[] users) {
+        this.users = users;
     }
 }
