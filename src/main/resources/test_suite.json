@@ -35,5 +35,12 @@
     "url": "https://helpx.adobe.com/experience-manager/6-4/sites/administering/using/security-checklist.html#CheckiftheCRXdevelopmentbundlesarepresent",
     "urlDesc": "docs.adobe.com",
     "bundles": ["Adobe CRXDE Support","Adobe Granite CRX Explorer","Adobe Granite CRXDE Lite"]
+  },
+  {
+    "class": "com.cognifide.secureaem.tests.CrxdeLogsTest",
+    "name": "crxde-logs",
+    "severity": "CRITICAL",
+    "enabled": true,
+    "description": "CRXDE logs servlet should be disabled on author and publish."
   }
 ]
