@@ -2,6 +2,7 @@ package com.cognifide.secureaem.tests;
 
 import com.cognifide.secureaem.AbstractTest;
 import com.cognifide.secureaem.Configuration;
+import com.cognifide.secureaem.TestConfiguration;
 import com.cognifide.secureaem.markers.PublishTest;
 
 /**
@@ -11,8 +12,8 @@ import com.cognifide.secureaem.markers.PublishTest;
  */
 public class WcmFilterTest extends AbstractTest implements PublishTest {
 
-	public WcmFilterTest(Configuration config) {
-		super(config);
+	public WcmFilterTest(Configuration config, TestConfiguration testConfiguration) {
+		super(config, testConfiguration);
 	}
 
 	@Override public boolean doTest(String url, String instanceName) throws Exception {

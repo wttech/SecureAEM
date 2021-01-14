@@ -1,6 +1,7 @@
 package com.cognifide.secureaem.tests;
 
 import com.cognifide.secureaem.Configuration;
+import com.cognifide.secureaem.TestConfiguration;
 import com.cognifide.secureaem.markers.PublishTest;
 
 /**
@@ -11,13 +12,13 @@ import com.cognifide.secureaem.markers.PublishTest;
  */
 public class PublishPathsTest extends PathsTest implements PublishTest {
 
-	public PublishPathsTest(Configuration config) {
-		super(config);
+	public PublishPathsTest(Configuration config, TestConfiguration testConfiguration) {
+		super(config, testConfiguration);
 	}
 
 	@Override
 	public boolean doTest(String url, String instanceName) throws Exception {
-		String[] paths = config.getStringList("paths");
+		String[] paths = testConfiguration.getPaths();
 		boolean ok = true;
 		for (String path : paths) {
 			String testUrl = url + path;

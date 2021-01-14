@@ -2,6 +2,7 @@ package com.cognifide.secureaem.tests;
 
 import java.net.URI;
 
+import com.cognifide.secureaem.TestConfiguration;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
 import org.apache.http.client.methods.HttpUriRequest;
@@ -20,8 +21,8 @@ import com.cognifide.secureaem.markers.PublishTest;
  */
 public class WebDavTest extends AbstractTest implements PublishTest {
 
-	public WebDavTest(Configuration config) {
-		super(config);
+	public WebDavTest(Configuration config, TestConfiguration testConfiguration) {
+		super(config, testConfiguration);
 	}
 
 	@Override

@@ -8,6 +8,9 @@ import com.google.gson.JsonParser;
 
 import java.io.*;
 
+/**
+ * Read test configurations from json file
+ */
 public class TestConfiguration {
     private static final String PATH = "/test_suite.json";
 
@@ -26,6 +29,10 @@ public class TestConfiguration {
     private String[] extensions;
 
     private String[] users;
+
+    private String[] paths;
+
+    private String[] content;
 
     public TestConfiguration(String testName) {
         try {
@@ -67,6 +74,22 @@ public class TestConfiguration {
                             users[j] = jsonUsers.get(j).getAsString();
                         }
                         this.users = users;
+                    }
+                    if(jsonObject.get("paths") != null) {
+                        JsonArray jsonPaths = jsonObject.get("paths").getAsJsonArray();
+                        String[] paths = new String[jsonPaths.size()];
+                        for (int j = 0; j < jsonPaths.size(); j++) {
+                            paths[j] = jsonPaths.get(j).getAsString();
+                        }
+                        this.paths = paths;
+                    }
+                    if(jsonObject.get("content") != null) {
+                        JsonArray jsonContent = jsonObject.get("content").getAsJsonArray();
+                        String[] content = new String[jsonContent.size()];
+                        for (int j = 0; j < jsonContent.size(); j++) {
+                            content[j] = jsonContent.get(j).getAsString();
+                        }
+                        this.content = content;
                     }
                 }
             }
@@ -140,4 +163,21 @@ public class TestConfiguration {
     public void setUsers(String[] users) {
         this.users = users;
     }
+
+    public String[] getPaths() {
+        return paths;
+    }
+
+    public void setPaths(String[] paths) {
+        this.paths = paths;
+    }
+
+    public String[] getContent() {
+        return content;
+    }
+
+    public void setContent(String[] content) {
+        this.content = content;
+    }
+
 }

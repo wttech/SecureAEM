@@ -3,6 +3,7 @@ package com.cognifide.secureaem.tests;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
+import com.cognifide.secureaem.TestConfiguration;
 import org.apache.http.HttpResponse;
 import org.apache.http.auth.AuthenticationException;
 import org.apache.http.auth.UsernamePasswordCredentials;
@@ -26,8 +27,8 @@ import com.cognifide.secureaem.markers.PublishTest;
  */
 public class CrxdeLogsTest extends AbstractTest implements DispatcherTest, AuthorTest, PublishTest {
 
-	public CrxdeLogsTest(Configuration config) {
-		super(config);
+	public CrxdeLogsTest(Configuration config, TestConfiguration testConfiguration) {
+		super(config, testConfiguration);
 	}
 
 	@Override

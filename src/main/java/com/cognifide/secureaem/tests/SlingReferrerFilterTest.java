@@ -1,5 +1,6 @@
 package com.cognifide.secureaem.tests;
 
+import com.cognifide.secureaem.TestConfiguration;
 import com.google.gson.Gson;
 
 import com.cognifide.secureaem.AbstractTest;
@@ -32,8 +33,8 @@ public class SlingReferrerFilterTest extends AbstractTest implements AuthorTest,
 
 	private static final DefaultHttpClient client = new DefaultHttpClient();
 
-	public SlingReferrerFilterTest(Configuration config) {
-		super(config);
+	public SlingReferrerFilterTest(Configuration config, TestConfiguration testConfiguration) {
+		super(config, testConfiguration);
 	}
 
 	@Override public boolean doTest(String url, String instanceName) throws Exception {

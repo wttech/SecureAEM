@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.cognifide.secureaem.TestConfiguration;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.Consts;
 import org.apache.http.HttpResponse;
@@ -30,8 +31,8 @@ public class GroovyConsoleTest extends AbstractTest implements PublishTest, Disp
 
 	private static final Gson GSON = new Gson();
 
-	public GroovyConsoleTest(Configuration config) {
-		super(config);
+	public GroovyConsoleTest(Configuration config, TestConfiguration testConfiguration) {
+		super(config, testConfiguration);
 	}
 
 	@Override

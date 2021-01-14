@@ -2,6 +2,7 @@ package com.cognifide.secureaem.tests;
 
 import com.cognifide.secureaem.AbstractTest;
 import com.cognifide.secureaem.Configuration;
+import com.cognifide.secureaem.TestConfiguration;
 import com.cognifide.secureaem.markers.DispatcherTest;
 
 /**
@@ -12,14 +13,14 @@ import com.cognifide.secureaem.markers.DispatcherTest;
  */
 public class PageContentTest extends AbstractTest implements DispatcherTest {
 
-	public PageContentTest(Configuration config) {
-		super(config);
+	public PageContentTest(Configuration config, TestConfiguration testConfiguration) {
+		super(config, testConfiguration);
 	}
 
 	@Override
 	public boolean doTest(String url, String instanceName) throws Exception {
-		String[] paths = config.getStringList("paths");
-		String[] content = config.getStringList("content");
+		String[] paths = testConfiguration.getPaths();
+		String[] content = testConfiguration.getContent();
 		if (paths.length != content.length) {
 			throw new IllegalArgumentException("Invalid configuration");
 		}

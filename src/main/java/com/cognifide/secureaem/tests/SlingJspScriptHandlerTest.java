@@ -2,14 +2,15 @@ package com.cognifide.secureaem.tests;
 
 import com.cognifide.secureaem.AbstractTest;
 import com.cognifide.secureaem.Configuration;
+import com.cognifide.secureaem.TestConfiguration;
 import com.cognifide.secureaem.markers.AuthorTest;
 import com.cognifide.secureaem.markers.PublishTest;
 
 public class SlingJspScriptHandlerTest extends AbstractTest
 		implements AuthorTest, PublishTest, OsgiConfigurationTest {
 
-	public SlingJspScriptHandlerTest(Configuration config) {
-		super(config);
+	public SlingJspScriptHandlerTest(Configuration config, TestConfiguration testConfiguration) {
+		super(config, testConfiguration);
 	}
 
 	@Override public boolean doTest(String url, String instanceName) throws Exception {

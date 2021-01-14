@@ -2,6 +2,7 @@ package com.cognifide.secureaem.tests;
 
 import com.cognifide.secureaem.AbstractTest;
 import com.cognifide.secureaem.Configuration;
+import com.cognifide.secureaem.TestConfiguration;
 import com.cognifide.secureaem.markers.DispatcherTest;
 
 /**
@@ -12,8 +13,8 @@ import com.cognifide.secureaem.markers.DispatcherTest;
  */
 public class WcmDebugTest extends AbstractTest implements DispatcherTest {
 
-	public WcmDebugTest(Configuration config) {
-		super(config);
+	public WcmDebugTest(Configuration config, TestConfiguration testConfiguration) {
+		super(config, testConfiguration);
 	}
 
 	@Override

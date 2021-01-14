@@ -1,5 +1,6 @@
 package com.cognifide.secureaem.tests;
 
+import com.cognifide.secureaem.TestConfiguration;
 import com.google.gson.Gson;
 
 import com.cognifide.secureaem.AbstractTest;
@@ -30,8 +31,8 @@ public class ReplicationTransportUsersTest extends AbstractTest implements Autho
 
 	private static final DefaultHttpClient client = new DefaultHttpClient();
 
-	public ReplicationTransportUsersTest(Configuration config) {
-		super(config);
+	public ReplicationTransportUsersTest(Configuration config, TestConfiguration testConfiguration) {
+		super(config, testConfiguration);
 	}
 
 	@Override public boolean doTest(String url, String instanceName) throws Exception {
