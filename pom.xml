@@ -237,29 +237,9 @@
 	</dependencies>
 	<profiles>
 		<profile>
-			<id>aem</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-				<assembly.descriptor>aem</assembly.descriptor>
-				<packaging.type>bundle</packaging.type>
-			</properties>
-			<dependencies>
-				<dependency>
-					<groupId>org.slf4j</groupId>
-					<artifactId>slf4j-api</artifactId>
-					<version>1.7.25</version>
-				</dependency>
-			</dependencies>
-		</profile>
-		<profile>
 			<id>cli</id>
 			<activation>
-				<property>
-					<name>performRelease</name>
-					<value>true</value>
-				</property>
+				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
 				<assembly.descriptor>cli</assembly.descriptor>
