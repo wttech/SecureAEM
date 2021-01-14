@@ -1,16 +1,14 @@
 package com.cognifide.secureaem.cli;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.cognifide.secureaem.*;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.Options;
@@ -25,7 +23,7 @@ import com.google.gson.Gson;
 
 public class Main {
 
-	private static final String DEFAULT_TEST_SUITE_PATH = "/test_suite.properties";
+	private static final String TEST_JSON_PATH = "/test_suite.json";
 
 	private static final String CMD_SUITE_OPTION = "suite";
 	
@@ -41,58 +39,43 @@ public class Main {
 			System.exit(1);
 		}
 		selectMode(cmdLine);
-		List<TestLoader> testLoaders = createTestLoaders(cmdLine);
+		List<TestLoader> testLoaders = createTestLoaders();
 		boolean result = true;
 		for (TestLoader testLoader : testLoaders) {
 			result = doTest(testLoader, cmdLine) && result;
 		}
 		printOutput();
-		System.exit(result ? 0 : -1);
+		System.exit(result ? 0 : 1337);
 	}
 
-	/**
-	 *
-	 * @param cmdLine
-	 * @return a list of testLoader from test_suite.properties
-	 * @throws IOException
-	 * @throws ClassNotFoundException
-	 */
-	private static List<TestLoader> createTestLoaders(CommandLine cmdLine)
-			throws IOException, ClassNotFoundException {
-		try (BufferedReader reader = getBufferedReader(cmdLine)) {
-			List<TestLoader> testLoaders = new ArrayList<>();
-			String line;
-			while ((line = reader.readLine()) != null) {
-				String[] parameters = line.split(",");
-				if (parameters.length >= 2) {
-					Class clazz = Class.forName(parameters[0].trim());
-					Severity severity = Severity.MAJOR;
-					if (parameters.length == 3) {
-						severity = Severity.of(parameters[2].trim());
-					}
-					testLoaders.add(new TestLoader(clazz, parameters[1].trim(), severity));
-				}
+	private static List<TestLoader> createTestLoaders()
+			throws ClassNotFoundException {
+		List<TestLoader> testLoaders = new ArrayList<>();
+
+		BufferedReader reader = new BufferedReader(
+				new InputStreamReader(Main.class.getClassLoader().getResourceAsStream(TEST_JSON_PATH))
+		);
+		JsonArray testsJson = JsonParser.parseReader(reader).getAsJsonArray();
+		for(int i = 0; i < testsJson.size(); i++) {
+			JsonObject jsonObject = (testsJson.get(i)).getAsJsonObject();
+
+			if(jsonObject.get("class") != null && jsonObject.get("name") != null) {
+				Class clazz = Class.forName(jsonObject.get("class").getAsString());
+				String name = jsonObject.get("name").getAsString();
+				testLoaders.add(new TestLoader(clazz, name));
+			} else {
+				printf("Tests in " + TEST_JSON_PATH + " should always have a class and name attribute");
+				System.exit(1337);
 			}
-			return testLoaders;
 		}
+
+		return testLoaders;
 	}
 
-	private static BufferedReader getBufferedReader(CommandLine cmdLine) throws FileNotFoundException {
-		BufferedReader reader;
-		if (cmdLine.hasOption(CMD_SUITE_OPTION)) {
-			reader = new BufferedReader(
-					new InputStreamReader(new FileInputStream(cmdLine.getOptionValue(CMD_SUITE_OPTION)),
-							StandardCharsets.UTF_8));
-		} else {
-			InputStream is = Main.class.getClass().getResourceAsStream(DEFAULT_TEST_SUITE_PATH);
-			reader = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
-		}
-		return reader;
-	}
 
 	private static boolean doTest(TestLoader testLoader, CommandLine cmdLine) throws Exception {
 		TestConfiguration testConfiguration = new TestConfiguration(testLoader.getComponentName());
-		Configuration cliConfig = new CliConfiguration(testConfiguration, cmdLine);
+		Configuration cliConfig = new CliConfiguration(cmdLine);
 		AbstractTest test = testLoader.getTest(cliConfig, testConfiguration);
 		test.test();
 		if (test.getResult() == TestResult.DISABLED) {
@@ -119,7 +102,7 @@ public class Main {
 		printf("");
 		testSuiteResult.addTestResult(
 				new SingleTestResult(
-						testConfiguration.getName(), test, testLoader.getSeverity()));
+						testConfiguration.getName(), test, testConfiguration.getSeverity()));
 		return test.getResult() == TestResult.OK;
 	}
 

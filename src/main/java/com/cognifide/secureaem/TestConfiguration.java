@@ -1,18 +1,15 @@
 package com.cognifide.secureaem;
 
+import com.cognifide.secureaem.cli.Main;
 import com.cognifide.secureaem.json.Severity;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.*;
 
 public class TestConfiguration {
-    private static final Logger LOG = LoggerFactory.getLogger(TestConfiguration.class);
-
-    private static final String PATH = "/Users/terrencekoch/thinkering/SecureAEM-fork/src/main/resources/test_suite.json";
+    private static final String PATH = "/test_suite.json";
 
     private boolean enabled;
 
@@ -28,10 +25,11 @@ public class TestConfiguration {
 
     private String[] extensions;
 
-    public TestConfiguration(String testName) throws FileNotFoundException {
+    public TestConfiguration(String testName) {
         try {
-            FileReader reader = new FileReader(PATH);
-            JsonArray testsJson = (JsonArray) new JsonParser().parse(reader);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(Main.class.getClassLoader().getResourceAsStream(PATH)));
+            JsonArray testsJson = JsonParser.parseReader(reader).getAsJsonArray();
+
             for(int i = 0; i < testsJson.size(); i++) {
                 if(testsJson.get(i).getAsJsonObject().get("name").getAsString().equals(testName)){
                     JsonObject jsonObject = (testsJson.get(i)).getAsJsonObject();

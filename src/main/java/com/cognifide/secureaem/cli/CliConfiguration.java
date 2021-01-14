@@ -16,13 +16,10 @@ public class CliConfiguration implements Configuration {
 
 	public static final String DEFAULT_USER = "admin";
 
-	private final TestConfiguration testConfiguration;
-
 	private final CommandLine cmdLine;
 
-	public CliConfiguration(TestConfiguration testConfiguration, CommandLine cmdLine)
+	public CliConfiguration(CommandLine cmdLine)
 			throws IOException, ParserConfigurationException, SAXException, URISyntaxException {
-		this.testConfiguration = testConfiguration;
 		this.cmdLine = cmdLine;
 	}
 

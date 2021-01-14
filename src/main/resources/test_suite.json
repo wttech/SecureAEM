@@ -1,11 +1,13 @@
 [
   {
+    "class": "com.cognifide.secureaem.tests.ConfigValidation",
     "name": "config-validation",
     "severity": "INFO",
     "enabled": true,
     "description": "You should enter valid dispatcher, author and publish URL in the configuration dialog."
   },
   {
+    "class": "com.cognifide.secureaem.tests.ExtensionsTest",
     "name": "content-grabbing",
     "severity": "CRITICAL",
     "enabled": true,

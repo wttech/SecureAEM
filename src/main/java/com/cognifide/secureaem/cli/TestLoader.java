@@ -13,12 +13,9 @@ public class TestLoader {
 
 	private final String componentName;
 
-	private Severity severity;
-
-	public TestLoader(Class<? extends AbstractTest> clazz, String componentName, Severity severity) {
+	public TestLoader(Class<? extends AbstractTest> clazz, String componentName) {
 		this.clazz = clazz;
 		this.componentName = componentName;
-		this.severity = severity;
 	}
 
 	public AbstractTest getTest(Configuration config, TestConfiguration testConfiguration) throws Exception {
@@ -28,10 +25,6 @@ public class TestLoader {
 
 	String getComponentName() {
 		return componentName;
-	}
-	
-	Severity getSeverity() {
-		return severity;
 	}
 
 }
