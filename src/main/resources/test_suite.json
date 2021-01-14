@@ -25,5 +25,15 @@
     "url": "https://helpx.adobe.com/experience-manager/6-4/sites/administering/using/security-checklist.html#ChangeDefaultPasswordsFortheAEMandOSGiConsoleAdminAccounts",
     "urlDesc": "Official Aem Security Checklist",
     "users": ["admin:admin","author:author","replication-receiver:replication-receiver","jdoe@geometrixx.info:jdoe","aparker@geometrixx.info:aparker"]
+  },
+  {
+    "class": "com.cognifide.secureaem.tests.BundlesTest",
+    "name": "crx-development-bundles",
+    "severity": "CRITICAL",
+    "enabled": true,
+    "description": "Access to several selectors and extensions should be restricted, as malicious user can use them to perform DoS attack or to gather internal site information.",
+    "url": "https://helpx.adobe.com/experience-manager/6-4/sites/administering/using/security-checklist.html#CheckiftheCRXdevelopmentbundlesarepresent",
+    "urlDesc": "docs.adobe.com",
+    "bundles": ["Adobe CRXDE Support","Adobe Granite CRX Explorer","Adobe Granite CRXDE Lite"]
   }
 ]

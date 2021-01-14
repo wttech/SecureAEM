@@ -34,6 +34,8 @@ public class TestConfiguration {
 
     private String[] content;
 
+    private String[] bundles;
+
     public TestConfiguration(String testName) {
         try {
             InputStream configStream = Main.class.getResourceAsStream(PATH);
@@ -91,6 +93,15 @@ public class TestConfiguration {
                         }
                         this.content = content;
                     }
+
+                    if(jsonObject.get("bundles") != null) {
+                        JsonArray jsonBundle = jsonObject.get("bundles").getAsJsonArray();
+                        String[] bundles = new String[jsonBundle.size()];
+                        for (int j = 0; j < jsonBundle.size(); j++) {
+                            bundles[j] = jsonBundle.get(j).getAsString();
+                        }
+                        this.bundles = bundles;
+                    }
                 }
             }
 
@@ -147,7 +158,6 @@ public class TestConfiguration {
         this.urlDescription = urlDescription;
     }
 
-
     public String[] getExtensions() {
         return extensions;
     }
@@ -178,6 +188,14 @@ public class TestConfiguration {
 
     public void setContent(String[] content) {
         this.content = content;
+    }
+
+    public String[] getBundles() {
+        return bundles;
+    }
+
+    public void setBundles(String[] bundles) {
+        this.bundles = bundles;
     }
 
 }

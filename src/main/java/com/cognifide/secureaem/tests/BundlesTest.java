@@ -50,7 +50,7 @@ public class BundlesTest extends AbstractTest implements AuthorTest, PublishTest
 		} else if (response.getStatusLine().getStatusCode() == HttpURLConnection.HTTP_OK) {
 			@SuppressWarnings("unchecked") Map<String, List<Map<String, String>>> map = GSON
 					.fromJson(body, Map.class);
-			ArrayList<String> bundles = new ArrayList<>(Arrays.asList(testConfiguration.getExtensions()));
+			ArrayList<String> bundles = new ArrayList<>(Arrays.asList(testConfiguration.getBundles()));
 			for (Map<String, String> item : map.get("data")) {
 				if (bundles.contains(item.get("name"))) {
 					addErrorMessage("Bundle [%s] already exists on [%s]", item.get("name"), instanceName);
