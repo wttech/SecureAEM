@@ -83,6 +83,15 @@ public class Main {
 
 		printf("### %s ###", testConfiguration.getName());
 		printf("Environments: %s", StringUtils.join(test.getEnvironments(), " / "));
+		if(testConfiguration.getDescription() != null){
+			printf("Description: %s", testConfiguration.getDescription());
+		}
+		if(testConfiguration.getUrl() != null){
+			printf("Url: %s", testConfiguration.getUrl());
+		}
+		if(testConfiguration.getUrlDescription() != null){
+			printf("Url Description: %s", testConfiguration.getUrlDescription());
+		}
 		printf("Result: %s", test.getResult());
 		if (!test.getErrorMessages().isEmpty()) {
 			printf("");

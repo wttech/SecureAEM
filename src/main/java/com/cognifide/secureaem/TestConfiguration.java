@@ -55,8 +55,8 @@ public class TestConfiguration {
                     if(jsonObject.get("enabled") != null) {
                         this.enabled = jsonObject.get("enabled").getAsBoolean();
                     }
-                    if(jsonObject.get("urlDescription") != null) {
-                        this.urlDescription = jsonObject.get("urlDescription").getAsString();
+                    if(jsonObject.get("urlDesc") != null) {
+                        this.urlDescription = jsonObject.get("urlDesc").getAsString();
                     }
                     if(jsonObject.get("url") != null) {
                         this.url = jsonObject.get("url").getAsString();
