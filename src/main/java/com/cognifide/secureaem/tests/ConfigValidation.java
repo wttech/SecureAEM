@@ -2,6 +2,7 @@ package com.cognifide.secureaem.tests;
 
 import com.cognifide.secureaem.AbstractTest;
 import com.cognifide.secureaem.Configuration;
+import com.cognifide.secureaem.TestConfiguration;
 import com.cognifide.secureaem.markers.AuthorTest;
 import com.cognifide.secureaem.markers.DispatcherTest;
 import com.cognifide.secureaem.markers.PublishTest;
@@ -14,8 +15,8 @@ import com.cognifide.secureaem.markers.PublishTest;
  */
 public class ConfigValidation extends AbstractTest implements AuthorTest, DispatcherTest, PublishTest {
 
-	public ConfigValidation(Configuration config) {
-		super(config);
+	public ConfigValidation(Configuration config, TestConfiguration testConfiguration) {
+		super(config, testConfiguration);
 	}
 
 	@Override

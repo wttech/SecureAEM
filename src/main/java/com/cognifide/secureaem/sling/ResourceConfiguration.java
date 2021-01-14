@@ -59,16 +59,6 @@ public class ResourceConfiguration implements Configuration {
 		return getCredentialsParameter("publishCredentials", 1);
 	}
 
-	@Override
-	public String getStringValue(String name, String defaultValue) {
-		return getLocalConfig(name, defaultValue);
-	}
-
-	@Override
-	public String[] getStringList(String name) {
-		return getLocalConfig(name, ArrayUtils.EMPTY_STRING_ARRAY);
-	}
-
 	private String getCredentialsParameter(String credentialName, int parameterIndex) {
 		String[] parameters = getGlobalConfig(credentialName).split(":");
 		if(parameters.length == 2) {

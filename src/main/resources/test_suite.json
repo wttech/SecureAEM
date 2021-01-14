@@ -1,0 +1,17 @@
+[
+  {
+    "name": "config-validation",
+    "severity": "INFO",
+    "enabled": true,
+    "description": "You should enter valid dispatcher, author and publish URL in the configuration dialog."
+  },
+  {
+    "name": "content-grabbing",
+    "severity": "CRITICAL",
+    "enabled": true,
+    "description": "Access to several selectors and extensions should be restricted, as malicious user can use them to perform DoS attack or to gather internal site information.",
+    "url": "https://helpx.adobe.com/experience-manager/dispatcher/using/security-checklist.html#RestrictAccess",
+    "urlDesc": "Official Aem Security Checklist",
+    "extensions": [".infinity.json",".tidy.json",".sysview.xml",".docview.json",".docview.xml",".2.json",".query.json",".xml"]
+  }
+]

@@ -22,6 +22,8 @@ public abstract class AbstractTest {
 
 	protected final Configuration config;
 
+	protected final TestConfiguration testConfiguration;
+
 	private List<String> infoMessages;
 
 	private List<String> errorMessages;
@@ -30,29 +32,26 @@ public abstract class AbstractTest {
 
 	private TestResult result;
 
-	public AbstractTest(Configuration config) {
+	public AbstractTest(Configuration config, TestConfiguration testConfiguration) {
 		this.httpHelper = new HttpHelper();
 		this.config = config;
+		this.testConfiguration = testConfiguration;
 	}
 
 	public void test() throws IOException {
 		result = null;
 		appendEnvironmentInfo();
-		if ("true".equals(config.getStringValue("enabled", "false"))) {
-			try {
-				result = doTest();
-			} catch (Exception e) {
-				if (!TestRunParameters.SILENT_MODE) {
-					LOG.error("Error during test", e);
-				}
-				if (!(e instanceof InvalidConfigurationException)) {
-					addErrorMessage("Exception occured: " + e.toString());
-				}
-				
-				result = TestResult.EXCEPTION;
+		try {
+			result = doTest();
+		} catch (Exception e) {
+			if (!TestRunParameters.SILENT_MODE) {
+				LOG.error("Error during test", e);
 			}
-		} else {
-			result = TestResult.DISABLED;
+			if (!(e instanceof InvalidConfigurationException)) {
+				addErrorMessage("Exception occured: " + e.toString());
+			}
+
+			result = TestResult.EXCEPTION;
 		}
 	}
 

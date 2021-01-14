@@ -10,6 +10,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.cognifide.secureaem.*;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.Options;
@@ -17,10 +18,6 @@ import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.PosixParser;
 import org.apache.commons.lang3.StringUtils;
 
-import com.cognifide.secureaem.AbstractTest;
-import com.cognifide.secureaem.Configuration;
-import com.cognifide.secureaem.TestResult;
-import com.cognifide.secureaem.TestRunParameters;
 import com.cognifide.secureaem.json.Severity;
 import com.cognifide.secureaem.json.SingleTestResult;
 import com.cognifide.secureaem.json.TestSuiteResult;
@@ -87,15 +84,15 @@ public class Main {
 	}
 
 	private static boolean doTest(TestLoader testLoader, CommandLine cmdLine) throws Exception {
-		XmlConfigurationReader xmlConfigReader = new XmlConfigurationReader(testLoader.getComponentName());
-		Configuration config = new CliConfiguration(xmlConfigReader, cmdLine);
+		TestConfiguration testConfiguration = new TestConfiguration(testLoader.getComponentName());
+		Configuration config = new CliConfiguration(testConfiguration, cmdLine);
 		AbstractTest test = testLoader.getTest(config);
 		test.test();
 		if (test.getResult() == TestResult.DISABLED) {
 			return true;
 		}
 
-		printf("### %s ###", xmlConfigReader.getMetadataValue("jcr:title"));
+		printf("### %s ###", testConfiguration.getName());
 		printf("Environments: %s", StringUtils.join(test.getEnvironments(), " / "));
 		printf("Result: %s", test.getResult());
 		if (!test.getErrorMessages().isEmpty()) {
@@ -105,8 +102,7 @@ public class Main {
 				printf(" * %s", message);
 			}
 		}
-		if (!test.getInfoMessages().isEmpty() && !"true"
-				.equals(config.getStringValue("hidePassed", "false"))) {
+		if (!test.getInfoMessages().isEmpty()) {
 			printf("");
 			printf("Passed tests:");
 			for (String message : test.getInfoMessages()) {
@@ -116,7 +112,7 @@ public class Main {
 		printf("");
 		testSuiteResult.addTestResult(
 				new SingleTestResult(
-						xmlConfigReader.getMetadataValue("jcr:title"), test, testLoader.getSeverity()));
+						testConfiguration.getName(), test, testLoader.getSeverity()));
 		return test.getResult() == TestResult.OK;
 	}
 

@@ -19,7 +19,4 @@ public interface Configuration {
 
 	String getPublishPassword();
 
-	String getStringValue(String name, String defaultValue);
-
-	String[] getStringList(String name);
 }

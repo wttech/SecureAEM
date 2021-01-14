@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import com.cognifide.secureaem.TestConfiguration;
 import org.apache.http.HttpResponse;
 import org.apache.http.auth.AuthenticationException;
 import org.apache.http.auth.UsernamePasswordCredentials;
@@ -30,8 +31,8 @@ public class BundlesTest extends AbstractTest implements AuthorTest, PublishTest
 
 	private static final Gson GSON = new Gson();
 
-	public BundlesTest(Configuration config) {
-		super(config);
+	public BundlesTest(Configuration config, TestConfiguration testConfiguration) {
+		super(config, testConfiguration);
 	}
 
 	@Override public boolean doTest(String url, String instanceName) throws Exception {
@@ -49,8 +50,7 @@ public class BundlesTest extends AbstractTest implements AuthorTest, PublishTest
 		} else if (response.getStatusLine().getStatusCode() == HttpURLConnection.HTTP_OK) {
 			@SuppressWarnings("unchecked") Map<String, List<Map<String, String>>> map = GSON
 					.fromJson(body, Map.class);
-			String[] bundlesConfig = config.getStringList("bundles");
-			ArrayList<String> bundles = new ArrayList<>(Arrays.asList(bundlesConfig));
+			ArrayList<String> bundles = new ArrayList<>(Arrays.asList(testConfiguration.getExtensions()));
 			for (Map<String, String> item : map.get("data")) {
 				if (bundles.contains(item.get("name"))) {
 					addErrorMessage("Bundle [%s] already exists on [%s]", item.get("name"), instanceName);
