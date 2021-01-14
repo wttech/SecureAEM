@@ -4,6 +4,7 @@ import java.lang.reflect.Constructor;
 
 import com.cognifide.secureaem.AbstractTest;
 import com.cognifide.secureaem.Configuration;
+import com.cognifide.secureaem.TestConfiguration;
 import com.cognifide.secureaem.json.Severity;
 
 public class TestLoader {
@@ -20,9 +21,9 @@ public class TestLoader {
 		this.severity = severity;
 	}
 
-	public AbstractTest getTest(Configuration config) throws Exception {
-		Constructor<?> constructor = clazz.getConstructor(Configuration.class);
-		return (AbstractTest) constructor.newInstance(config);
+	public AbstractTest getTest(Configuration config, TestConfiguration testConfiguration) throws Exception {
+		Constructor<?> constructor = clazz.getConstructor(Configuration.class, TestConfiguration.class);
+		return (AbstractTest) constructor.newInstance(config, testConfiguration);
 	}
 
 	String getComponentName() {

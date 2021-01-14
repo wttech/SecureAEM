@@ -2,6 +2,7 @@ package com.cognifide.secureaem.tests;
 
 import com.cognifide.secureaem.AbstractTest;
 import com.cognifide.secureaem.Configuration;
+import com.cognifide.secureaem.TestConfiguration;
 import com.cognifide.secureaem.markers.DispatcherTest;
 
 /**
@@ -11,13 +12,13 @@ import com.cognifide.secureaem.markers.DispatcherTest;
  *
  */
 public class ExtensionsTest extends AbstractTest implements DispatcherTest {
-	public ExtensionsTest(Configuration config) {
-		super(config);
+	public ExtensionsTest(Configuration config, TestConfiguration testConfiguration) {
+		super(config, testConfiguration);
 	}
 
 	@Override
 	public boolean doTest(String url, String instanceName) throws Exception {
-		String[] extensions = config.getStringList("extensions");
+		String[] extensions = testConfiguration.getExtensions();
 		String basePath = httpHelper.getBasePath(url, true);
 		boolean ok = true;
 		for (String extension : extensions) {

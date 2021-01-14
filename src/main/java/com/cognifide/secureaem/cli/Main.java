@@ -50,6 +50,13 @@ public class Main {
 		System.exit(result ? 0 : -1);
 	}
 
+	/**
+	 *
+	 * @param cmdLine
+	 * @return a list of testLoader from test_suite.properties
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	private static List<TestLoader> createTestLoaders(CommandLine cmdLine)
 			throws IOException, ClassNotFoundException {
 		try (BufferedReader reader = getBufferedReader(cmdLine)) {
@@ -85,8 +92,8 @@ public class Main {
 
 	private static boolean doTest(TestLoader testLoader, CommandLine cmdLine) throws Exception {
 		TestConfiguration testConfiguration = new TestConfiguration(testLoader.getComponentName());
-		Configuration config = new CliConfiguration(testConfiguration, cmdLine);
-		AbstractTest test = testLoader.getTest(config);
+		Configuration cliConfig = new CliConfiguration(testConfiguration, cmdLine);
+		AbstractTest test = testLoader.getTest(cliConfig, testConfiguration);
 		test.test();
 		if (test.getResult() == TestResult.DISABLED) {
 			return true;
