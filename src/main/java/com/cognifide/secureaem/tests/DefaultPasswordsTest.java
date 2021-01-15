@@ -18,7 +18,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
 import com.cognifide.secureaem.AbstractTest;
-import com.cognifide.secureaem.Configuration;
+import com.cognifide.secureaem.CliConfiguration;
 import com.cognifide.secureaem.UserHelper;
 import com.cognifide.secureaem.markers.AuthorTest;
 import com.cognifide.secureaem.markers.PublishTest;
@@ -35,7 +35,7 @@ public class DefaultPasswordsTest extends AbstractTest implements AuthorTest, Pu
 	private static final String PASSWORD_FORM_PARAM_NAME = "j_password";
 	private static final String IS_VALIDATE_FORM_PARAM_NAME = "j_validate";
 
-	public DefaultPasswordsTest(Configuration config, TestConfiguration testConfiguration) {
+	public DefaultPasswordsTest(CliConfiguration config, TestConfiguration testConfiguration) {
 		super(config, testConfiguration);
 	}
 

@@ -4,7 +4,7 @@ package com.cognifide.secureaem;
  * Test configuration.
  * 
  */
-public interface Configuration {
+public interface CliConfiguration {
 	String getDispatcherUrl();
 
 	String getAuthor();

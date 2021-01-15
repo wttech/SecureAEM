@@ -20,7 +20,7 @@ public abstract class AbstractTest {
 
 	protected final HttpHelper httpHelper;
 
-	protected final Configuration config;
+	protected final CliConfiguration config;
 
 	protected final TestConfiguration testConfiguration;
 
@@ -32,7 +32,7 @@ public abstract class AbstractTest {
 
 	private TestResult result;
 
-	public AbstractTest(Configuration config, TestConfiguration testConfiguration) {
+	public AbstractTest(CliConfiguration config, TestConfiguration testConfiguration) {
 		this.httpHelper = new HttpHelper();
 		this.config = config;
 		this.testConfiguration = testConfiguration;

@@ -5,14 +5,11 @@ import java.net.URISyntaxException;
 
 import javax.xml.parsers.ParserConfigurationException;
 
-import com.cognifide.secureaem.TestConfiguration;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.lang3.StringUtils;
 import org.xml.sax.SAXException;
 
-import com.cognifide.secureaem.Configuration;
-
-public class CliConfiguration implements Configuration {
+public class CliConfiguration implements com.cognifide.secureaem.CliConfiguration {
 
 	public static final String DEFAULT_USER = "admin";
 

@@ -1,6 +1,6 @@
 package com.cognifide.secureaem.sling;
 
-import org.apache.commons.lang3.ArrayUtils;
+import com.cognifide.secureaem.cli.CliConfiguration;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -8,10 +8,7 @@ import org.apache.sling.api.resource.ValueMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.cognifide.secureaem.Configuration;
-import com.cognifide.secureaem.cli.CliConfiguration;
-
-public class ResourceConfiguration implements Configuration {
+public class ResourceConfiguration implements com.cognifide.secureaem.CliConfiguration {
 	private static final Logger LOG = LoggerFactory.getLogger(ResourceConfiguration.class);
 	private final ValueMap globalConfig;
 

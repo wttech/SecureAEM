@@ -10,7 +10,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
 import com.cognifide.secureaem.AbstractTest;
-import com.cognifide.secureaem.Configuration;
+import com.cognifide.secureaem.CliConfiguration;
 import com.cognifide.secureaem.markers.PublishTest;
 
 /**
@@ -21,7 +21,7 @@ import com.cognifide.secureaem.markers.PublishTest;
  */
 public class WebDavTest extends AbstractTest implements PublishTest {
 
-	public WebDavTest(Configuration config, TestConfiguration testConfiguration) {
+	public WebDavTest(CliConfiguration config, TestConfiguration testConfiguration) {
 		super(config, testConfiguration);
 	}
 

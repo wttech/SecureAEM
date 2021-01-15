@@ -16,7 +16,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
 import com.cognifide.secureaem.AbstractTest;
-import com.cognifide.secureaem.Configuration;
+import com.cognifide.secureaem.CliConfiguration;
 import com.cognifide.secureaem.markers.DispatcherTest;
 import com.cognifide.secureaem.markers.PublishTest;
 import com.google.gson.Gson;
@@ -31,7 +31,7 @@ public class GroovyConsoleTest extends AbstractTest implements PublishTest, Disp
 
 	private static final Gson GSON = new Gson();
 
-	public GroovyConsoleTest(Configuration config, TestConfiguration testConfiguration) {
+	public GroovyConsoleTest(CliConfiguration config, TestConfiguration testConfiguration) {
 		super(config, testConfiguration);
 	}
 

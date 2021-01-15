@@ -1,7 +1,7 @@
 package com.cognifide.secureaem.tests;
 
 import com.cognifide.secureaem.AbstractTest;
-import com.cognifide.secureaem.Configuration;
+import com.cognifide.secureaem.CliConfiguration;
 import com.cognifide.secureaem.TestConfiguration;
 import com.cognifide.secureaem.markers.PublishTest;
 
@@ -20,7 +20,7 @@ import java.net.URISyntaxException;
 
 public class ErrorHandlerTest extends AbstractTest implements PublishTest {
 
-	public ErrorHandlerTest(Configuration config, TestConfiguration testConfiguration) {
+	public ErrorHandlerTest(CliConfiguration config, TestConfiguration testConfiguration) {
 		super(config, testConfiguration);
 	}
 

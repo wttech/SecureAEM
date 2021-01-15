@@ -4,7 +4,7 @@ import com.cognifide.secureaem.TestConfiguration;
 import com.google.gson.Gson;
 
 import com.cognifide.secureaem.AbstractTest;
-import com.cognifide.secureaem.Configuration;
+import com.cognifide.secureaem.CliConfiguration;
 import com.cognifide.secureaem.markers.AuthorTest;
 import com.cognifide.secureaem.markers.PublishTest;
 
@@ -31,7 +31,7 @@ public class ReplicationTransportUsersTest extends AbstractTest implements Autho
 
 	private static final DefaultHttpClient client = new DefaultHttpClient();
 
-	public ReplicationTransportUsersTest(Configuration config, TestConfiguration testConfiguration) {
+	public ReplicationTransportUsersTest(CliConfiguration config, TestConfiguration testConfiguration) {
 		super(config, testConfiguration);
 	}
 

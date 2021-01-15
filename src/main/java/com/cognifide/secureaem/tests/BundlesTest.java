@@ -17,7 +17,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
 import com.cognifide.secureaem.AbstractTest;
-import com.cognifide.secureaem.Configuration;
+import com.cognifide.secureaem.CliConfiguration;
 import com.cognifide.secureaem.markers.AuthorTest;
 import com.cognifide.secureaem.markers.PublishTest;
 import com.google.gson.Gson;
@@ -31,7 +31,7 @@ public class BundlesTest extends AbstractTest implements AuthorTest, PublishTest
 
 	private static final Gson GSON = new Gson();
 
-	public BundlesTest(Configuration config, TestConfiguration testConfiguration) {
+	public BundlesTest(CliConfiguration config, TestConfiguration testConfiguration) {
 		super(config, testConfiguration);
 	}
 

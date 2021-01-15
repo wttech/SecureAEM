@@ -1,7 +1,7 @@
 package com.cognifide.secureaem.tests;
 
 import com.cognifide.secureaem.AbstractTest;
-import com.cognifide.secureaem.Configuration;
+import com.cognifide.secureaem.CliConfiguration;
 import com.cognifide.secureaem.TestConfiguration;
 import com.cognifide.secureaem.markers.DispatcherTest;
 
@@ -12,7 +12,7 @@ import com.cognifide.secureaem.markers.DispatcherTest;
  *
  */
 public class ExtensionsTest extends AbstractTest implements DispatcherTest {
-	public ExtensionsTest(Configuration config, TestConfiguration testConfiguration) {
+	public ExtensionsTest(CliConfiguration config, TestConfiguration testConfiguration) {
 		super(config, testConfiguration);
 	}
 

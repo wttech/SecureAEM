@@ -14,7 +14,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
 import com.cognifide.secureaem.AbstractTest;
-import com.cognifide.secureaem.Configuration;
+import com.cognifide.secureaem.CliConfiguration;
 import com.cognifide.secureaem.markers.AuthorTest;
 import com.cognifide.secureaem.markers.DispatcherTest;
 import com.cognifide.secureaem.markers.PublishTest;
@@ -27,7 +27,7 @@ import com.cognifide.secureaem.markers.PublishTest;
  */
 public class CrxdeLogsTest extends AbstractTest implements DispatcherTest, AuthorTest, PublishTest {
 
-	public CrxdeLogsTest(Configuration config, TestConfiguration testConfiguration) {
+	public CrxdeLogsTest(CliConfiguration config, TestConfiguration testConfiguration) {
 		super(config, testConfiguration);
 	}
 

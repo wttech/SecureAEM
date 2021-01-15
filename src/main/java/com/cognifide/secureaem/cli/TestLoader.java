@@ -3,9 +3,8 @@ package com.cognifide.secureaem.cli;
 import java.lang.reflect.Constructor;
 
 import com.cognifide.secureaem.AbstractTest;
-import com.cognifide.secureaem.Configuration;
+import com.cognifide.secureaem.CliConfiguration;
 import com.cognifide.secureaem.TestConfiguration;
-import com.cognifide.secureaem.json.Severity;
 
 public class TestLoader {
 
@@ -18,8 +17,8 @@ public class TestLoader {
 		this.componentName = componentName;
 	}
 
-	public AbstractTest getTest(Configuration config, TestConfiguration testConfiguration) throws Exception {
-		Constructor<?> constructor = clazz.getConstructor(Configuration.class, TestConfiguration.class);
+	public AbstractTest getTest(CliConfiguration config, TestConfiguration testConfiguration) throws Exception {
+		Constructor<?> constructor = clazz.getConstructor(CliConfiguration.class, TestConfiguration.class);
 		return (AbstractTest) constructor.newInstance(config, testConfiguration);
 	}
 

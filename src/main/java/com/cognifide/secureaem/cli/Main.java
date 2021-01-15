@@ -72,7 +72,7 @@ public class Main {
 
 	private static boolean doTest(TestLoader testLoader, CommandLine cmdLine) throws Exception {
 		TestConfiguration testConfiguration = new TestConfiguration(testLoader.getComponentName());
-		Configuration cliConfig = new CliConfiguration(cmdLine);
+		com.cognifide.secureaem.CliConfiguration cliConfig = new CliConfiguration(cmdLine);
 		AbstractTest test = testLoader.getTest(cliConfig, testConfiguration);
 		test.test();
 		if (test.getResult() == TestResult.DISABLED) {
@@ -154,5 +154,4 @@ public class Main {
 		CommandLineParser parser = new PosixParser();
 		return parser.parse(options, args);
 	}
-	
 }
