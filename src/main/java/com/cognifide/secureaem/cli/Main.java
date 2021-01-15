@@ -1,7 +1,6 @@
 package com.cognifide.secureaem.cli;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +15,6 @@ import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.PosixParser;
 import org.apache.commons.lang3.StringUtils;
 
-import com.cognifide.secureaem.json.Severity;
 import com.cognifide.secureaem.json.SingleTestResult;
 import com.cognifide.secureaem.json.TestSuiteResult;
 import com.google.gson.Gson;
@@ -91,6 +89,9 @@ public class Main {
 		}
 		if(testConfiguration.getUrlDescription() != null){
 			printf("Url Description: %s", testConfiguration.getUrlDescription());
+		}
+		if(testConfiguration.getSeverity() != null){
+			printf("Severity: %s", testConfiguration.getSeverity());
 		}
 		printf("Result: %s", test.getResult());
 		if (!test.getErrorMessages().isEmpty()) {
