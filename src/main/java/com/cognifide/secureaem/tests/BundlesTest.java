@@ -36,6 +36,7 @@ public class BundlesTest extends AbstractTest implements AuthorTest, PublishTest
 	}
 
 	@Override public boolean doTest(String url, String instanceName) throws Exception {
+		boolean testResult = true;
 		UsernamePasswordCredentials credentials = getUsernamePasswordCredentials(instanceName);
 
 		String agentUrl = url + "/system/console/bundles.json";
@@ -55,13 +56,14 @@ public class BundlesTest extends AbstractTest implements AuthorTest, PublishTest
 				if (bundles.contains(item.get("name"))) {
 					addErrorMessage("Bundle [%s] already exists on [%s]", item.get("name"), instanceName);
 					bundles.remove(item.get("name"));
+					testResult = false;
 				}
 			}
 			for (String bundle : bundles) {
 				addInfoMessage("Bundle [%s] doesn't exists on [%s]", bundle, instanceName);
 			}
 		}
-		return true;
+		return testResult;
 	}
 	
 }
