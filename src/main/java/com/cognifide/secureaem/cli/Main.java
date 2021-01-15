@@ -79,36 +79,39 @@ public class Main {
 			return true;
 		}
 
-		printf("### %s ###", testConfiguration.getName());
-		printf("Environments: %s", StringUtils.join(test.getEnvironments(), " / "));
-		if(testConfiguration.getDescription() != null){
-			printf("Description: %s", testConfiguration.getDescription());
-		}
-		if(testConfiguration.getUrl() != null){
-			printf("Url: %s", testConfiguration.getUrl());
-		}
-		if(testConfiguration.getUrlDescription() != null){
-			printf("Url Description: %s", testConfiguration.getUrlDescription());
-		}
-		if(testConfiguration.getSeverity() != null){
-			printf("Severity: %s", testConfiguration.getSeverity());
-		}
-		printf("Result: %s", test.getResult());
-		if (!test.getErrorMessages().isEmpty()) {
-			printf("");
-			printf("Failed tests:");
-			for (String message : test.getErrorMessages()) {
-				printf(" * %s", message);
+		if(test.getResult() != TestResult.OK || showPassed(cmdLine)) {
+			printf("### %s ###", testConfiguration.getName());
+			printf("Environments: %s", StringUtils.join(test.getEnvironments(), " / "));
+			if(testConfiguration.getDescription() != null){
+				printf("Description: %s", testConfiguration.getDescription());
 			}
-		}
-		if (!test.getInfoMessages().isEmpty()) {
-			printf("");
-			printf("Passed tests:");
-			for (String message : test.getInfoMessages()) {
-				printf(" * %s", message);
+			if(testConfiguration.getUrl() != null){
+				printf("Url: %s", testConfiguration.getUrl());
 			}
+			if(testConfiguration.getUrlDescription() != null){
+				printf("Url Description: %s", testConfiguration.getUrlDescription());
+			}
+			if(testConfiguration.getSeverity() != null){
+				printf("Severity: %s", testConfiguration.getSeverity());
+			}
+			printf("Result: %s", test.getResult());
+			if (!test.getErrorMessages().isEmpty()) {
+				printf("");
+				printf("Failed tests:");
+				for (String message : test.getErrorMessages()) {
+					printf(" * %s", message);
+				}
+			}
+			if (!test.getInfoMessages().isEmpty()) {
+				printf("");
+				printf("Passed tests:");
+				for (String message : test.getInfoMessages()) {
+					printf(" * %s", message);
+				}
+			}
+			printf("");
 		}
-		printf("");
+
 		testSuiteResult.addTestResult(
 				new SingleTestResult(
 						testConfiguration.getName(), test, testConfiguration.getSeverity()));
@@ -127,6 +130,10 @@ public class Main {
 		TestRunParameters.SILENT_MODE = jsonMode;
 	}
 
+	private static Boolean showPassed(CommandLine cmdLine) {
+		return cmdLine.hasOption('s');
+	}
+
 	private static void printOutput() {
 		if (jsonMode) {
 			System.out.println(new Gson().toJson(testSuiteResult));
@@ -142,7 +149,8 @@ public class Main {
 		options.addOption("aCredentials", true, "author credentials");
 		options.addOption("pCredentials", true, "publish credentials");		
 		options.addOption("m", true, "mode");
-		
+		options.addOption("s", false, "show passed tests");
+
 		CommandLineParser parser = new PosixParser();
 		return parser.parse(options, args);
 	}
