@@ -48,4 +48,22 @@ public class TestSuiteResult {
 			passed++;
 		}
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("### Final test results ###" + "\n");
+		sb.append("> Results\n");
+		sb.append(" * Passed: " + passed + "\n");
+		sb.append(" * Failed: " + failed + "\n");
+		sb.append("\n");
+		sb.append("> Failed test severities\n");
+		sb.append(" * Blocker: " + blocker + "\n");
+		sb.append(" * Critical: " + critical + "\n");
+		sb.append(" * Major: " + major + "\n");
+		sb.append(" * Minor: " + minor + "\n");
+		sb.append(" * Info: " + info + "\n");
+		sb.append("\n");
+		return sb.toString();
+	}
 }

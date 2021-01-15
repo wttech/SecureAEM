@@ -43,6 +43,7 @@ public class Main {
 			result = doTest(testLoader, cmdLine) && result;
 		}
 		printOutput();
+		printf(testSuiteResult.toString());
 		System.exit(result ? 0 : 1337);
 	}
 
@@ -68,7 +69,6 @@ public class Main {
 
 		return testLoaders;
 	}
-
 
 	private static boolean doTest(TestLoader testLoader, CommandLine cmdLine) throws Exception {
 		TestConfiguration testConfiguration = new TestConfiguration(testLoader.getComponentName());
