@@ -42,5 +42,112 @@
     "severity": "CRITICAL",
     "enabled": true,
     "description": "CRXDE logs servlet should be disabled on author and publish."
+  },
+  {
+    "class": "com.cognifide.secureaem.tests.ErrorHandlerTest",
+    "name": "error-handler",
+    "severity": "BLOCKER",
+    "enabled": true,
+    "url": "https://helpx.adobe.com/experience-manager/6-4/sites/administering/using/security-checklist.html#ImplementCustomErrorHandler",
+    "urlDesc": "Official Aem Security Checklist",
+    "users": ["admin:admin"],
+    "description": "To prevent information disclosure it is strongly recommended to define custom error handler pages, especially for 404 and 500 HTTP Response codes"
+  },
+  {
+    "class": "com.cognifide.secureaem.tests.ExtensionsTest",
+    "name": "feed-selector",
+    "severity": "MAJOR",
+    "enabled": true,
+    "extensions": [".feed.xml",".feed.html"],
+    "description": "Access to .feed selector should be restricted."
+  },
+  {
+    "class": "com.cognifide.secureaem.tests.PageContentTest",
+    "name": "dispatcher-access",
+    "severity": "BLOCKER",
+    "enabled": true,
+    "paths": ["/.json","/.1.json","/.2.json","/apps.json","/bin.1.json","/bin/querybuilder.json","/bin/receive","/bin/workflow","/libs.json","/tmp.json","/var.json","/libs/cq/search/content/querydebug.html","/home/groups/e/everyone.json","/content.xml","/system/sling/cqform/defaultlogin.html","/libs/cq/core/content/projects/_jcr_content/rail/items/modes/items/navigation/items/searchpanel/result.html","/libs/granite/core/content/login.html"],
+    "description": "Use the dispatcher to restrict several resources and servlets which shouldn't be available externally.",
+    "url": "https://helpx.adobe.com/experience-manager/dispatcher/using/security-checklist.html#RestrictAccess",
+    "urlDesc": "Official AEM Security Checklist",
+    "content": ["sling:resourceType","sling:resourceType","sling:resourceType","createdBy","sling:resourceType",":true","Durbo","createdBy","createdBy","createdBy","createdBy","Query Builder","createdBy","xmlns","j_username","no content","j_username"]
+  },
+  {
+    "class": "com.cognifide.secureaem.tests.PageContentTest",
+    "name": "shindig-proxy",
+    "severity": "CRITICAL",
+    "enabled": true,
+    "paths": ["/libs/shindig/proxy","/libs/opensocial/proxy"],
+    "description": "Access to shindig proxy should be restricted.",
+    "content": ["INVALID_PARAMETER","Missing required parameter"]
+  },
+  {
+    "class": "com.cognifide.secureaem.tests.PublishPathsTest",
+    "name": "third-party",
+    "severity": "CRITICAL",
+    "enabled": true,
+    "paths": ["/etc/groovyconsole.html","/etc/cqsm.html","/etc/secureaem.html"],
+    "description": "Third party AEM addons (like Groovy console) shouldn't be available."
+  },
+  {
+    "class": "com.cognifide.secureaem.tests.GroovyConsoleTest",
+    "name": "groovy-console",
+    "severity": "CRITICAL",
+    "enabled": true,
+    "description": "Groovy Console shouldn't be available publicly."
+  },
+  {
+    "class": "com.cognifide.secureaem.tests.PageContentTest",
+    "name": "etc-tools",
+    "severity": "CRITICAL",
+    "enabled": true,
+    "paths": ["/crx/de/index.jsp","/etc/blueprints/geometrixx.html","/etc/clientcontext/default/content.html","/etc/cloudservices.html","/etc/docs.html","/etc/emails/default/templates.html","/etc/importers/bulkeditor.html","/etc/importers/offline.html","/etc/importers/polling.html","/etc/importers/site.html","/etc/importers/upgrade.html","/etc/linkchecker.html","/etc/map/http.json","/etc/mobile/useragent-test.html","/etc/mobile/groups/feature.html","/etc/mobile/groups/smart.html","/etc/mobile/groups/touch.html","/etc/msm/rolloutconfigs/activate.html","/etc/msm/rolloutconfigs/deactivate.html","/etc/msm/rolloutconfigs/default.html","/etc/msm/rolloutconfigs/geometrixx-outdoors-mobile.html","/etc/msm/rolloutconfigs/geometrixx-outdoors-teaser.html","/etc/msm/rolloutconfigs/mobile.html","/etc/msm/rolloutconfigs/pushonmodify.html","/etc/reports/auditreport.html","/etc/reports/compreport.html","/etc/reports/diskusage.html","/etc/reports/healthcheck.html","/etc/reports/ugcreport.html","/etc/reports/userreport.html","/etc/reports/wfinstances.html","/etc/reports/workflowreport.html","/etc/scaffolding.html","/etc/security/accountmgr.html","/etc/tags.json","/etc/versioning/purge.html"],
+    "description": "/etc directory contains a lot of tools. They all should be restricted on dispatcher.",
+    "content": ["CRXDE","Blueprint","Client Context","Adobe Digital","Custom Documentation","Email templates","BulkEditor","Offline Importer","Feed Importer","Site Importer","Upgrade Wizard","External Link Checker","jcr:createdBy","CQ5 WCM Mobile","CQ WCM Mobile","CQ WCM Mobile","CQ WCM","CQ5 RolloutConfig","CQ5 RolloutConfig","CQ5 RolloutConfig","CQ5 RolloutConfig","CQ5 RolloutConfig","CQ5 RolloutConfig","CQ5 RolloutConfig","Page Activity Report","Component Report","Disk Usage","Request Log Analyzer","User Generated","User Report","Workflow Instance","Workflow Report","Scaffolding","Self-Service","sling:resourceType","Purge Versions"]
+  },
+  {
+    "class": "com.cognifide.secureaem.tests.WcmDebugTest",
+    "name": "wcm-debug",
+    "severity": "MAJOR",
+    "enabled": true,
+    "description": "AEM WCM Debug Filter should be disabled on production",
+    "url": "https://helpx.adobe.com/experience-manager/6-4/sites/administering/using/security-checklist.html#OSGISettings",
+    "urlDesc": "Official Configuring AEM document"
+  },
+  {
+    "class": "com.cognifide.secureaem.tests.WebDavTest",
+    "name": "webdav",
+    "severity": "MAJOR",
+    "enabled": true,
+    "description": "WebDAV service should be disabled on publish.",
+    "url": "https://helpx.adobe.com/experience-manager/6-4/sites/administering/using/security-checklist.html#DisableWebDAV",
+    "urlDesc": "Official AEM Security Checklist"
+  },
+  {
+    "class": "com.cognifide.secureaem.tests.PathsTest",
+    "name": "felix-console",
+    "severity": "MAJOR",
+    "enabled": true,
+    "paths": ["/system/console"],
+    "description": "Apache Felix console shouldn't be available for clients."
+  },
+  {
+    "class": "com.cognifide.secureaem.tests.PageContentTest",
+    "name": "geometrixx",
+    "severity": "MAJOR",
+    "enabled": true,
+    "paths": ["/content/geometrixx/en.html"],
+    "description": "Geometrixx should be removed or access to it should be restricted.",
+    "content": ["Geometrixx has been selling"]
+  },
+  {
+    "class": "com.cognifide.secureaem.tests.ExtensionsTest",
+    "name": "redundant-selectors",
+    "severity": "MINOR",
+    "enabled": true,
+    "description": "Redundant selectors and suffixes should be restricted on the dispatcher, as they can be used for DoS attack or preparing fake URL address.",
+    "url": "https://helpx.adobe.com/experience-manager/dispatcher/using/security-checklist.html#PreventDenialofServiceDoSAttacks",
+    "urlDesc": "Official Aem Security Checklist",
+    "extensions": [".thisIsAdditionalSelector.html",".this.is.additional.selector.html",".html/thisIsAdditionalSuffix"]
   }
 ]
