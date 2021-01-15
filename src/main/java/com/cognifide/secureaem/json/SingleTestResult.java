@@ -9,17 +9,17 @@ import com.cognifide.secureaem.TestResult;
 @SuppressWarnings("unused") //serialized
 public class SingleTestResult {
 	
-	private String name;
+	private final String name;
 	
-	private TestResult testResult;
+	private final TestResult testResult;
 	
-	private List<String> errorMessages;
+	private final List<String> errorMessages;
 
-	private List<String> infoMessages;
+	private final List<String> infoMessages;
 
-	private Set<String> environments;
+	private final Set<String> environments;
 	
-	private Severity severity;
+	private final Severity severity;
 	
 	public SingleTestResult(String name, AbstractTest abstractTest, Severity severity) {
 		this.name = name;

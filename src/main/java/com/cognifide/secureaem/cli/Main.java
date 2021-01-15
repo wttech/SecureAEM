@@ -1,6 +1,7 @@
 package com.cognifide.secureaem.cli;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class Main {
 	
 	private static boolean jsonMode;
 	
-	private static TestSuiteResult testSuiteResult = new TestSuiteResult();
+	private static final TestSuiteResult testSuiteResult = new TestSuiteResult();
 
 	public static void main(String[] args) throws Exception {
 		CommandLine cmdLine = createOptions(args);
@@ -44,14 +45,14 @@ public class Main {
 		}
 		printOutput();
 		printf(testSuiteResult.toString());
-		System.exit(result ? 0 : 1337);
+		System.exit(0);
 	}
 
-	private static List<TestLoader> createTestLoaders() throws ClassNotFoundException, UnsupportedEncodingException {
+	private static List<TestLoader> createTestLoaders() throws ClassNotFoundException {
 		List<TestLoader> testLoaders = new ArrayList<>();
 
 		InputStream configStream = Main.class.getResourceAsStream(TEST_JSON_PATH);
-		BufferedReader configReader = new BufferedReader(new InputStreamReader(configStream, "UTF-8"));
+		BufferedReader configReader = new BufferedReader(new InputStreamReader(configStream, StandardCharsets.UTF_8));
 		JsonArray testsJson = (JsonArray) new JsonParser().parse(configReader);
 
 		for(int i = 0; i < testsJson.size(); i++) {
@@ -80,7 +81,7 @@ public class Main {
 		}
 
 		if(test.getResult() != TestResult.OK || showPassed(cmdLine)) {
-			printf("### %s ###", testConfiguration.getName());
+			printf("## %s ##", testConfiguration.getName());
 			printf("Environments: %s", StringUtils.join(test.getEnvironments(), " / "));
 			if(testConfiguration.getDescription() != null){
 				printf("Description: %s", testConfiguration.getDescription());

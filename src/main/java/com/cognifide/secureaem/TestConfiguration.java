@@ -7,6 +7,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Read test configurations from json file
@@ -39,7 +40,7 @@ public class TestConfiguration {
     public TestConfiguration(String testName) {
         try {
             InputStream configStream = Main.class.getResourceAsStream(PATH);
-            BufferedReader configReader = new BufferedReader(new InputStreamReader(configStream, "UTF-8"));
+            BufferedReader configReader = new BufferedReader(new InputStreamReader(configStream, StandardCharsets.UTF_8));
             JsonArray testsJson = (JsonArray) new JsonParser().parse(configReader);
 
             for(int i = 0; i < testsJson.size(); i++) {

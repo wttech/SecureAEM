@@ -7,9 +7,9 @@ import org.apache.commons.lang3.StringUtils;
 public enum Severity {
 	BLOCKER("BLOCKER"), CRITICAL("CRITICAL"), MAJOR("MAJOR"), MINOR("MINOR"), INFO("INFO");
 
-	private String value;
+	private final String value;
 
-	private Severity(String value) {
+	Severity(String value) {
 		this.value = value;
 	}
 

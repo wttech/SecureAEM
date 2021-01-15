@@ -52,7 +52,7 @@ public class TestSuiteResult {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("### Final test results ###" + "\n");
+		sb.append("### AEM Secure test overview ###" + "\n");
 		sb.append("> Results\n");
 		sb.append(" * Passed: " + passed + "\n");
 		sb.append(" * Failed: " + failed + "\n");
