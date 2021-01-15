@@ -213,5 +213,14 @@
     "description": "Some OSGI settings are set by default to allow easier debugging of the application. These need to be changed on your publish and author productive instances to avoid internal information leaking to the public.",
     "url": "https://helpx.adobe.com/experience-manager/6-4/sites/administering/using/security-checklist.html#OSGISettings",
     "urlDesc": "Official Configuring AEM document"
+  },
+  {
+    "class": "com.cognifide.secureaem.tests.HealthOperationsTest",
+    "name": "health-operations",
+    "severity": "BLOCKER",
+    "enabled": true,
+    "description": "It is recommended you check the status of all the security health checks before going live with your production instance. For more information, consult the Operations Dashboard documentation.",
+    "url": "https://helpx.adobe.com/experience-manager/6-4/sites/administering/using/security-checklist.html#check-the-operations-dashboard-security-health-checks",
+    "urlDesc": "Official AEM Security Checklist"
   }
 ]

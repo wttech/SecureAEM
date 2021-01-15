@@ -1,7 +1,8 @@
 package com.cognifide.secureaem.tests;
 
 import com.cognifide.secureaem.AbstractTest;
-import com.cognifide.secureaem.Configuration;
+import com.cognifide.secureaem.CliConfiguration;
+import com.cognifide.secureaem.TestConfiguration;
 import com.cognifide.secureaem.markers.AuthorTest;
 import com.cognifide.secureaem.markers.DispatcherTest;
 import com.cognifide.secureaem.markers.PublishTest;
@@ -29,8 +30,8 @@ public class HealthOperationsTest extends AbstractTest implements AuthorTest, Pu
 
 	private static final DefaultHttpClient client = new DefaultHttpClient();
 
-	public HealthOperationsTest(Configuration config) {
-		super(config);
+	public HealthOperationsTest(CliConfiguration config, TestConfiguration testConfiguration) {
+		super(config, testConfiguration);
 	}
 
 	@Override
