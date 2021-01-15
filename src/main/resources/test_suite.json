@@ -149,5 +149,69 @@
     "url": "https://helpx.adobe.com/experience-manager/dispatcher/using/security-checklist.html#PreventDenialofServiceDoSAttacks",
     "urlDesc": "Official Aem Security Checklist",
     "extensions": [".thisIsAdditionalSelector.html",".this.is.additional.selector.html",".html/thisIsAdditionalSuffix"]
+  },
+  {
+    "class": "com.cognifide.secureaem.tests.ReplicationTransportUsersTest",
+    "name": "replication-transport-users",
+    "severity": "CRITICAL",
+    "enabled": true,
+    "description": "Redundant selectors and suffixes should be restricted on the dispatcher, as they can be used for DoS attack or preparing fake URL address.",
+    "url": "https://helpx.adobe.com/experience-manager/6-4/sites/administering/using/security-checklist.html#Configurereplicationandtransportusers",
+    "urlDesc": "docs.adobe.com"
+  },
+  {
+    "class": "com.cognifide.secureaem.tests.BundlesTest",
+    "name": "sling-development-bundle",
+    "severity": "CRITICAL",
+    "enabled": true,
+    "description": "Check if the Sling development bundle is present",
+    "url": "https://helpx.adobe.com/experience-manager/6-4/sites/administering/using/security-checklist.html#CheckiftheSlingdevelopmentbundleispresent",
+    "urlDesc": "docs.adobe.com",
+    "bundles": ["Apache Sling Tooling"]
+  },
+  {
+    "class": "com.cognifide.secureaem.tests.SlingReferrerFilterTest",
+    "name": "sling-referrer-filter",
+    "severity": "CRITICAL",
+    "enabled": true,
+    "description": "Protect against Cross-Site Request Forgery",
+    "url": "https://helpx.adobe.com/experience-manager/6-4/sites/administering/using/security-checklist.html#ProtectagainstCrossSiteRequestForgery",
+    "urlDesc": "docs.adobe.com"
+  },
+  {
+    "class": "com.cognifide.secureaem.tests.WcmFilterTest",
+    "name": "wcm-filter",
+    "severity": "MAJOR",
+    "enabled": true,
+    "description": "AEM WCM Filter should be disabled on publish",
+    "url": "https://helpx.adobe.com/experience-manager/6-4/sites/administering/using/security-checklist.html#OSGISettings",
+    "urlDesc": "Official Configuring AEM document"
+  },
+  {
+    "class": "com.cognifide.secureaem.tests.HtmlLibraryManagerTest",
+    "name": "html-library-manager",
+    "severity": "MAJOR",
+    "enabled": true,
+    "description": "Some OSGI settings are set by default to allow easier debugging of the application. These need to be changed on your publish and author productive instances to avoid internal information leaking to the public.",
+    "url": "https://helpx.adobe.com/experience-manager/6-4/sites/administering/using/security-checklist.html#OSGISettings",
+    "urlDesc": "Official Configuring AEM document"
+  },
+  {
+    "class": "com.cognifide.secureaem.tests.SlingJsHandlerTest",
+    "name": "sling-js-handler",
+    "severity": "MAJOR",
+    "enabled": true,
+    "description": "Some OSGI settings are set by default to allow easier debugging of the application. These need to be changed on your publish and author productive instances to avoid internal information leaking to the public.",
+    "url": "https://helpx.adobe.com/experience-manager/6-4/sites/administering/using/security-checklist.html#OSGISettings",
+    "urlDesc": "Official Configuring AEM document"
+  },
+  {
+    "class": "com.cognifide.secureaem.tests.SlingJspScriptHandlerTest",
+    "name": "sling-jsp-script-handler",
+    "severity": "MAJOR",
+    "enabled": true,
+    "description": "Some OSGI settings are set by default to allow easier debugging of the application. These need to be changed on your publish and author productive instances to avoid internal information leaking to the public.",
+    "url": "https://helpx.adobe.com/experience-manager/6-4/sites/administering/using/security-checklist.html#OSGISettings",
+    "urlDesc": "Official Configuring AEM document"
   }
 ]
