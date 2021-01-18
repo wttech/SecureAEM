@@ -11,7 +11,7 @@ import org.apache.sling.commons.json.JSONObject;
 import java.io.IOException;
 
 /**
- * Test looks on the adobe website for the latest service pack and compares it with the installed service pack.
+ * Look on the adobe website for the latest service pack and compares it with the installed service pack.
  */
 public class LatestSecurityHotfixTest extends AbstractTest implements AuthorTest, OsgiConfigurationTest {
     String AEM_SERVICE_PACK_OVERVIEW_PAGE = "https://experienceleague.adobe.com/docs/experience-manager-release-information/aem-release-updates/aem-releases-updates.html?lang=en#aem-on-prem-managed-services";
