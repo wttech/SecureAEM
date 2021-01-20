@@ -39,9 +39,8 @@ public class Main {
 		}
 		selectMode(cmdLine);
 		List<TestLoader> testLoaders = createTestLoaders();
-		boolean result = true;
 		for (TestLoader testLoader : testLoaders) {
-			result = doTest(testLoader, cmdLine) && result;
+			doTest(testLoader, cmdLine);
 		}
 		printOutput();
 		printf(testSuiteResult.toString());
