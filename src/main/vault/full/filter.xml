@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspaceFilter version="1.0">
 	<filter root="/apps/cognifide/secureaem"/>
+	<filter root="/apps/cq/core/content/nav/tools/security/secureAem"/>
 	<filter root="/apps/cognifide/install">
 		<include pattern="/apps/cognifide/install/secure-aem.*"/>
 	</filter>
