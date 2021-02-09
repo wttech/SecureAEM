@@ -2,18 +2,16 @@ package com.cognifide.secureaem.tests;
 
 import com.cognifide.secureaem.AbstractTest;
 import com.cognifide.secureaem.CliConfiguration;
-import com.cognifide.secureaem.HttpHelper;
 import com.cognifide.secureaem.TestConfiguration;
 import com.cognifide.secureaem.markers.AuthorTest;
 import com.cognifide.secureaem.markers.PublishTest;
-import org.apache.sling.commons.json.JSONObject;
 
 import java.io.IOException;
 
 /**
  * Look on the adobe website for the latest service pack and compares it with the installed service pack.
  */
-public class LatestSecurityHotfixTest extends AbstractTest implements AuthorTest, OsgiConfigurationTest {
+public class LatestSecurityHotfixTest extends AbstractTest implements AuthorTest, PublishTest, OsgiConfigurationTest {
     String AEM_SERVICE_PACK_OVERVIEW_PAGE = "https://experienceleague.adobe.com/docs/experience-manager-release-information/aem-release-updates/aem-releases-updates.html?lang=en#aem-on-prem-managed-services";
 
     public LatestSecurityHotfixTest(CliConfiguration config, TestConfiguration testConfiguration) {

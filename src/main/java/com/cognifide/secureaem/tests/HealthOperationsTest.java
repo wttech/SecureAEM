@@ -4,11 +4,9 @@ import com.cognifide.secureaem.AbstractTest;
 import com.cognifide.secureaem.CliConfiguration;
 import com.cognifide.secureaem.TestConfiguration;
 import com.cognifide.secureaem.markers.AuthorTest;
-import com.cognifide.secureaem.markers.DispatcherTest;
 import com.cognifide.secureaem.markers.PublishTest;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.methods.HttpGet;
@@ -16,11 +14,6 @@ import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.auth.BasicScheme;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Check the Operations Dashboard Security Health Checks
