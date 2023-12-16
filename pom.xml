@@ -49,7 +49,7 @@
 	<repositories>
 		<repository>
 			<id>adobe-public-releases</id>
-			<url>http://repo.adobe.com/nexus/content/groups/public</url>
+			<url>https://repo.adobe.com/nexus/content/groups/public</url>
 		</repository>
 	</repositories>
 	<build>
